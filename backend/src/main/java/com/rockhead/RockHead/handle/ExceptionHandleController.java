@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class ExceptionHandleController {
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<?> exceptionHandle(Exception ex) {
-        return new ResponseEntity<>(new ResponseModel(false, ex.getMessage()), HttpStatus.OK);
+        return new ResponseEntity<>(new ResponseModel(false, ex.getMessage()), HttpStatus.FORBIDDEN);
     }
+
 }

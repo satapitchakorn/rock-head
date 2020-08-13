@@ -1,19 +1,16 @@
-package com.rockhead.RockHead.log;
+package com.rockhead.RockHead.admin;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Date;
-import java.util.List;
-
 @Data
 @Document
-public class Log {
+public class Admin {
     @Id
     private String id;
-    private Integer employeeNo;
+
     private Integer adminNo;
-    private Date dateOfEvent;
-    private List<Event> logObjects;
+
+    private String email;
 }
