@@ -4,18 +4,14 @@ import { EventActionPageComponent } from '@app/employee/components/event-action-
 import { EventActionAddPageComponent } from '@app/employee/components/event-action-add-page/event-action-add-page.component';
 import { EventActionModifyPageComponent } from '@app/employee/components/event-action-modify-page/event-action-modify-page.component';
 import { EventActionRemovePageComponent } from '@app/employee/components/event-action-remove-page/event-action-remove-page.component';
-import { HistoryPageComponent } from '@app/log/components/history-page/history-page.component';
+import { LogPageComponent } from '@app/log/components/log-page/log-page.component';
 
 const routes: Routes = [
-  {
-    path: 'form', component: EventActionPageComponent,
-    children: [
-      { path: 'add', component: EventActionAddPageComponent },
-      { path: 'modify', component: EventActionModifyPageComponent },
-      { path: 'remove', component: EventActionRemovePageComponent }
-    ]
-  },
-  { path: 'log', component: HistoryPageComponent },
+  { path: 'form', component: EventActionPageComponent },
+  { path: 'form/add', component: EventActionAddPageComponent },
+  { path: 'form/modify', component: EventActionModifyPageComponent },
+  { path: 'form/remove', component: EventActionRemovePageComponent },
+  { path: 'log', component: LogPageComponent },
   { path: '**', redirectTo: '/form' }
 ];
 

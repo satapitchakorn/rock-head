@@ -8,7 +8,7 @@ import { EventActionAddPageComponent } from '@app/employee/components/event-acti
 import { EventActionPageComponent } from './employee/components/event-action-page/event-action-page.component';
 import { EventActionModifyPageComponent } from './employee/components/event-action-modify-page/event-action-modify-page.component';
 import { EventActionRemovePageComponent } from './employee/components/event-action-remove-page/event-action-remove-page.component';
-import { HistoryPageComponent } from './log/components/history-page/history-page.component';
+import { LogPageComponent } from './log/components/log-page/log-page.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { HistoryPageComponent } from './log/components/history-page/history-page
     EventActionPageComponent,
     EventActionModifyPageComponent,
     EventActionRemovePageComponent,
-    HistoryPageComponent
+    LogPageComponent
   ],
   imports: [
     BrowserModule,
