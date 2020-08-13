@@ -160,7 +160,7 @@ start_Day, end_Month
 
 [Edited]: edit code in the existing file
 
-[Added]: for adding new gfunction, function test
+[Added]: for adding new function, function test
 
 [Deleted]: remove file 'filename' because...
 
