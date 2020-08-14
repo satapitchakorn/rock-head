@@ -14,15 +14,29 @@ public class EmployeeService {
 
     public void initialEmployeeData() {
         employeeRepository.deleteAll();
+
+        //For modify case
         Employee data = new Employee();
-        data.setEmployeeNo(251171);
-        data.setFirstname("Suthinan");
-        data.setLastname("Musitmani");
+        data.setEmployeeNo(251188);
+        data.setFirstname("Hasaneeya");
+        data.setLastname("Kaenthram");
+        data.setStartDate(new Date());
+        data.setPosition("Junior frontend developer");
+        data.setEmail("hasaneeya.kaenthram@allianz.com");
+        data.setPhone("0876543210");
+        data.setPassport("1234567890123");
+        employeeRepository.save(data);
+
+        //For remove case
+        data = new Employee();
+        data.setEmployeeNo(251166);
+        data.setFirstname("Kanawat");
+        data.setLastname("Phuengphadung");
         data.setStartDate(new Date());
         data.setPosition("Junior backend developer");
-        data.setEmail("suthinan.musitmani@allianz.com");
-        data.setPhone("0868441328");
-        data.setPassport("1209701763081");
+        data.setEmail("kanawat.phuengphadung@allianz.com");
+        data.setPhone("0845545432");
+        data.setPassport("1103700222555");
         employeeRepository.save(data);
     }
 
