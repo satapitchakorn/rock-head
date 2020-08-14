@@ -17,23 +17,54 @@ export class EventActionModifyPageComponent implements OnInit {
       employee_no: new FormControl(),
       firstname: new FormControl(),
       lastname: new FormControl(),
+      position: new FormControl(),
+      start_date: new FormControl(),
       email: new FormControl(),
       phone: new FormControl(),
-      start_date: new FormControl(),
     })
   }
 
   ngOnInit(): void {
-
+    //Check Valid forms 
+    (function () {
+      'use strict';
+      window.addEventListener('load', function () {
+        var forms = document.getElementsByClassName('needs-validation');
+        var validation = Array.prototype.filter.call(forms, function (form) {
+          form.addEventListener('submit', function (event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
   }
 
   modifyEmployeeAlert() {
-    console.log(this.form.value.firstname);
-    const answers = this.form.value.firstname + ' ' + this.form.value.lastname
+    console.log(this.form)
+    const firstname = this.form.value.firstname
+    const lastname = this.form.value.lastname
+    const position = this.form.value.position
+    const start_date = this.form.value.start_date
+    const email = this.form.value.email
+    const phone = this.form.value.phone
     Swal.fire({
       title: 'Are you sure?',
       html: `
-        Form: ${answers}
+        Firstname: ${firstname}
+        <br/>
+        Lastname: ${lastname}
+        <br/>
+        Position: ${position}
+        <br/>
+        Start Date: ${start_date}
+        <br/>
+        Email: ${email}
+        <br/>
+        Phone: ${phone}
       `,
       icon: 'warning',
       showCancelButton: true,
@@ -51,5 +82,4 @@ export class EventActionModifyPageComponent implements OnInit {
       }
     })
   }
-
 }

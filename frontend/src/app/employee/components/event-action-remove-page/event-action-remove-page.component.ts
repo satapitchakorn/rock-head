@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
+import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-event-action-remove-page',
@@ -8,11 +9,41 @@ import Swal from 'sweetalert2';
 })
 export class EventActionRemovePageComponent implements OnInit {
 
-  constructor() { }
+  form: FormGroup
+
+  constructor(private fb: FormBuilder) {
+    this.form = fb.group({
+      passport: new FormControl(),
+      employee_no: new FormControl(),
+      firstname: new FormControl(),
+      lastname: new FormControl(),
+      position: new FormControl(),
+      start_date: new FormControl(),
+      email: new FormControl(),
+      phone: new FormControl(),
+    })
+  }
 
   ngOnInit(): void {
+    //Check Valid forms 
+    (function () {
+      'use strict';
+      window.addEventListener('load', function () {
+        var forms = document.getElementsByClassName('needs-validation');
+        var validation = Array.prototype.filter.call(forms, function (form) {
+          form.addEventListener('submit', function (event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
   }
-  confirmAlert() {
+  removeEmployeeAlert() {
+    const name = this.form.value.firstname + ' ' + this.form.value.lastname
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -24,11 +55,11 @@ export class EventActionRemovePageComponent implements OnInit {
       cancelButtonText: 'No',
     }).then((result) => {
       if (result.value) {
-        Swal.fire(
-          'Successful!',
-          'Remove employee has been saved.',
-          'success'
-        )
+        Swal.fire({
+          title: 'Successful',
+          html: `This employee has been removed`,
+          icon: 'success'
+        })
       }
     })
   }

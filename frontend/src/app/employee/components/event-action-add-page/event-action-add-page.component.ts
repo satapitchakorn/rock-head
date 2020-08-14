@@ -7,17 +7,45 @@ import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
   templateUrl: './event-action-add-page.component.html',
   styleUrls: ['./event-action-add-page.component.css']
 })
+
 export class EventActionAddPageComponent implements OnInit {
+  form: FormGroup
 
-
-  constructor() {
+  constructor(private fb: FormBuilder) {
+    this.form = fb.group({
+      passport: new FormControl(''),
+      employee_no: new FormControl(''),
+      firstname: new FormControl(''),
+      lastname: new FormControl(''),
+      position: new FormControl(''),
+      start_date: new FormControl(''),
+      email: new FormControl(''),
+      phone: new FormControl(''),
+    })
   }
+
 
   ngOnInit(): void {
+    //Check Valid forms 
+    (function () {
+      'use strict';
+      window.addEventListener('load', function () {
+        var forms = document.getElementsByClassName('needs-validation');
+        var validation = Array.prototype.filter.call(forms, function (form) {
+          form.addEventListener('submit', function (event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
   }
 
-
-  confirmAlert() {
+  addEmployeeAlert() {
+    const name = this.form.value.firstname + ' ' + this.form.value.lastname
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -29,12 +57,17 @@ export class EventActionAddPageComponent implements OnInit {
       cancelButtonText: 'No',
     }).then((result) => {
       if (result.value) {
-        Swal.fire(
-          'Successful!',
-          'New employee has been saved.',
-          'success'
-        )
+        Swal.fire({
+          title: 'Successful',
+          html: `${name} has been saved`,
+          icon: 'success'
+        })
       }
     })
   }
+
+  onSubmit() {
+    console.log(this.form.value);
+  }
+
 }
