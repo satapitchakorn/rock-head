@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
+import { Employee } from '../../models/employee';
+import { EmployeeService } from '../../services/employee.service';
 
 @Component({
   selector: 'app-event-action-add-page',
@@ -11,7 +13,7 @@ import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
 export class EventActionAddPageComponent implements OnInit {
   form: FormGroup
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private service: EmployeeService) {
     this.form = fb.group({
       passport: new FormControl(''),
       employee_no: new FormControl(''),
@@ -44,6 +46,7 @@ export class EventActionAddPageComponent implements OnInit {
     })();
   }
 
+
   addEmployeeAlert() {
     const name = this.form.value.firstname + ' ' + this.form.value.lastname
     Swal.fire({
@@ -66,8 +69,10 @@ export class EventActionAddPageComponent implements OnInit {
     })
   }
 
-  onSubmit() {
+
+  onSubmit(): void {
     console.log(this.form.value);
+    console.log(this.service.addEmployee());
   }
 
 }

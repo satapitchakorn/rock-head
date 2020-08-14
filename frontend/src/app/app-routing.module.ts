@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 import { EventActionPageComponent } from '@app/employee/components/event-action-page/event-action-page.component';
 import { EventActionAddPageComponent } from '@app/employee/components/event-action-add-page/event-action-add-page.component';
 import { EventActionModifyPageComponent } from '@app/employee/components/event-action-modify-page/event-action-modify-page.component';
@@ -16,7 +17,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), HttpClientModule],
   exports: [RouterModule],
 })
 export class AppRoutingModule { }
