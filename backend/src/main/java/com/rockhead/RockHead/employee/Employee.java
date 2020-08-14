@@ -22,4 +22,5 @@ public class Employee {
     private String email;
     private String phone;
     private String passport;
+    private boolean status = true;
 }
