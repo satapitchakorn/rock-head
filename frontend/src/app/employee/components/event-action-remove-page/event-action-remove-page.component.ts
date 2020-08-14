@@ -43,7 +43,6 @@ export class EventActionRemovePageComponent implements OnInit {
     })();
   }
   removeEmployeeAlert() {
-    const name = this.form.value.firstname + ' ' + this.form.value.lastname
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",

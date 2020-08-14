@@ -89,7 +89,8 @@
 
 
                 <hr class="mb-4">
-                <input id="btnRemove" type="submit" class="btn btn-danger btn-lg btn-block" value="Remove" />
+                <input id="btnRemove" type="submit" class="btn btn-danger btn-lg btn-block" value="Remove"
+                    (click)="removeEmployeeAlert()" />
                 <button id="btnCancel" class="btn btn-outline-dark btn-lg btn-block"
                     [routerLink]="['/form']">Cancel</button>
             </form>
