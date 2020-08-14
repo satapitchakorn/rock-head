@@ -2,6 +2,7 @@ package com.rockhead.RockHead.employee;
 
 import com.rockhead.RockHead.admin.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -14,7 +15,7 @@ public class EmployeeService {
     public void initialEmployeeData() {
         employeeRepository.deleteAll();
         Employee data = new Employee();
-        data.setEmployeeNo(251165);
+        data.setEmployeeNo(251171);
         data.setFirstname("Suthinan");
         data.setLastname("Musitmani");
         data.setStartDate(new Date());
@@ -23,5 +24,21 @@ public class EmployeeService {
         data.setPhone("0868441328");
         data.setPassport("1209701763081");
         employeeRepository.save(data);
+    }
+
+    public Employee findEmployeeById(int id) {
+        return employeeRepository.findOneByEmployeeNo(id).orElse(null);
+    }
+
+    public Employee updateEmployeeById(int id, Employee request) {
+        Employee employee = employeeRepository.findOneByEmployeeNo(id).orElse(null);
+        employee.setEmail(request.getEmail());
+        employee.setFirstname(request.getFirstname());
+        employee.setLastname(request.getLastname());
+        employee.setStartDate(request.getStartDate());
+        employee.setPassport(request.getPassport());
+        employee.setPhone(request.getPhone());
+        employee.setPosition(request.getPosition());
+        return employeeRepository.save(employee);
     }
 }
