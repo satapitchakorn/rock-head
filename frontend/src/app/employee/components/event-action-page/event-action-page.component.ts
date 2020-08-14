@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-event-action-page',
   templateUrl: './event-action-page.component.html',
@@ -11,5 +12,6 @@ export class EventActionPageComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 
 }

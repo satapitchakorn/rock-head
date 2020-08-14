@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
+import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
+
 @Component({
   selector: 'app-event-action-add-page',
   templateUrl: './event-action-add-page.component.html',
@@ -7,11 +9,13 @@ import Swal from 'sweetalert2';
 })
 export class EventActionAddPageComponent implements OnInit {
 
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit(): void {
-    //this.comfirmAlert();
   }
+
 
   confirmAlert() {
     Swal.fire({
@@ -27,7 +31,7 @@ export class EventActionAddPageComponent implements OnInit {
       if (result.value) {
         Swal.fire(
           'Successful!',
-          'Your file has been saved.',
+          'New employee has been saved.',
           'success'
         )
       }
