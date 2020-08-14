@@ -30,7 +30,11 @@ public class EmployeeService {
         return employeeRepository.findOneByEmployeeNo(id).orElse(null);
     }
 
-    public Employee updateEmployeeById(int id, Employee request) {
+    public Employee addEmployee(Employee request) {
+        return employeeRepository.save(request);
+    }
+
+    public Employee modifyEmployeeById(int id, Employee request) {
         Employee employee = employeeRepository.findOneByEmployeeNo(id).orElse(null);
         employee.setEmail(request.getEmail());
         employee.setFirstname(request.getFirstname());
@@ -39,6 +43,12 @@ public class EmployeeService {
         employee.setPassport(request.getPassport());
         employee.setPhone(request.getPhone());
         employee.setPosition(request.getPosition());
+        return employeeRepository.save(employee);
+    }
+
+    public Employee deactivateEmployeeById(int id) {
+        Employee employee = employeeRepository.findOneByEmployeeNo(id).orElse(null);
+        employee.setStatus(false);
         return employeeRepository.save(employee);
     }
 }
