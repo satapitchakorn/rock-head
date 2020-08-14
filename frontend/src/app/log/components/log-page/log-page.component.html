@@ -16,13 +16,11 @@
       <tr *ngFor="let logContent of contents.content; let i = index;">
         <ng-container *ngIf="logContent.log_objects.length > 1">
           <ng-container *ngFor="let item of logContent.log_objects">
-            <div [ngStyle]="getColor(action)">
               <td>{{i+1}}</td>
               <td>{{item.event_message}}</td>
               <td>{{item.action}}</td>
               <td>By</td>
               <td>{{logContent.date_of_event}}</td>
-            </div>
           </ng-container>
         </ng-container>
         <ng-container *ngIf="logContent.log_objects.length == 1">
