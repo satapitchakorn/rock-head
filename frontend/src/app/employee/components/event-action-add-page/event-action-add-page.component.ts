@@ -47,7 +47,6 @@ export class EventActionAddPageComponent implements OnInit {
     })();
   }
 
-
   addEmployeeAlert(): void {
     if (this.form.status === 'VALID'){
       const name = this.form.value.firstname + ' ' + this.form.value.lastname;
