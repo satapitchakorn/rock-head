@@ -30,6 +30,6 @@ export class EmployeeService {
     return console.log('successfully modify employee');
   }
   removeEmployee(): void {
-    return console.log('successfully remove employee')
+    return console.log('successfully remove employee');
   }
 }
