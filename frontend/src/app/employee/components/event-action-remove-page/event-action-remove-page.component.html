@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col">
             <h4 class="mb-3"></h4>
-            <form class="needs-validation" novalidate>
+            <form [formGroup]="form" (ngSubmit)="removeEmployeeAlert()" class="needs-validation" novalidate>
                 <div class="mb-3">
                     <label for="inputPassport">Passport / Citizen identity number</label>
                     <input type="text" class="form-control" id="inputPassport" placeholder="1103702412465" disabled>
@@ -68,7 +68,7 @@
                         <div class="form-group">
                             <label for="inputEmail">Email</label>
                             <input type="email" class="form-control" id="inputEmail" placeholder="name@allianz.com"
-                            disabled>
+                                disabled>
                             <div class="invalid-feedback">
                                 Please enter email.
                             </div>
@@ -89,7 +89,8 @@
 
 
                 <hr class="mb-4">
-                <input id="btnRemove" type="submit" class="btn btn-danger btn-lg btn-block" value="Remove" />
+                <input id="btnRemove" type="submit" class="btn btn-danger btn-lg btn-block" value="Remove"
+                    (click)="removeEmployeeAlert()" />
                 <button id="btnCancel" class="btn btn-outline-dark btn-lg btn-block"
                     [routerLink]="['/form']">Cancel</button>
             </form>

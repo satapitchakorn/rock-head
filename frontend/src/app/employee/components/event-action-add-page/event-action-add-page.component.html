@@ -9,7 +9,8 @@
             <form [formGroup]="form" (ngSubmit)="addEmployeeAlert()" class="needs-validation" novalidate>
                 <div class="mb-3">
                     <label for="inputPassport">Passport / Citizen identity number</label>
-                    <input type="text" class="form-control" id="inputPassport" placeholder="1103702412465" formControlName="passport" required>
+                    <input type="text" class="form-control" id="inputPassport" placeholder="1103702412465"
+                        formControlName="passport" required>
                     <div class="invalid-feedback">
                         Please enter your Passport.
                     </div>
@@ -17,7 +18,8 @@
 
                 <div class="mb-3">
                     <label for="inputEmployeeId">Employee ID</label>
-                    <input type="number" class="form-control" id="inputEmployeeId" placeholder="251182" formControlName="employee_no" required>
+                    <input type="number" class="form-control" id="inputEmployeeId" placeholder="251182"
+                        formControlName="employee_no" required>
                     <div class="invalid-feedback">
                         Please enter employee ID.
                     </div>
@@ -26,15 +28,17 @@
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="inputFirstname">First name</label>
-                        <input type="text" class="form-control" id="inputfirstname" placeholder="" formControlName="firstname" value="" required>
+                        <input type="text" class="form-control" id="inputfirstname" placeholder=""
+                            formControlName="firstname" value="" required>
                         <div class="invalid-feedback">
-                            Valid Firstname is required. 
+                            Valid Firstname is required.
                         </div>
                     </div>
 
                     <div class="col-md-6 mb-3">
                         <label for="inputLastname">Last name</label>
-                        <input type="text" class="form-control" id="inputLastname" placeholder="" formControlName="lastname" value="" required>
+                        <input type="text" class="form-control" id="inputLastname" placeholder=""
+                            formControlName="lastname" value="" required>
                         <div class="invalid-feedback">
                             Valid Lastname is required.
                         </div>
@@ -55,7 +59,8 @@
                     <div class="col-md-6 mb-3">
                         <div class="form-group">
                             <label for="inputStartDate">Start Date</label>
-                            <input class="form-control" type="date" value="dd/mm/yyyy" id="inputStartDate" formControlName="start_date" required>
+                            <input class="form-control" type="date" value="dd/mm/yyyy" id="inputStartDate"
+                                formControlName="start_date" required>
                             <div class="invalid-feedback">
                                 Please enter phone number.
                             </div>
@@ -67,8 +72,8 @@
                     <div class="col-md-6 mb-3">
                         <div class="form-group">
                             <label for="inputEmail">Email</label>
-                            <input type="email" class="form-control" id="inputEmail" placeholder="name@allianz.com" formControlName="email"
-                                required>
+                            <input type="email" class="form-control" id="inputEmail" placeholder="name@allianz.com"
+                                formControlName="email" required>
                             <div class="invalid-feedback">
                                 Please enter email.
                             </div>
@@ -88,7 +93,8 @@
                 </div>
 
                 <hr class="mb-4">
-                <input id="btnSave" type="submit" class="btn btn-success btn-lg btn-block" value="Save" />
+                <input id="btnSave" type="submit" class="btn btn-success btn-lg btn-block" value="Save"
+                    (click)="addEmployeeAlert()" />
                 <button id="btnCancel" class="btn btn-outline-dark btn-lg btn-block"
                     [routerLink]="['/form']">Cancel</button>
             </form>
