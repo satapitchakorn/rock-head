@@ -9,6 +9,7 @@ public class AdminService {
     private AdminRepository adminRepository;
 
     public void initialAdminData() {
+        adminRepository.deleteAll();
         Admin data = new Admin();
         data.setAdminNo(251165);
         data.setEmail("satapitchakorn.punjarat@allianz.com");
