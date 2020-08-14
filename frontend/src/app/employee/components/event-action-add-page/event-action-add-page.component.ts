@@ -1,26 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import {Employee} from '../../models/employee';
-import {EmployeeService} from '../../services/employee.service';
+import Swal from 'sweetalert2';
+import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
+import { Employee } from '../../models/employee';
+import { EmployeeService } from '../../services/employee.service';
 
 @Component({
   selector: 'app-event-action-add-page',
   templateUrl: './event-action-add-page.component.html',
   styleUrls: ['./event-action-add-page.component.css']
 })
-export class EventActionAddPageComponent implements OnInit {
-  dataForm = this.fb.group({
-    passport: [''],
-    employee_no: [''],
-    firstname: [''],
-    lastname: [''],
-    position: [''],
-    start_date: [''],
-    email: [''],
-    phone: ['']
-  });
 
-  constructor(private fb: FormBuilder, private service: EmployeeService) { }
+export class EventActionAddPageComponent implements OnInit {
+  form: FormGroup
+
+  constructor(private fb: FormBuilder, private service: EmployeeService) {
+    this.form = fb.group({
+      passport: new FormControl(''),
+      employee_no: new FormControl(''),
+      firstname: new FormControl(''),
+      lastname: new FormControl(''),
+      position: new FormControl(''),
+      start_date: new FormControl(''),
+      email: new FormControl(''),
+      phone: new FormControl(''),
+    })
+  }
+
 
   ngOnInit(): void {
     //Check Valid forms 
@@ -41,8 +46,33 @@ export class EventActionAddPageComponent implements OnInit {
     })();
   }
 
+
+  addEmployeeAlert() {
+    const name = this.form.value.firstname + ' ' + this.form.value.lastname
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No',
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire({
+          title: 'Successful',
+          html: `${name} has been saved`,
+          icon: 'success'
+        })
+      }
+    })
+  }
+
+
   onSubmit(): void {
-    console.log(this.dataForm.value);
+    console.log(this.form.value);
     console.log(this.service.addEmployee());
   }
+
 }
