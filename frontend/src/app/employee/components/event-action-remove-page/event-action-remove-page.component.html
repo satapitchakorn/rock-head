@@ -1,0 +1,97 @@
+<!-- FORM EMPLOYEE DETAIL -->
+<div class="container">
+    <div class="text-center">
+        <h3>MODIFY EMPLOYEE INFORMATION</h3>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h4 class="mb-3"></h4>
+            <form [formGroup]="form" (ngSubmit)="removeEmployeeAlert()" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="inputPassport">Passport / Citizen identity number</label>
+                    <input type="text" class="form-control" id="inputPassport" placeholder="1103702412465" disabled>
+                    <div class="invalid-feedback">
+                        Please enter your Passport.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="inputEmployeeId">Employee ID</label>
+                    <input type="number" class="form-control" id="inputEmployeeId" placeholder="251182" disabled>
+                    <div class="invalid-feedback">
+                        Please enter employee ID.
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="inputFirstname">First name</label>
+                        <input type="text" class="form-control" id="inputfirstname" placeholder="" value="" disabled>
+                        <div class="invalid-feedback">
+                            Valid first name is required.
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="inputLastname">Last name</label>
+                        <input type="text" class="form-control" id="inputLastname" placeholder="" value="" disabled>
+                        <div class="invalid-feedback">
+                            Valid last name is required.
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            <label for="inputPosition">Position</label>
+                            <input type="text" class="form-control" id="inputPosition"
+                                placeholder="Junior Frontend Developer" disabled>
+                            <div class="invalid-feedback">
+                                Please enter position.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            <label for="inputStartDate">Start Date</label>
+                            <input class="form-control" type="date" value="dd/mm/yyyy" id="inputStartDate" disabled>
+                            <div class="invalid-feedback">
+                                Please enter phone number.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            <label for="inputEmail">Email</label>
+                            <input type="email" class="form-control" id="inputEmail" placeholder="name@allianz.com"
+                                disabled>
+                            <div class="invalid-feedback">
+                                Please enter email.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            <label for="inputPhone">Phone</label>
+                            <input type="tel" placeholder="+66955419228" pattern="\+[0-9]{2}[0-9]{9}"
+                                class="form-control" name="i1" id="input1" disabled>
+                            <div class="invalid-feedback">
+                                Please enter phone number like +00123456789.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <hr class="mb-4">
+                <input id="btnRemove" type="submit" class="btn btn-danger btn-lg btn-block" value="Remove" />
+                <button id="btnCancel" class="btn btn-outline-dark btn-lg btn-block"
+                    [routerLink]="['/form']">Cancel</button>
+            </form>
+        </div>
+    </div>
