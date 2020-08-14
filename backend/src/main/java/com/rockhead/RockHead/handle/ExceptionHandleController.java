@@ -11,7 +11,7 @@ public class ExceptionHandleController {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<?> exceptionHandle(Exception ex) {
-        return new ResponseEntity<>(new ResponseModel(false, ex.getMessage()), HttpStatus.FORBIDDEN);
+        return new ResponseEntity<>(new ResponseModel(false, ex.getMessage()), HttpStatus.BAD_REQUEST);
     }
 
 }
