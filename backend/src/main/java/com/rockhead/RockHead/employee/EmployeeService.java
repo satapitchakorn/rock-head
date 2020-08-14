@@ -38,7 +38,6 @@ public class EmployeeService {
         data.setPhone("0845545432");
         data.setPassport("1103700222555");
         employeeRepository.save(data);
-
     }
 
     public Employee findEmployeeById(int id) {
