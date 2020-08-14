@@ -22,7 +22,6 @@ export class EventActionAddPageComponent implements OnInit {
 
   ngOnInit(): void {
     //Check Valid forms 
-
     (function () {
       'use strict';
       window.addEventListener('load', function () {
