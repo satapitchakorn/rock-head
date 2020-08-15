@@ -15,7 +15,7 @@ public class LogController {
     @Autowired
     private LogService logService;
 
-    @GetMapping("")
+        @GetMapping("")
     public ResponseEntity<?> findAll(@RequestParam(defaultValue = "1", required = false) int page,
                                            @RequestParam(defaultValue = "15", required = false) int item_per_page) {
         Pageable pageable = PageRequest.of(--page, item_per_page);

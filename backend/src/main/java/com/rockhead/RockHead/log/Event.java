@@ -10,4 +10,10 @@ public class Event {
 
     @JsonProperty("event_message")
     private String eventMessage;
+
+    @JsonProperty("form_id")
+    private Integer formId;
+
+    @JsonProperty("element_name")
+    private String elementName;
 }
