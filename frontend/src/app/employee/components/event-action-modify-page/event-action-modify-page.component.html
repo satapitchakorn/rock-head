@@ -6,7 +6,8 @@
     <div class="row">
         <div class="col">
             <h4 class="mb-3"></h4>
-            <form [formGroup]="form" (ngSubmit)="modifyEmployeeAlert()" class="needs-validation" novalidate>
+            <form [formGroup]="form" (ngSubmit)="modifyEmployeeAlert()" [ngClass]="{'was-validated': validated}"
+                class="needs-validation" novalidate>
                 <div class="mb-3">
                     <label for="inputPassport">Passport / Citizen identity number</label>
                     <input type="text" class="form-control" id="inputPassport" placeholder="1103702412465"
@@ -94,8 +95,7 @@
 
 
                 <hr class="mb-4">
-                <input id="btnSave" type="submit" class="btn btn-success btn-lg btn-block" value="Save"
-                    (click)="modifyEmployeeAlert()" />
+                <input id="btnSave" type="submit" class="btn btn-success btn-lg btn-block" value="Save" />
                 <button id="btnCancel" class="btn btn-outline-dark btn-lg btn-block"
                     [routerLink]="['/form']">Cancel</button>
             </form>
