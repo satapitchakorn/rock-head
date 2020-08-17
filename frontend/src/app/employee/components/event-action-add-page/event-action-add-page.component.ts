@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
-import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
+import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Employee } from '../../models/employee';
 import { EmployeeService } from '../../services/employee.service';
 
@@ -11,19 +11,20 @@ import { EmployeeService } from '../../services/employee.service';
 })
 
 export class EventActionAddPageComponent implements OnInit {
-  form: FormGroup
+  form: FormGroup;
+
 
   constructor(private fb: FormBuilder, private service: EmployeeService) {
     this.form = fb.group({
-      passport: new FormControl(''),
-      employee_no: new FormControl(''),
-      firstname: new FormControl(''),
-      lastname: new FormControl(''),
-      position: new FormControl(''),
-      start_date: new FormControl(''),
-      email: new FormControl(''),
-      phone: new FormControl(''),
-    })
+      passport: new FormControl('', Validators.required),
+      employee_no: new FormControl('', Validators.required),
+      firstname: new FormControl('', Validators.required),
+      lastname: new FormControl('', Validators.required),
+      position: new FormControl('', Validators.required),
+      start_date: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required),
+      phone: new FormControl('', Validators.required),
+    });
   }
 
 
@@ -47,9 +48,10 @@ export class EventActionAddPageComponent implements OnInit {
   }
 
 
-  addEmployeeAlert() {
-    const name = this.form.value.firstname + ' ' + this.form.value.lastname
-    Swal.fire({
+  addEmployeeAlert(): void {
+    if (this.form.status === 'VALID'){
+      const name = this.form.value.firstname + ' ' + this.form.value.lastname;
+      Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
       icon: 'warning',
@@ -60,13 +62,15 @@ export class EventActionAddPageComponent implements OnInit {
       cancelButtonText: 'No',
     }).then((result) => {
       if (result.value) {
+        this.onSubmit();
         Swal.fire({
           title: 'Successful',
           html: `${name} has been saved`,
           icon: 'success'
-        })
+        });
       }
-    })
+    });
+    }
   }
 
 
