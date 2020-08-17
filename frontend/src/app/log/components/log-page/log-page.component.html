@@ -7,44 +7,31 @@
       <tr>
         <th scope="col">Log ID</th>
         <th scope="col-6">Event Message</th>
-        <th scope="col">Action</th>
+        <th scope="col">Form ID</th>
         <th scope="col-6 col-md-4">By</th>
         <th scope="col">Date Time</th>
+        <th> Element Name</th>
       </tr>
     </thead>
     <tbody *ngIf="contents != undefined">
       <tr *ngFor="let logContent of contents.content; let i = index;">
         <ng-container *ngIf="logContent.log_objects.length > 1">
           <ng-container *ngFor="let item of logContent.log_objects">
-              <td>{{i+1}}</td>
-              <td>{{item.event_message}}</td>
-              <td>{{item.action}}</td>
-              <td>By</td>
-              <td>{{logContent.date_of_event}}</td>
+            <td>{{i+1}}</td>
+            <td>{{item.event_message}}</td>
+            <td>{{item.form_id}}</td>
+            <td>{{logContent.admin.admin_no}}</td>
+            <td>{{logContent.date_of_event | date:'medium'}}</td>
+            <td>{{item.element_name}}</td>
           </ng-container>
         </ng-container>
         <ng-container *ngIf="logContent.log_objects.length == 1">
           <td>{{i+1}}</td>
-<<<<<<< HEAD
-          <td>{{item.event_message}}</td>
-          <td>{{item.action}}</td>
-          <td>{{logContent.admin_no.email}}</td>
-          <td>{{logContent.date_of_event | date:'medium' }}</td>
-        </ng-container>
-      </ng-container>
-      <ng-container *ngIf="logContent.log_objects.length == 1">
-        <td>{{i+1}}</td>
-        <td>{{logContent.log_objects[0].event_message}}</td>
-        <td>{{logContent.log_objects[0].action}}</td>
-        <td>{{logContent.admin_no.email}}</td>
-        <td>{{logContent.date_of_event | date:'medium'}}</td>
-=======
           <td>{{logContent.log_objects[0].event_message}}</td>
-          <td>{{logContent.log_objects[0].action}}</td>
-          <td>By</td>
-          <td>{{logContent.date_of_event}}</td>
->>>>>>> a82bd5095b0351269631b38c93cb7eec997e6964
-
+          <td>{{logContent.log_objects[0].form_id}}</td>
+          <td>{{logContent.admin.admin_no}}</td>
+          <td>{{logContent.date_of_event | date:'medium'}}</td>
+          <td>{{logContent.log_objects[0].element_name}}</td>
         </ng-container>
       </tr>
     </tbody>

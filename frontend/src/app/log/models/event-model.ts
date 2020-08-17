@@ -1,4 +1,5 @@
 export interface EventModel {
-    action: string;
+    form_id: string;
     event_message: string;
+    element_name: string;
 }
