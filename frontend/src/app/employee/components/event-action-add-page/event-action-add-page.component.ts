@@ -3,7 +3,11 @@ import Swal from 'sweetalert2';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Employee } from '../../models/employee';
 import { EmployeeService } from '../../services/employee.service';
+import { LogServiceService } from '@app/log/services/log-service.service';
 import { VirtualTimeScheduler } from 'rxjs';
+import { LogBody } from '@app/log/models/log-body';
+import * as moment from 'moment';
+
 
 @Component({
   selector: 'app-event-action-add-page',
@@ -17,7 +21,9 @@ export class EventActionAddPageComponent implements OnInit {
   submitted = false;
   validated = false;
 
-  constructor(private fb: FormBuilder, private service: EmployeeService) {
+  log: LogBody;
+
+  constructor(private fb: FormBuilder, private employeeService: EmployeeService, private logService: LogServiceService) {
     this.form = fb.group({
       passport: new FormControl('', Validators.required),
       employee_no: new FormControl('', Validators.required),
@@ -51,13 +57,33 @@ export class EventActionAddPageComponent implements OnInit {
           this.submitted = true;
           // TODO: Add logic in addEmployee function
           console.log(this.form.value);
-          const response = this.service.addEmployee(this.form.value);
-          response.subscribe(data => {
+          this.employeeService.addEmployee(this.form.value).subscribe(data => {
             if (data.status === 201) {
-              Swal.fire({
-                title: 'Successful',
-                html: `${name} has been saved`,
-                icon: 'success'
+              this.log = {
+                employee_no: this.form.value.employee_no,
+                admin_no: this.logService.getAdminNo(),
+                date_of_event: moment().format("YYYY-MM-DDTHH:mm:ss.SSS"),
+                log_objects: [{
+                  form_id: '001',
+                  event_message: `Add ${this.form.value.firstname} ${this.form.value.lastname} successful.`,
+                  element_name: '-'
+                }],
+              };
+              this.logService.addLog(this.log).subscribe((response) => {
+                console.log(response);
+                if (response.status) {
+                  Swal.fire({
+                    title: 'Successful',
+                    html: `${name} has been saved`,
+                    icon: 'success'
+                  });
+                } else {
+                  Swal.fire({
+                    title: 'Error',
+                    html: `Something went wrong.`,
+                    icon: 'error'
+                  });
+                }
               });
             } else {
               Swal.fire({
