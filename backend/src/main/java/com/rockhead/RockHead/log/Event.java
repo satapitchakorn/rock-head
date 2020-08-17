@@ -6,8 +6,12 @@ import lombok.Data;
 @Data
 public class Event {
 
-    private String action;
-
     @JsonProperty("event_message")
     private String eventMessage;
+
+    @JsonProperty("form_id")
+    private String formId;
+
+    @JsonProperty("element_name")
+    private String elementName;
 }
