@@ -98,7 +98,7 @@ employee
 ## Test Function Name
 - ใช้รูปแบบการตั้งชื่อฟังก์ชันเป็นแบบ **snake_case** เช่น
 ```
-test_calculate_age_input_birth_date_18042003_should_be_16
+test_delete_employee_no_18042003_should_be_successful
 ```
 
 ## Variable Name
