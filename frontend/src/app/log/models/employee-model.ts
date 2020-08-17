@@ -1,4 +1,5 @@
-
-export class EmployeeModel {
-    public employee_no: number;
+export interface EmployeeModel {
+    employee_no: number;
+    firstname: string;
+    lastname: string;
 }

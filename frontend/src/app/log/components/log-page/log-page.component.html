@@ -1,35 +1,49 @@
 <div class="container-fluid">
   <h1 style="text-align: center;">Logs</h1>
 </div>
-<div class="container-fluid">
-  <table class="table table-bordered" style="text-align: center;">
+<div class="table-responsive">
+  <table class="table table-bordered table-striped">
     <thead>
-      <tr>
-        <th scope="col">Log ID</th>
-        <th scope="col-6">Event Message</th>
-        <th scope="col">Action</th>
-        <th scope="col-6 col-md-4">By</th>
-        <th scope="col">Date Time</th>
+      <tr style="text-align: center;"> 
+        <th scope="col" class="row-No">Log ID</th>
+        <th scope="col" class="row-event-massage">Event Message</th>
+        <th scope="col" class="row-form">Form ID</th>
+        <th scope="col" class="row-by">By</th>
+        <th scope="col" class="row-date-time">Date Time</th>
+        <th scope="col" class="row-element-name"> Element Name</th>
       </tr>
     </thead>
     <tbody *ngIf="contents != undefined">
-      <tr *ngFor="let logContent of contents.content; let i = index;">
+      <tr class="text-left" *ngFor="let logContent of contents.content; let i = index;">
         <ng-container *ngIf="logContent.log_objects.length > 1">
-          <ng-container *ngFor="let item of logContent.log_objects">
-              <td>{{i+1}}</td>
-              <td>{{item.event_message}}</td>
-              <td>{{item.action}}</td>
-              <td>By</td>
-              <td>{{logContent.date_of_event}}</td>
+          <ng-container *ngFor="let item of logContent.log_objects"
+            [ngStyle]="{'background-color': item.form_id == '001'? 'green':(item.form_id == '002'? 'yellow': 'red')}">
+            <td >{{i+1}}</td>
+            <td >{{item.event_message}}</td>
+            <td >{{item.form_id}}</td>
+            <td >{{logContent.admin.email}}</td>
+            <td >{{logContent.date_of_event | date:'medium'}}</td>
+            <td >{{item.element_name}}</td>
           </ng-container>
         </ng-container>
         <ng-container *ngIf="logContent.log_objects.length == 1">
-          <td>{{i+1}}</td>
-          <td>{{logContent.log_objects[0].event_message}}</td>
-          <td>{{logContent.log_objects[0].action}}</td>
-          <td>By</td>
-          <td>{{logContent.date_of_event}}</td>
-
+          <td>
+            {{i+1}} </td>
+          <td
+            [ngStyle]="{'color': logContent.log_objects[0].form_id == '001'? 'green':(logContent.log_objects[0].form_id == '002'? 'yellow': 'red')}">
+            {{logContent.log_objects[0].event_message}}</td>
+          <td 
+            [ngStyle]="{'color': logContent.log_objects[0].form_id == '001'? 'green':(logContent.log_objects[0].form_id == '002'? 'yellow': 'red')}">
+            {{logContent.log_objects[0].form_id}}</td>
+          <td
+            [ngStyle]="{'color': logContent.log_objects[0].form_id == '001'? 'green':(logContent.log_objects[0].form_id == '002'? 'yellow': 'red')}">
+            {{logContent.admin.email}}</td>
+          <td
+            [ngStyle]="{'color': logContent.log_objects[0].form_id == '001'? 'green':(logContent.log_objects[0].form_id == '002'? 'yellow': 'red')}">
+            {{logContent.date_of_event | date:'medium'}}</td>
+          <td
+            [ngStyle]="{'color': logContent.log_objects[0].form_id == '001'? 'green':(logContent.log_objects[0].form_id == '002'? 'yellow': 'red')}">
+            {{logContent.log_objects[0].element_name}}</td>
         </ng-container>
       </tr>
     </tbody>
