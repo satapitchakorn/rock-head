@@ -1,7 +1,7 @@
 <!-- FORM EMPLOYEE DETAIL -->
 <div class="container">
     <div class="text-center">
-        <h3>MODIFY EMPLOYEE INFORMATION</h3>
+        <h3>REMOVE EMPLOYEE INFORMATION</h3>
     </div>
     <div class="row">
         <div class="col">
@@ -79,7 +79,11 @@
                         <div class="form-group">
                             <label for="inputPhone">Phone</label>
                             <input type="tel" placeholder="+66955419228" pattern="\+[0-9]{2}[0-9]{9}"
+<<<<<<< HEAD
                                 class="form-control" inputPhoneNumber id="inputPhone" disabled>
+=======
+                                class="form-control" name="inputPhoneNumber" id="inputPhone" disabled>
+>>>>>>> 245ca92d42c315822659cb0960ccedf4ee8edd6d
                             <div class="invalid-feedback">
                                 Please enter phone number like +00123456789.
                             </div>
@@ -87,10 +91,8 @@
                     </div>
                 </div>
 
-
                 <hr class="mb-4">
-                <input id="btnRemove" type="submit" class="btn btn-danger btn-lg btn-block" value="Remove"
-                    (click)="removeEmployeeAlert()" />
+                <input id="btnRemove" type="submit" class="btn btn-danger btn-lg btn-block" value="Remove" />
                 <button id="btnCancel" class="btn btn-outline-dark btn-lg btn-block"
                     [routerLink]="['/form']">Cancel</button>
             </form>

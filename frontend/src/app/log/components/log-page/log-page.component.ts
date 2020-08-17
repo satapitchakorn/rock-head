@@ -16,6 +16,6 @@ export class LogPageComponent implements OnInit {
     this.logService.getAllLog().subscribe((content) => {
       this.contents = content;
     });
-
   }
+
 }

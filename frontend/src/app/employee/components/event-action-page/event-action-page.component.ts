@@ -7,11 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./event-action-page.component.css']
 })
 export class EventActionPageComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit(): void {
   }
-
 
 }
