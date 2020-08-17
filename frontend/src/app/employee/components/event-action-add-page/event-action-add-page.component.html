@@ -14,6 +14,14 @@
                     <div class="invalid-feedback">
                         Please enter your Passport.
                     </div>
+                    <!-- Passport:
+                        <input class="form-control" formControlName=pasport required [ngClass]="{
+                          'is-invalid': submitted && form.controls.passport.errors}"/>
+                        <div *ngIf="form.controls.passport.errors" class="invalid-feedback">
+                            <div *ngIf="form.controls.passport.errors.required">
+                                Passport is required
+                            </div>
+                        </div> -->
                 </div>
 
                 <div class="mb-3">
@@ -61,7 +69,7 @@
                             <input class="form-control" type="date" value="dd/mm/yyyy" id="inputStartDate"
                                 formControlName="start_date" required>
                             <div class="invalid-feedback">
-                                Please enter phone number.
+                                Please enter Start Date.
                             </div>
                         </div>
                     </div>
