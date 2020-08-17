@@ -12,6 +12,7 @@ import { EmployeeService } from '../../services/employee.service';
 
 export class EventActionAddPageComponent implements OnInit {
   form: FormGroup;
+  submitted = false;
 
 
   constructor(private fb: FormBuilder, private service: EmployeeService) {
@@ -47,7 +48,6 @@ export class EventActionAddPageComponent implements OnInit {
     })();
   }
 
-
   addEmployeeAlert(): void {
     if (this.form.status === 'VALID'){
       const name = this.form.value.firstname + ' ' + this.form.value.lastname;
@@ -75,10 +75,9 @@ export class EventActionAddPageComponent implements OnInit {
 
 
   onSubmit(): void {
+    this.submitted = true;
     console.log(this.form.value);
     console.log(this.service.addEmployee());
   }
 
 }
-
-
