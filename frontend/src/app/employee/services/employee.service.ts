@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Employee } from '../models/employee';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -19,8 +19,8 @@ export class EmployeeService {
     })
   };
 
-  addEmployee(employee: any): Observable<any> {
-    return this.http.post<any>(this.URL, employee);
+  addEmployee(employee: any): Observable<HttpResponse<Employee>> {
+    return this.http.post<Employee>(this.URL, employee, { observe: 'response' });
     // return console.log('successfully add employee');
   }
 

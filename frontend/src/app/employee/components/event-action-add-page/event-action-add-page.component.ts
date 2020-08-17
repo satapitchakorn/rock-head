@@ -49,17 +49,25 @@ export class EventActionAddPageComponent implements OnInit {
       }).then((result) => {
         if (result.value) {
           this.submitted = true;
+          // TODO: Add logic in addEmployee function
           console.log(this.form.value);
           const response = this.service.addEmployee(this.form.value);
           response.subscribe(data => {
-            console.log(data);
+            if (data.status === 201) {
+              Swal.fire({
+                title: 'Successful',
+                html: `${name} has been saved`,
+                icon: 'success'
+              });
+            } else {
+              Swal.fire({
+                title: 'Error',
+                html: `Something went wrong.`,
+                icon: 'error'
+              });
+            }
           });
 
-          Swal.fire({
-            title: 'Successful',
-            html: `${name} has been saved`,
-            icon: 'success'
-          });
         }
       });
     }
