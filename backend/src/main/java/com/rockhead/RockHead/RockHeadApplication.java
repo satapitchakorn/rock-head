@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 public class RockHeadApplication {
     @Autowired
     private EmployeeService employeeService;
+    @Autowired
 
     public static void main(String[] args) {
         SpringApplication.run(RockHeadApplication.class, args);
