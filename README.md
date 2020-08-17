@@ -8,62 +8,45 @@ console.log(this.test);
 ```
 
 ## Function And Parameter Naming Conventions
-- ส่วนที่เกี่ยวข้องกับ UI จะใช้รูปแบบการตั้งชื่อแบบ **camelCase ขึ้นต้นต้วยตัวพิมพ์ใหญ่**
-- ส่วนที่เป็นการคำนวน จะใช้รูปแบบการตั้งชื่อแบบ **camelCase ขึ้นต้นต้วยตัวพิมพ์เล็ก**
+- จะใช้รูปแบบการตั้งชื่อแบบ **camelCase ขึ้นต้นต้วยตัวพิมพ์เล็ก**
 ```
-func Homepage() //UI
-func calculateTotalPrice() //logic
+addEmployeeAlert()
 ```
 
 ## HTML Element ID 
 - จะใช้รูปแบบการตั้งชื่อแบบ **camelCase ขึ้นต้นต้วยตัวพิมพ์เล็ก**
 ```
-receiverName
-totalAmount
+inputEmployeeId
+btnSave
 ```
 
 ## Directory Name
 - ใช้รูปแบบการตั้งชื่อโฟเดอร์แบบ **skewer-case**  โดยให้ทุกคำเป็นตัวพิมพ์เล็กและมีเครื่องหมาย `-` กั้นระหว่างคำ เช่น 
 ```
-order
-product
-order-summary
-product-detail
-
+employee
+components
+models
+services
+log
 ```
 
 ## File Name
 - ใช้รูปแบบการตั้งชื่อฟังก์ชั่นแบบ **skewer-case**  โดยให้ทุกคำเป็นตัวพิมพ์เล็กและมีเครื่องหมาย `-` กั้นระหว่างคำ เช่น 
 ```
-Order.js
-Shipping.test.js
+event-action-add-page.component.ts
+event-action-add-page.component.spec.ts
 ```
 
 ## Class Name
 - ใช้รูปแบบการตั้งชื่อฟังก์ชั่นแบบ **PascalCase ขึ้นต้นต้วยตัวพิมพ์ใหญ่**
 ```
-Order
-ShippingCart
-ProductDetail
-```
-
-## Test Name
-- ใช้รูปแบบการตั้งชื่อให้สื่อความหมาย  เช่น
-```
-describe('CalculateTotalPrice', () => {
-it('Input 5+8 should be 13',()=>{
-        const expected = 13
-        const productPriceList = ["5","8"]
-
-        const actual = CalculateTotalPrice(productPriceList)
-
-        expect(actual).toEqual(expected)
-    })
-}
+EventActionAddPageComponent
+EventActionModifyPageComponent
+EventActionRemovePageComponent
 ```
 
 ## Variable Name
-- ชื่อตัวแปรเป็นคำเดียวให้ตั้งชื่อเป็นพิมพ์เล็กทั้งหมด เช่น
+- ชื่อตัวแปรเป็นคำเดียว ใช้ตัวอักษรพิมพ์เล็ก **lowercase** ทั้งหมด เช่น
 ```
 day, month, year
 ```
@@ -73,12 +56,7 @@ day, month, year
 startDay, endMonth
 ```
 
-- ชื่อตัวแปรเก็บค่าให้เติม "List" ต่อท้ายตัวแปรเสมอ เช่น
-```
-orderList
-```
-
-- ชื่อตัวแปร Constant ให้ตังชื่อเป็นตัวอักษรพิมพ์ใหญ่ทั้งหมด เช่น
+- ชื่อตัวแปร Constant ใช้ตัวอักษรพิมพ์ใหญ่ **UPPERCASE** ทั้งหมด เช่น
 ```
 HOUR, MINUTE
 ```
@@ -89,39 +67,42 @@ HOUR, MINUTE
 ## Function And Parameter Naming Conventions
 - ใช้รูปแบบการตั้งชื่อฟังก์ชั่นแบบ **camelCase ขึ้นต้นต้วยตัวพิมพ์เล็ก**
 ```
-func calculateTotalPrice()
+getAllLog()
 ```
 
 ## Directory Name
-- ใช้ตัวอักษรพิมพ์เล็ก **(lowercase)** ทั้งหมด เช่น
+- ใช้ตัวอักษรพิมพ์เล็ก **lowercase** ทั้งหมด เช่น
 ```
-order
-product
+employee
+components
+models
+services
+log
 ```
 
 ## File Name/Class Name
 - PascalCase ขึ้นต้นด้วยตัวใหญ่ทุกคำ เช่น
 ```
-OrderService.java
-ProductRepository.java
-OrderServiceTest.java
+LogService.java
+LogRepository.java
+LogServiceTest.java
 ```
 
 ## Package Name
-- ใช้ตัวอักษรพิมพ์เล็ก **(lowercase)** ทั้งหมด เช่น
+- ใช้ตัวอักษรพิมพ์เล็ก **lowercase** ทั้งหมด เช่น
 ```
-order
-product
+log
+employee
 ```
 
 ## Test Function Name
 - ใช้รูปแบบการตั้งชื่อฟังก์ชันเป็นแบบ **snake_case** เช่น
 ```
-Test_CalculateAge_Input_Birth_Date_18042003_Should_be_16
+test_calculate_age_input_birth_date_18042003_should_be_16
 ```
 
 ## Variable Name
-- ชื่อตัวแปรเป็นคำเดียวให้ตั้งชื่อเป็นพิมพ์เล็กทั้งหมด เช่น
+- ชื่อตัวแปรเป็นคำเดียว ใช้ตัวอักษรพิมพ์เล็ก **lowercase** ทั้งหมด เช่น
 ```
 day, month, year
 ```
@@ -131,25 +112,20 @@ day, month, year
 startDay, endMonth
 ```
 
-- ชื่อตัวแปรเก็บค่าให้เติม "List" ต่อท้ายตัวแปรเสมอ เช่น
-```
-orderList
-```
-
-- ชื่อตัวแปร Constant ให้ตังชื่อเป็นตัวอักษรพิมพ์ใหญ่ทั้งหมด เช่น
+- ชื่อตัวแปร Constant ใช้ตัวอักษรพิมพ์ใหญ่ **UPPERCASE** ทั้งหมด เช่น
 ```
 HOUR, MINUTE
 ```
 
 ## JSON Properties 
-- ชื่อคีย์คำเดียวให้ตั้งชื่อเป็นพิมพ์เล็กทั้งหมด เช่น
+- ชื่อคีย์คำเดียวให้ตั้งชื่อเป็นพิมพ์เล็กทั้งหมด ในรูปแบบ **snake_case** เช่น
 ```
-day, month, year
+log_objects, employee_no, admin_no
 ```
 
 - ชื่อคีย์มีความยาวตั้งแต่ 2 คำขึ้นไป ให้คำหลังขึ้นตันด้วยตัวอักษรตัวใหญ่เสมอ ในรูปแบบ **snake_case** เช่น
 ```
-start_Day, end_Month
+start_day, end_month
 ```
 ---
 
