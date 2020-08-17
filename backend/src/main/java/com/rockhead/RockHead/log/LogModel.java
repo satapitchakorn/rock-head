@@ -12,14 +12,13 @@ import java.util.List;
 public class LogModel {
     private String id;
 
-    @JsonProperty("employee_no")
     private Employee employee;
 
-    @JsonProperty("admin_no")
     private Admin admin;
 
     @JsonProperty("date_of_event")
     private Date dateOfEvent;
+
     @JsonProperty("log_objects")
     private List<Event> logObjects;
 }

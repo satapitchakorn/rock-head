@@ -28,10 +28,6 @@ public class LogService {
         return logRepository.save(data);
     }
 
-    public Page<LogModel> findAll(Pageable pageable) {
-        return findAllWithOperationAndPageable(pageable);
-    }
-
     public Page<LogModel> findAllWithOperationAndPageable(Pageable pageable) {
         LookupOperation lookupEmployee = LookupOperation.newLookup()
                 .from("employee")
