@@ -1,4 +1,5 @@
 
-export class AdminModel {
-    public admin_no: number;
+export interface AdminModel {
+    admin_no: number;
+    email: string;
 }

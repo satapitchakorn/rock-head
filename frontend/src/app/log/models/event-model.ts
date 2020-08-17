@@ -1,4 +1,4 @@
-export class EventModel {
-    public action: string;
-    public event_message: string;
+export interface EventModel {
+    action: string;
+    event_message: string;
 }

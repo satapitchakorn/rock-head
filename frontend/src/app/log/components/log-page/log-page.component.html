@@ -18,16 +18,16 @@
           <td>{{i+1}}</td>
           <td>{{item.event_message}}</td>
           <td>{{item.action}}</td>
-          <td>By</td>
-          <td>{{logContent.date_of_event}}</td>
+          <td>{{logContent.admin_no.email}}</td>
+          <td>{{logContent.date_of_event | date:'medium' }}</td>
         </ng-container>
       </ng-container>
       <ng-container *ngIf="logContent.log_objects.length == 1">
         <td>{{i+1}}</td>
         <td>{{logContent.log_objects[0].event_message}}</td>
         <td>{{logContent.log_objects[0].action}}</td>
-        <td>By</td>
-        <td>{{logContent.date_of_event}}</td>
+        <td>{{logContent.admin_no.email}}</td>
+        <td>{{logContent.date_of_event | date:'medium'}}</td>
 
       </ng-container>
     </tr>
