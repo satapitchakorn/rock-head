@@ -4,7 +4,7 @@
 <div class="table-responsive">
   <table class="table table-bordered table-striped">
     <thead>
-      <tr style="text-align: center;"> 
+      <tr style="text-align: center;">
         <th scope="col" class="row-No">Log ID</th>
         <th scope="col" class="row-event-massage">Event Message</th>
         <th scope="col" class="row-form">Form ID</th>
@@ -18,31 +18,31 @@
         <ng-container *ngIf="logContent.log_objects.length > 1">
           <ng-container *ngFor="let item of logContent.log_objects"
             [ngStyle]="{'background-color': item.form_id == '001'? 'green':(item.form_id == '002'? 'yellow': 'red')}">
-            <td >{{i+1}}</td>
-            <td >{{item.event_message}}</td>
-            <td >{{item.form_id}}</td>
-            <td >{{logContent.admin.email}}</td>
-            <td >{{logContent.date_of_event | date:'medium'}}</td>
-            <td >{{item.element_name}}</td>
+            <td>{{i+1}}</td>
+            <td>{{item.event_message}}</td>
+            <td>{{item.form_id}}</td>
+            <td>{{logContent.admin.email}}</td>
+            <td>{{logContent.date_of_event | date:'medium'}}</td>
+            <td>{{item.element_name}}</td>
           </ng-container>
         </ng-container>
         <ng-container *ngIf="logContent.log_objects.length == 1">
           <td>
             {{i+1}} </td>
           <td
-            [ngStyle]="{'color': logContent.log_objects[0].form_id == '001'? 'green':(logContent.log_objects[0].form_id == '002'? 'yellow': 'red')}">
+            [ngStyle]="{'color': logContent.log_objects[0].form_id == '001'? 'green':(logContent.log_objects[0].form_id == '002'? '#FFD000': '#B30606')}">
             {{logContent.log_objects[0].event_message}}</td>
-          <td 
-            [ngStyle]="{'color': logContent.log_objects[0].form_id == '001'? 'green':(logContent.log_objects[0].form_id == '002'? 'yellow': 'red')}">
+          <td
+            [ngStyle]="{'color': logContent.log_objects[0].form_id == '001'? 'green':(logContent.log_objects[0].form_id == '002'? '#FFD000': '#B30606')}">
             {{logContent.log_objects[0].form_id}}</td>
           <td
-            [ngStyle]="{'color': logContent.log_objects[0].form_id == '001'? 'green':(logContent.log_objects[0].form_id == '002'? 'yellow': 'red')}">
+            [ngStyle]="{'color': logContent.log_objects[0].form_id == '001'? 'green':(logContent.log_objects[0].form_id == '002'? '#FFD000': '#B30606')}">
             {{logContent.admin.email}}</td>
           <td
-            [ngStyle]="{'color': logContent.log_objects[0].form_id == '001'? 'green':(logContent.log_objects[0].form_id == '002'? 'yellow': 'red')}">
+            [ngStyle]="{'color': logContent.log_objects[0].form_id == '001'? 'green':(logContent.log_objects[0].form_id == '002'? '#FFD000': '#B30606')}">
             {{logContent.date_of_event | date:'medium'}}</td>
           <td
-            [ngStyle]="{'color': logContent.log_objects[0].form_id == '001'? 'green':(logContent.log_objects[0].form_id == '002'? 'yellow': 'red')}">
+            [ngStyle]="{'color': logContent.log_objects[0].form_id == '001'? 'green':(logContent.log_objects[0].form_id == '002'? '#FFD000': '#B30606')}">
             {{logContent.log_objects[0].element_name}}</td>
         </ng-container>
       </tr>
