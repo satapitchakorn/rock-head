@@ -1,35 +1,37 @@
-<div class="container">
-  <div align="center">
-    <h1>Log</h1>
-  </div>
+<div class="container-fluid">
+  <h1 style="text-align: center;">Logs</h1>
 </div>
-<table class="table">
-  <tr>
-    <th scope="col">Log ID</th>
-    <th scope="col">Event Message</th>
-    <th scope="col">Action</th>
-    <th scope="col">By</th>
-    <th scope="col">Date Time</th>
-  </tr>
-  <tbody *ngIf="contents != undefined">
-    <tr *ngFor="let logContent of contents.content; let i = index;">
-      <ng-container *ngIf="logContent.log_objects.length > 1">
-        <ng-container *ngFor="let item of logContent.log_objects">
+<div class="container-fluid">
+  <table class="table table-bordered" style="text-align: center;">
+    <thead>
+      <tr>
+        <th scope="col">Log ID</th>
+        <th scope="col-6">Event Message</th>
+        <th scope="col">Action</th>
+        <th scope="col-6 col-md-4">By</th>
+        <th scope="col">Date Time</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="contents != undefined">
+      <tr *ngFor="let logContent of contents.content; let i = index;">
+        <ng-container *ngIf="logContent.log_objects.length > 1">
+          <ng-container *ngFor="let item of logContent.log_objects">
+              <td>{{i+1}}</td>
+              <td>{{item.event_message}}</td>
+              <td>{{item.action}}</td>
+              <td>By</td>
+              <td>{{logContent.date_of_event}}</td>
+          </ng-container>
+        </ng-container>
+        <ng-container *ngIf="logContent.log_objects.length == 1">
           <td>{{i+1}}</td>
-          <td>{{item.event_message}}</td>
-          <td>{{item.action}}</td>
+          <td>{{logContent.log_objects[0].event_message}}</td>
+          <td>{{logContent.log_objects[0].action}}</td>
           <td>By</td>
           <td>{{logContent.date_of_event}}</td>
-        </ng-container>
-      </ng-container>
-      <ng-container *ngIf="logContent.log_objects.length == 1">
-        <td>{{i+1}}</td>
-        <td>{{logContent.log_objects[0].event_message}}</td>
-        <td>{{logContent.log_objects[0].action}}</td>
-        <td>By</td>
-        <td>{{logContent.date_of_event}}</td>
 
-      </ng-container>
-    </tr>
-  </tbody>
-</table>
+        </ng-container>
+      </tr>
+    </tbody>
+  </table>
+</div>
