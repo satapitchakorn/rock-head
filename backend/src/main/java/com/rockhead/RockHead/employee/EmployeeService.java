@@ -17,7 +17,7 @@ public class EmployeeService {
 
         //For modify case
         Employee data = new Employee();
-        data.setEmployeeNo(251188);
+        data.setEmployeeNo(251182);
         data.setFirstname("Hasaneeya");
         data.setLastname("Kaenthram");
         data.setStartDate(new Date());

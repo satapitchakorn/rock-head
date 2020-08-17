@@ -9,6 +9,9 @@ import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.LookupOperation;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 
@@ -18,6 +21,30 @@ public class LogService {
     private final LogRepository logRepository;
     @Autowired
     private MongoTemplate mongoTemplate;
+
+    public void initialLogData() {
+        logRepository.deleteAll();
+        List<Log> logList = new ArrayList() {
+            {
+                add(createEmployee(251181, 251182));
+                add(createEmployee(251181, 251166));
+            }
+        };
+        logRepository.saveAll(logList);
+    }
+
+    private Log createEmployee(int adminNo, int empNo) {
+        Log data = new Log();
+        data.setAdminNo(adminNo);
+        data.setDateOfEvent(new Date());
+        data.setEmployeeNo(empNo);
+        Event eventData = new Event();
+        eventData.setElementName("-");
+        eventData.setEventMessage("Add new employee successful.");
+        eventData.setFormId("001");
+        data.setLogObjects(Arrays.asList(eventData));
+        return data;
+    }
 
     public LogService(LogRepository logRepository, MongoTemplate mongoTemplate) {
         this.logRepository = logRepository;
