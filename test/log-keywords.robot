@@ -7,15 +7,15 @@ ${URL}          http://localhost:4200/form
 
 *** Keywords ***
 
-เปิด Browser Chrome และเข้า Website
+Open Browser and get into link
     Open Browser                    ${URL}              Chrome
     Maximize Browser Window
     Set Selenium Speed              0.1
-เลือก เมนู ADD เพื่อเพิ่มผู้ใช้ใหม่เข้าสู่ระบบ
+Choose ADD menu for add new user
     Wait Until Page Contains	    Employee information management	
     Click Button                    id:btnAdd
         Sleep                           3
-กรอกข้อมูลผู้ใช้ใหม่
+Fill up the details for new user
     [Arguments]                     ${PASSPORT}         ${EMPLOYEE_ID}          ${FIRSTNAME}          ${LASTNAME}          ${POSITION}          ${START_DATE}          ${EMAIL}          ${PHONE}
     Wait Until Page Contains	    EMPLOYEE INFORMATION	
     Input Text	                    inputPassport       ${PASSPORT}
@@ -31,22 +31,22 @@ ${URL}          http://localhost:4200/form
     Click Element                   xpath://html/body/div/div/div[3]/button[1]
     Click Element                   xpath://html/body/app-root/nav/ul/li[3]/a
         Sleep                           3
-ตรวจสอบผู้ใช้ใหม่ที่ถูกเพิ่มเข้าสู่ระบบ
+Check the details of new user
    [Arguments]                      ${LOG_ID}           ${EVENT_MESSAGE}        ${POSITION}         ${ADMIN_NAME}         
-    Wait Until Page Contains	    History
-    Element Should Contain          logId               ${LOG_ID}
+    Wait Until Page Contains	    Log
+    Element Should Contain          Log ID               ${LOG_ID}
     # ${data}                         Get data            xpath://table[@id="HTML1"]/div[1]/table/tbody/tr[5]/td[2]
     # Log to console                  ${data}
-    Element Should Contain	        eventMessage	    ${EVENT_MESSAGE}
-    Element Should Contain	        actionId            ${ACTION_ID}
-    Element Should Contain	        inputFirstname      ${ADMIN_NAME}
-        Sleep                           3
+    Element Should Contain	        Event Message	    ${EVENT_MESSAGE}
+    # Element Should Contain	        actionId            ${ACTION_ID}
+    Element Should Contain	        By                  ${ADMIN_NAME}
+        Sleep                           5
     Click Button                    id:navForm
-เลือก เมนู MODIFY เพื่อแก้ไขข้อมูลผู้ใช้ในระบบ
+Choose MODIFY menu for edit user details
     Wait Until Page Contains	    EventActionPage	
     Click Button                    id:btnModify
         Sleep                           3
-แก้ไขข้อมูลผู้ใช้ในระบบ
+Edit user details
     [Arguments]                     ${PASSPORT}         ${EMPLOYEE_ID}          ${FIRSTNAME}        ${LASTNAME}         ${POSITION}         ${START_DATE}         ${EMAIL}          ${PHONE}
     Wait Until Page Contains        Edit Employee
     Element Should Be Disabled      inputPassport       ${PASSPORT}
@@ -61,20 +61,20 @@ ${URL}          http://localhost:4200/form
     Wait Until Page Contains        Confirmation
     Click Button                    id:btnYes
         Sleep                           3
-ตรวจสอบผู้ใช้ในระบบที่ถูกแก้ไข
+Check the details of user who was fixed
    [Arguments]                      ${EMPLOYEE_ID}      ${EVENT_MESSAGE}        ${POSITION}         ${ADMIN_NAME}         
-    Wait Until Page Contains	    History
+    Wait Until Page Contains	    Log
     Element Should Contain	        inputEmployeeId     ${EMPLOYEE_ID}
     Element Should Contain	        eventMessage	    ${EVENT_MESSAGE}
     Element Should Contain	        inputPosition       ${POSITION}
     Element Should Contain	        inputFirstname      ${ADMIN_NAME}
         Sleep                           3
     Click Button                    id:navForm
-เลือก เมนู DELETE เพื่อเปลี่ยนสถานะผู้ใช้เป็น INACTIVE
+Choose DELETE menu for change user status to Inactive
     Wait Until Page Contains	    EventActionPage	
     Click Button                    id:btnRemove
         Sleep                           3
-เปลี่ยนสถานะผู้ใช้เป็น INACTIVE
+Change user status to Inactive
     [Arguments]                     ${PASSPORT}         ${EMPLOYEE_ID}          ${FIRSTNAME}        ${LASTNAME}         ${POSITION}         ${START_DATE}         ${EMAIL}          ${PHONE}
     Wait Until Page Contains        Delete Employee
     Element Should Be Disabled      inputPassport       ${PASSPORT}
@@ -89,14 +89,14 @@ ${URL}          http://localhost:4200/form
     Wait Until Page Contains        Confirmation
     Click Button                    id:btnYes
         Sleep                           3
-ตรวจสอบผู้ใช้ในระบบที่ถูกเปลี่ยนสถานะเป็น INACTIVE
+Check the user status who was changed
    [Arguments]                      ${EMPLOYEE_ID}      ${EVENT_MESSAGE}        ${POSITION}         ${ADMIN_NAME}         
-    Wait Until Page Contains	    History
+    Wait Until Page Contains	    Log
     Element Should Contain	        inputEmployeeId     ${EMPLOYEE_ID}
     Element Should Contain	        eventMessage	    ${EVENT_MESSAGE}
     Element Should Contain	        inputPosition       ${POSITION}
     Element Should Contain	        inputFirstname      ${ADMIN_NAME}
         Sleep                           3
     Click Button                    id:navForm
-ปิด Browser Chrome
+Close Chrome Browser
     Close Browser
