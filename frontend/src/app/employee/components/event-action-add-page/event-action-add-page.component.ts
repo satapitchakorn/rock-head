@@ -13,7 +13,7 @@ import { EmployeeService } from '../../services/employee.service';
 export class EventActionAddPageComponent implements OnInit {
   form: FormGroup;
   submitted = false;
-
+  validated = false;
 
   constructor(private fb: FormBuilder, private service: EmployeeService) {
     this.form = fb.group({
@@ -30,46 +30,33 @@ export class EventActionAddPageComponent implements OnInit {
 
 
   ngOnInit(): void {
-    //Check Valid forms 
-    (function () {
-      'use strict';
-      window.addEventListener('load', function () {
-        var forms = document.getElementsByClassName('needs-validation');
-        var validation = Array.prototype.filter.call(forms, function (form) {
-          form.addEventListener('submit', function (event) {
-            if (form.checkValidity() === false) {
-              event.preventDefault();
-              event.stopPropagation();
-            }
-            form.classList.add('was-validated');
-          }, false);
-        });
-      }, false);
-    })();
   }
 
   addEmployeeAlert(): void {
-    if (this.form.status === 'VALID'){
+    if (this.form.status === 'VALID') {
       const name = this.form.value.firstname + ' ' + this.form.value.lastname;
       Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes',
-      cancelButtonText: 'No',
-    }).then((result) => {
-      if (result.value) {
-        this.onSubmit();
-        Swal.fire({
-          title: 'Successful',
-          html: `${name} has been saved`,
-          icon: 'success'
-        });
-      }
-    });
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
+      }).then((result) => {
+        if (result.value) {
+          this.onSubmit();
+          Swal.fire({
+            title: 'Successful',
+            html: `${name} has been saved`,
+            icon: 'success'
+          });
+        }
+      });
+    }
+    else {
+      this.validated = true;
     }
   }
 
@@ -79,5 +66,7 @@ export class EventActionAddPageComponent implements OnInit {
     console.log(this.form.value);
     console.log(this.service.addEmployee());
   }
+
+
 
 }
