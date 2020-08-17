@@ -45,7 +45,7 @@ export class EventActionAddPageComponent implements OnInit {
       const name = this.form.value.firstname + ' ' + this.form.value.lastname;
       Swal.fire({
         title: 'Are you sure?',
-        text: "You won't be able to revert this!",
+        text: 'You won\'t be able to revert this!',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -62,7 +62,7 @@ export class EventActionAddPageComponent implements OnInit {
               this.log = {
                 employee_no: this.form.value.employee_no,
                 admin_no: this.logService.getAdminNo(),
-                date_of_event: moment().format("YYYY-MM-DDTHH:mm:ss.SSS"),
+                date_of_event: moment().format('YYYY-MM-DDTHH:mm:ss.SSS'),
                 log_objects: [{
                   form_id: '001',
                   event_message: `Add ${this.form.value.firstname} ${this.form.value.lastname} successful.`,
