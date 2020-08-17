@@ -1,4 +1,5 @@
-export class EventModel {
-    public action: string;
-    public event_message: string;
+export interface EventModel {
+    form_id: string;
+    event_message: string;
+    element_name: string;
 }

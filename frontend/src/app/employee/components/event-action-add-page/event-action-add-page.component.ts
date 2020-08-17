@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Employee } from '../../models/employee';
 import { EmployeeService } from '../../services/employee.service';
+import { VirtualTimeScheduler } from 'rxjs';
 
 @Component({
   selector: 'app-event-action-add-page',
@@ -12,6 +13,7 @@ import { EmployeeService } from '../../services/employee.service';
 
 export class EventActionAddPageComponent implements OnInit {
   form: FormGroup;
+  employee: Employee;
   submitted = false;
   validated = false;
 
@@ -32,8 +34,8 @@ export class EventActionAddPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addEmployeeAlert(): void {
-    if (this.form.status === 'VALID') {
+  onSubmit(): void {
+    if (this.form.valid) {
       const name = this.form.value.firstname + ' ' + this.form.value.lastname;
       Swal.fire({
         title: 'Are you sure?',
@@ -46,7 +48,13 @@ export class EventActionAddPageComponent implements OnInit {
         cancelButtonText: 'No',
       }).then((result) => {
         if (result.value) {
-          this.onSubmit();
+          this.submitted = true;
+          console.log(this.form.value);
+          const response = this.service.addEmployee(this.form.value);
+          response.subscribe(data => {
+            console.log(data);
+          });
+
           Swal.fire({
             title: 'Successful',
             html: `${name} has been saved`,
@@ -60,11 +68,8 @@ export class EventActionAddPageComponent implements OnInit {
     }
   }
 
+  setEmployeeForm(): void {
 
-  onSubmit(): void {
-    this.submitted = true;
-    console.log(this.form.value);
-    console.log(this.service.addEmployee());
   }
 
 

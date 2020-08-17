@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Employee } from '../models/employee';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
 
-  url = 'http://localhost:8080';
+  URL = environment.URL + '/employee';
 
   constructor(private http: HttpClient) { }
 
@@ -18,12 +19,13 @@ export class EmployeeService {
     })
   };
 
-  addEmployee(): void {
-    return console.log('successfully add employee');
+  addEmployee(employee: any): Observable<any> {
+    return this.http.post<any>(this.URL, employee);
+    // return console.log('successfully add employee');
   }
 
   getEmployee(id): Observable<Employee> {
-    return this.http.get<Employee>(this.url + '/employee/' + id);
+    return this.http.get<Employee>(this.URL + `/${id}`);
   }
 
   modifyEmployee(): void {
