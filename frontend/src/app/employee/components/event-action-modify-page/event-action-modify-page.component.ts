@@ -20,6 +20,7 @@ export class EventActionModifyPageComponent implements OnInit {
   employee: Employee;
   submitted = false;
   validated = false;
+  type = ""
   formTmp: FormGroup;
   log: LogBody;
   message: EventModel[] = [];
