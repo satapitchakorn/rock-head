@@ -45,7 +45,7 @@ export class EventActionAddPageComponent implements OnInit {
       const name = this.form.value.firstname + ' ' + this.form.value.lastname;
       Swal.fire({
         title: 'Are you sure?',
-        text: 'You won\'t be able to revert this!',
+        text: "You want to add new employee",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -93,7 +93,6 @@ export class EventActionAddPageComponent implements OnInit {
               });
             }
           });
-
         }
       });
     }
