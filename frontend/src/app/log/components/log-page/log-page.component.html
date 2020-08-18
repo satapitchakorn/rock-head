@@ -21,7 +21,7 @@
       </tr>
     </thead>
     <tbody *ngIf="contents != undefined">
-      <tr class="text-left" *ngFor="let logContent of contents.content; let i = index;">
+      <tr class="text-left" *ngFor="let logContent of contents.content | formIdFilter: formIdFilter; let i = index;">
         <ng-container *ngIf="logContent.log_objects.length > 1">
           <ng-container *ngFor="let item of logContent.log_objects"
             [ngStyle]="{'background-color': item.form_id == '001'? 'green':(item.form_id == '002'? 'yellow': 'red')}">
