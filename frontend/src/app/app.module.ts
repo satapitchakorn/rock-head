@@ -11,6 +11,7 @@ import { EventActionModifyPageComponent } from './employee/components/event-acti
 import { EventActionRemovePageComponent } from './employee/components/event-action-remove-page/event-action-remove-page.component';
 import { LogPageComponent } from './log/components/log-page/log-page.component';
 
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,8 @@ import { LogPageComponent } from './log/components/log-page/log-page.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2SearchPipeModule, //https://www.npmjs.com/package/ng2-search-filter
   ],
   providers: [],
   bootstrap: [AppComponent]
