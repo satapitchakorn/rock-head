@@ -13,12 +13,6 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    @GetMapping("/init")
-    public ResponseEntity<?> init() {
-        employeeService.initialEmployeeData();
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
     @GetMapping("/{id}")
     public ResponseEntity<?> getEmployeeById(@PathVariable int id) throws Exception {
         return new ResponseEntity<>(employeeService.findEmployeeById(id), HttpStatus.OK);
