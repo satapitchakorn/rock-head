@@ -44,7 +44,6 @@ export class EventActionRemovePageComponent implements OnInit {
   }
 
 
-
   removeEmployeeAlert() {
     Swal.fire({
       title: 'Are you sure?',
