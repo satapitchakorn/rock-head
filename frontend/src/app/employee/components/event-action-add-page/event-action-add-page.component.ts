@@ -42,7 +42,7 @@ filterResultDataSet = [
 
 ]
 //Way 2
-positions = ["","Junior Front End Developer","Junior Back End Developer","Junior QA","Project Manager","Business Analysis","Scrum Master"]
+positions = ["" ,"Junior Front End Developer","Junior Back End Developer","Junior QA","Project Manager","Business Analysis","Scrum Master"]
 term: string;
 
 

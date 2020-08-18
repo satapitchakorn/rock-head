@@ -83,9 +83,7 @@
                     <div class="col-md-6 mb-3">
                         <div class="form-group">
                             <label for="inputPosition">Position <abbr class="text-danger" title="This is required">*</abbr></label>
-                            
-                            <select [(ngModel)]="term" data-placeholder="Choose a Position" class="form-control" formControlName="position" id ="selectPosition" tabindex="2" required>
-                                <input type="text" placeholder="Search Position" id="myInput" [(ngModel)]="term">
+                            <select  type="text" [(ngModel)]="term" data-placeholder="Choose a Position" class="form-control" formControlName="position" id ="selectPosition" tabindex="2" required>
                                 <option *ngFor = "let position of positions |filter:term" value=""> {{position}}</option>
                                 <!-- <option value="Junior Front End Developer">Junior Front End Developer</option>
                                 <option value="Junior Back End Developer">Junior Back End Developer</option>
