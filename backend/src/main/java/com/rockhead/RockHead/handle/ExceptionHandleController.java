@@ -1,5 +1,7 @@
 package com.rockhead.RockHead.handle;
 
+import com.mongodb.DuplicateKeyException;
+import com.mongodb.MongoWriteException;
 import com.rockhead.RockHead.response.ResponseModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,4 +16,8 @@ public class ExceptionHandleController {
         return new ResponseEntity<>(new ResponseModel(false, ex.getMessage()), HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(value = {DuplicateKeyException.class, MongoWriteException.class})
+    public ResponseEntity<?> duplicateKeyExceptionHandle(Exception ex) {
+        return new ResponseEntity<>(new ResponseModel(false, "Employee number or email is already exists."), HttpStatus.CONFLICT);
+    }
 }

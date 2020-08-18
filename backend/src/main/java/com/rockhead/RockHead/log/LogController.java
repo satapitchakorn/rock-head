@@ -3,9 +3,12 @@ package com.rockhead.RockHead.log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
 
 @RestController
 @RequestMapping("/api/v1/log")
@@ -18,7 +21,7 @@ public class LogController {
     @GetMapping("")
     public ResponseEntity<?> findAll(@RequestParam(defaultValue = "1", required = false) int page,
                                      @RequestParam(defaultValue = "15", required = false) int item_per_page) {
-        Pageable pageable = PageRequest.of(--page, item_per_page);
+        Pageable pageable = PageRequest.of(--page, item_per_page, Sort.by(Sort.Direction.DESC, "date_of_event"));
         return new ResponseEntity<>(logService.findAllWithOperationAndPageable(pageable), HttpStatus.OK);
     }
 
