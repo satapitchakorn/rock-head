@@ -42,8 +42,10 @@ filterResultDataSet = [
 
 ]
 //Way 2
-positions = ["Junior Front End Developer","Junior Back End Developer","Junior QA"]
+positions = ["","Junior Front End Developer","Junior Back End Developer","Junior QA","Project Manager","Business Analysis","Scrum Master"]
 term: string;
+
+
 //End Position Filter
 
   constructor(private fb: FormBuilder, private employeeService: EmployeeService, private logService: LogServiceService) {
