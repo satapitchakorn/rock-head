@@ -70,7 +70,6 @@ export class EventActionModifyPageComponent implements OnInit {
         email: new FormControl(data.email, Validators.required),
         phone: new FormControl(data.phone, Validators.required),
       });
-      // this.formTmp = Object.assign(Object.create(this.form), this.form);
       this.formTmp = this.deepClone(this.form);
     });
   }
@@ -123,7 +122,7 @@ export class EventActionModifyPageComponent implements OnInit {
       }).then((result) => {
         if (result.value) {
           this.submitted = true;
-          this.employeeService.modifyEmployee(251182, this.form.value).subscribe(data => {
+          this.employeeService.modifyEmployee(this.form.value.employee_no, this.form.value).subscribe(data => {
             if (data.status === 201) {
               this.log = {
                 employee_no: this.form.value.employee_no,
