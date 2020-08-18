@@ -49,7 +49,7 @@ export class EventActionRemovePageComponent implements OnInit {
       confirmButtonText: 'Yes',
       cancelButtonText: 'No',
     }).then((result) => {
-      this.employeeService.removeEmployee(this.form.value.employeeNo).subscribe((response) => {
+      this.employeeService.removeEmployee(this.form.value.employee_no).subscribe((response) => {
         if (result.value) {
           Swal.fire({
             title: 'Successful',

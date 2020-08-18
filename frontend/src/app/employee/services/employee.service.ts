@@ -28,11 +28,10 @@ export class EmployeeService {
     return this.http.get<Employee>(this.URL + `/${id}`);
   }
 
-  modifyEmployee(): void {
-    return console.log('successfully modify employee');
+  modifyEmployee(id, employee: any): Observable<HttpResponse<Employee>> {
+    return this.http.put<Employee>(this.URL + `/${id}`, employee, { observe: 'response' });
   }
   removeEmployee(id): Observable<any> {
     return this.http.delete<Employee>(this.URL + `/${id}`);
-    //return console.log('successfully remove employee');
   }
 }
