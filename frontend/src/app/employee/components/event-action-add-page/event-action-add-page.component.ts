@@ -4,13 +4,10 @@ import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Employee } from '../../models/employee';
 import { EmployeeService } from '../../services/employee.service';
 import { LogServiceService } from '@app/log/services/log-service.service';
-import { VirtualTimeScheduler } from 'rxjs';
 import { LogBody } from '@app/log/models/log-body';
 import * as moment from 'moment';
 
 import { Observable, } from 'rxjs';
-import { startWith } from 'rxjs/operators';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-event-action-add-page',
@@ -23,7 +20,7 @@ export class EventActionAddPageComponent implements OnInit {
   employee: Employee;
   submitted = false;
   validated = false;
-
+  type = ""
   log: LogBody;
 
 
@@ -37,7 +34,7 @@ export class EventActionAddPageComponent implements OnInit {
   ];
 
   filteredOptions: Observable<string[]>;
-//End Position Filter
+  //End Position Filter
 
   constructor(private fb: FormBuilder, private employeeService: EmployeeService, private logService: LogServiceService) {
     this.form = fb.group({
@@ -123,6 +120,5 @@ export class EventActionAddPageComponent implements OnInit {
   setEmployeeForm(): void {
 
   }
-  
 
 }
