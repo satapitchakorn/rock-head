@@ -53,6 +53,8 @@ export class EventActionAddPageComponent implements OnInit {
   }
 
   onSubmit(): void {
+    console.log(this.form);
+    console.log(this.validated);
     if (this.form.valid) {
       const name = this.form.value.firstname + ' ' + this.form.value.lastname;
       Swal.fire({
