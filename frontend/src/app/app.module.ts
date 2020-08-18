@@ -26,12 +26,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-<<<<<<< HEAD
-    Ng2SearchPipeModule, //https://www.npmjs.com/package/ng2-search-filter
-
-=======
-    NgbModule
->>>>>>> cc53a61d5bb2ec7d632321b3b73d4a82e5f77da7
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
