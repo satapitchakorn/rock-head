@@ -70,6 +70,7 @@ public class LogService {
         Aggregation aggregation = Aggregation.newAggregation(lookupEmployee, lookupAdmin, Aggregation.skip(pageable.getPageNumber() * pageable.getPageSize()),
                 Aggregation.limit(pageable.getPageSize()));
         List<LogModel> results = mongoTemplate.aggregate(aggregation, "log", LogModel.class).getMappedResults();
+        
         return new PageImpl<>(results, pageable, pageable.getPageSize());
     }
 }
