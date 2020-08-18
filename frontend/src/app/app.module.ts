@@ -10,8 +10,8 @@ import { EventActionPageComponent } from './employee/components/event-action-pag
 import { EventActionModifyPageComponent } from './employee/components/event-action-modify-page/event-action-modify-page.component';
 import { EventActionRemovePageComponent } from './employee/components/event-action-remove-page/event-action-remove-page.component';
 import { LogPageComponent } from './log/components/log-page/log-page.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +27,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    Ng2SearchPipeModule, //https://www.npmjs.com/package/ng2-search-filter
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
