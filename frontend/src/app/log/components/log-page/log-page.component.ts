@@ -9,7 +9,7 @@ import { LogModel } from '@app/log/models/log-model';
 })
 export class LogPageComponent implements OnInit {
   addBool: boolean;
-  formIdFilter = '';
+  formIdFilter = '001';
   modifyBool: boolean;
   deleteBool: boolean;
   contents: ContentModel;
