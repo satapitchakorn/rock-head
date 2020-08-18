@@ -1,8 +1,6 @@
 package com.rockhead.RockHead.employee;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +20,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getEmployeeById(@PathVariable int id) {
+    public ResponseEntity<?> getEmployeeById(@PathVariable int id) throws Exception {
         return new ResponseEntity<>(employeeService.findEmployeeById(id), HttpStatus.OK);
     }
 
