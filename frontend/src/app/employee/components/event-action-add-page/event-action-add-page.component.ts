@@ -64,8 +64,6 @@ term: string;
   }
 
   onSubmit(): void {
-    console.log(this.form);
-    console.log(this.validated);
     if (this.form.valid) {
       const name = this.form.value.firstname + ' ' + this.form.value.lastname;
       Swal.fire({
@@ -80,8 +78,6 @@ term: string;
       }).then((result) => {
         if (result.value) {
           this.submitted = true;
-          // TODO: Add logic in addEmployee function
-          console.log(this.form.value);
           this.employeeService.addEmployee(this.form.value).subscribe(data => {
             if (data.status === 201) {
               this.log = {

@@ -20,7 +20,7 @@ export class EventActionModifyPageComponent implements OnInit {
   employee: Employee;
   submitted = false;
   validated = false;
-  type = ""
+  type = '';
   formTmp: FormGroup;
   log: LogBody;
   message: EventModel[] = [];
@@ -54,12 +54,11 @@ export class EventActionModifyPageComponent implements OnInit {
   ];
 
   constructor(private fb: FormBuilder, private employeeService: EmployeeService, private logService: LogServiceService) {
+    this.form = fb.group({});
   }
 
-  // TODO: Get data by id
   ngOnInit(): void {
     this.employeeService.getEmployee('251182').subscribe(data => {
-      console.log(data);
       this.form = this.fb.group({
         passport: new FormControl(data.passport, Validators.required),
         employee_no: new FormControl(data.employee_no, Validators.required),
@@ -71,6 +70,11 @@ export class EventActionModifyPageComponent implements OnInit {
         phone: new FormControl(data.phone, Validators.required),
       });
       this.formTmp = this.deepClone(this.form);
+      if (data.passport.length === 13) {
+        this.type = 'Citizen identity number';
+      } else {
+        this.type = 'Passport';
+      }
     });
   }
   deepClone<T>(value): T {
@@ -123,20 +127,37 @@ export class EventActionModifyPageComponent implements OnInit {
         if (result.value) {
           this.submitted = true;
           this.employeeService.modifyEmployee(this.form.value.employee_no, this.form.value).subscribe(data => {
-            if (data.status === 201) {
+            if (data.status === 200) {
               this.log = {
                 employee_no: this.form.value.employee_no,
                 admin_no: this.logService.getAdminNo(),
                 date_of_event: moment().format('YYYY-MM-DDTHH:mm:ss.SSS'),
                 log_objects: this.generateEventMessage(),
               };
+              this.logService.addLog(this.log).subscribe(data => {
+                if (data.status === 201) {
+                  Swal.fire(
+                    'Successful!',
+                    'Your file has been modified.',
+                    'success'
+                  );
+                } else {
+                  Swal.fire(
+                    'Error',
+                    'Something wen\'t wrong.',
+                    'error'
+                  );
+                }
+              }
+              );
+            } else {
+              Swal.fire(
+                'Error',
+                'Something wen\'t wrong.',
+                'error'
+              );
             }
           });
-          Swal.fire(
-            'Successful!',
-            'Your file has been modified.',
-            'success'
-          );
         }
       });
     }
@@ -154,8 +175,15 @@ export class EventActionModifyPageComponent implements OnInit {
         });
       }
     });
-    console.log(this.message);
-
     return this.message;
+  }
+  canPressButton(): boolean {
+    this.modify = this.compareString();
+    const res = this.modify.filter(data => data.isModify);
+    if (res.length > 0) {
+      return false;
+    } else {
+      return true;
+    }
   }
 }

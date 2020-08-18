@@ -1,5 +1,13 @@
 # NAMING COVENTION
---- 
+---
+# Install
+```
+nmp install
+npm i sweetalert2
+ng add @ng-bootstrap/ng-bootstrap
+```
+---
+
 # Convention Web UI
 ## Common Convention
 - โค้ดการทำงานหนึ่งบรรทัด มีการใส่ Semi-colon `;`
