@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { ContentModel } from '../models/content-model';
 import { environment } from 'src/environments/environment';
 import { LogBody } from '@app/log/models/log-body';
@@ -16,7 +16,7 @@ export class LogServiceService {
     return this.http.get<ContentModel>(this.URL
     );
   }
-  addLog(log: LogBody): Observable<any> {
+  addLog(log: LogBody): Observable<HttpResponse<any>> {
     return this.http.post<any>(this.URL, log, { observe: 'response' });
   }
   getAdminNo(): number {
