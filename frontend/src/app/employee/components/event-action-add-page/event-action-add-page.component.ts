@@ -23,6 +23,18 @@ export class EventActionAddPageComponent implements OnInit {
 
   log: LogBody;
 
+
+  /*  title = 'search your position';
+    searchText = '';
+    position = [
+      'Junior Front End Developer',
+      'Junior Back End Developer',
+      'Junior QA',
+      'PM',
+      'BA',
+     
+    ] */
+
   constructor(private fb: FormBuilder, private employeeService: EmployeeService, private logService: LogServiceService) {
     this.form = fb.group({
       passport: new FormControl('', Validators.required),
@@ -45,7 +57,7 @@ export class EventActionAddPageComponent implements OnInit {
       const name = this.form.value.firstname + ' ' + this.form.value.lastname;
       Swal.fire({
         title: 'Are you sure?',
-        text: "You want to add new employee",
+        text: 'You won\'t be able to revert this!',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -93,6 +105,7 @@ export class EventActionAddPageComponent implements OnInit {
               });
             }
           });
+
         }
       });
     }
@@ -105,6 +118,6 @@ export class EventActionAddPageComponent implements OnInit {
 
   }
 
-
+  
 
 }

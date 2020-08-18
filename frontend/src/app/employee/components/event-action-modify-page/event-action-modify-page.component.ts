@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Employee } from '../../models/employee';
 import { EmployeeService } from '../../services/employee.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-event-action-modify-page',
@@ -56,7 +57,7 @@ export class EventActionModifyPageComponent implements OnInit {
         firstname: new FormControl(data.firstname, Validators.required),
         lastname: new FormControl(data.lastname, Validators.required),
         position: new FormControl(data.position, Validators.required),
-        start_date: new FormControl(data.start_date, Validators.required),
+        start_date: new FormControl(moment(data.start_date).format('yyyy-MM-DD'), Validators.required),
         email: new FormControl(data.email, Validators.required),
         phone: new FormControl(data.phone, Validators.required),
       })
@@ -67,12 +68,12 @@ export class EventActionModifyPageComponent implements OnInit {
 
   onSubmit(): void {
     if (this.form.valid) {
-      const firstname = this.form.value.firstname
-      const lastname = this.form.value.lastname
-      const position = this.form.value.position
-      const start_date = this.form.value.start_date
-      const email = this.form.value.email
-      const phone = this.form.value.phone
+      const firstname = this.form.value.firstname;
+      const lastname = this.form.value.lastname;
+      const position = this.form.value.position;
+      const start_date = this.form.value.start_date;
+      const email = this.form.value.email;
+      const phone = this.form.value.phone;
       Swal.fire({
         title: 'Are you sure?',
         html: `

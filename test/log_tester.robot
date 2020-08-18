@@ -11,7 +11,11 @@ Test Teardown   Close Chrome Browser
     Fill up the details for new user                                    1509901589765     000759      RATTHAWAN       SERMSUWANNASAK          FRONTEND        08/13/2020              ratthawan@allianz.com       +66955419228
     Check the details of new user                                     1     Modify employee in firstname from Hasaneeya to Neeya.       By     2020-08-14         
     Choose MODIFY menu for edit user details            
+<<<<<<< HEAD
     Edit user details     
+=======
+    Edit user details
+>>>>>>> 0fc3b4e7d78c5815f453d5584232856ab00951d1
     Check the details of user who was fixed                         
     Choose DELETE menu for change user status to Inactive                    
     Change user status to Inactive

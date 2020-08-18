@@ -40,8 +40,10 @@ public class EmployeeService {
         employeeRepository.save(data);
     }
 
-    public Employee findEmployeeById(int id) {
-        return employeeRepository.findOneByEmployeeNo(id).orElse(null);
+    public Employee findEmployeeById(int id) throws Exception {
+        return employeeRepository.findOneByEmployeeNo(id).orElseThrow(() -> {
+            return new Exception("Not found");
+        });
     }
 
     public Employee addEmployee(Employee request) {

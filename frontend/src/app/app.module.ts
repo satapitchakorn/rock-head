@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-
 import { HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +9,7 @@ import { EventActionPageComponent } from './employee/components/event-action-pag
 import { EventActionModifyPageComponent } from './employee/components/event-action-modify-page/event-action-modify-page.component';
 import { EventActionRemovePageComponent } from './employee/components/event-action-remove-page/event-action-remove-page.component';
 import { LogPageComponent } from './log/components/log-page/log-page.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,8 @@ import { LogPageComponent } from './log/components/log-page/log-page.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
