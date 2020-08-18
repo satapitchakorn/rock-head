@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col">
             <h4 class="mb-3"></h4>
-            <form [formGroup]="form" (ngSubmit)="modifyEmployeeAlert()" [ngClass]="{'was-validated': validated}"
+            <form [(formGroup)]="form" (ngSubmit)="onSubmit()" [ngClass]="{'was-validated': validated}"
                 class="needs-validation" novalidate>
                 <div class="row">
                     <div class="col-sm-4">
@@ -32,9 +32,6 @@
                     <label for="inputEmployeeId">Employee ID</label>
                     <input type="number" class="form-control" id="inputEmployeeId" placeholder="000000"
                         formControlName="employee_no" disabled>
-                    <div class="invalid-feedback">
-                        Please enter employee ID.
-                    </div>
                 </div>
 
                 <div class="row">
@@ -59,22 +56,12 @@
                     </div>
                 </div>
                 <div class="row">
-                    <!--<div class="col-md-6 mb-3">
-                        <div class="form-group">
-                            <label for="inputPosition">Position</label>
-                            <input type="text" class="form-control" id="inputPosition"
-                                placeholder="Junior Frontend Developer" formControlName="position" required>
-                            <div class="invalid-feedback">
-                                Please enter position.
-                            </div>
-                        </div>
-                    </div>-->
-
                     <div class="col-md-6 mb-3">
                         <div class="form-group">
                             <label for="inputPosition">Position <abbr class="text-danger"
-                                    title="This is required">*</abbr></label>
-                            <select data-placeholder="Choose a Position" class="form-control" tabindex="2" required>
+                                title="This is required">*</abbr></label>
+                            <select data-placeholder="Choose a Position" class="form-control" tabindex="2"
+                            formControlName="position" required>
                                 <option value=""></option>
                                 <option value="junior-front-end-developer">Junior Front End Developer</option>
                                 <option value="junior-back-end-developer">Junior Back End Developer</option>
