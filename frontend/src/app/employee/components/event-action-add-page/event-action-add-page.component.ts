@@ -62,7 +62,7 @@ export class EventActionAddPageComponent implements OnInit {
               this.log = {
                 employee_no: this.form.value.employee_no,
                 admin_no: this.logService.getAdminNo(),
-                date_of_event: moment().format("YYYY-MM-DDTHH:mm:ss.SSS"),
+                date_of_event: moment().format('YYYY-MM-DDTHH:mm:ss.SSS'),
                 log_objects: [{
                   form_id: '001',
                   event_message: `Add ${this.form.value.firstname} ${this.form.value.lastname} successful.`,
