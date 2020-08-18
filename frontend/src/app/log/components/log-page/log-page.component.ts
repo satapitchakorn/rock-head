@@ -9,6 +9,7 @@ import { LogModel } from '@app/log/models/log-model';
 })
 export class LogPageComponent implements OnInit {
   addBool: boolean;
+  formIdFilter = '';
   modifyBool: boolean;
   deleteBool: boolean;
   contents: ContentModel;
@@ -26,5 +27,10 @@ export class LogPageComponent implements OnInit {
   }
   toggleAdd(): void{
     this.addBool = !this.addBool;
+    if (this.addBool) {
+      this.formIdFilter = '001';
+    } else {
+      this.formIdFilter = '002';
+    }
   }
 }

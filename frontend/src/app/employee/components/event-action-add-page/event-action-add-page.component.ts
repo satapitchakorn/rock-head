@@ -8,6 +8,9 @@ import { VirtualTimeScheduler } from 'rxjs';
 import { LogBody } from '@app/log/models/log-body';
 import * as moment from 'moment';
 
+import { Observable, } from 'rxjs';
+import { startWith } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-event-action-add-page',
@@ -24,16 +27,17 @@ export class EventActionAddPageComponent implements OnInit {
   log: LogBody;
 
 
-  /*  title = 'search your position';
-    searchText = '';
-    position = [
-      'Junior Front End Developer',
-      'Junior Back End Developer',
-      'Junior QA',
-      'PM',
-      'BA',
-     
-    ] */
+  //Position Filter
+  myControl: FormControl = new FormControl();
+
+  options = [
+    'One',
+    'Two',
+    'Three'
+  ];
+
+  filteredOptions: Observable<string[]>;
+//End Position Filter
 
   constructor(private fb: FormBuilder, private employeeService: EmployeeService, private logService: LogServiceService) {
     this.form = fb.group({
@@ -119,7 +123,6 @@ export class EventActionAddPageComponent implements OnInit {
   setEmployeeForm(): void {
 
   }
-
   
 
 }
