@@ -166,6 +166,7 @@ export class EventActionModifyPageComponent implements OnInit {
     }
   }
   generateEventMessage(): EventModel[] {
+    this.message = [];
     this.modify.forEach(data => {
       if (data.isModify) {
         this.message.push({
