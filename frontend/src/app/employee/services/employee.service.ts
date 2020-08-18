@@ -31,7 +31,8 @@ export class EmployeeService {
   modifyEmployee(): void {
     return console.log('successfully modify employee');
   }
-  removeEmployee(): void {
-    return console.log('successfully remove employee');
+  removeEmployee(id): Observable<any> {
+    return this.http.delete<Employee>(this.URL + `/${id}`);
+    //return console.log('successfully remove employee');
   }
 }

@@ -3,21 +3,29 @@
   <a class="navbar-brand" href="#">
     <img src="/assets/img/az.svg" alt="Logo" style="width:8em;">
   </a>
-  <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
-  </button>-->
+  </button>
+
   <!-- Links -->
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-      <a class="nav-link" href="#" [routerLink]="['/form']" routerLinkActive="router-link-active" > <h6>Form</h6></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#" [routerLink]="['/log']" routerLinkActive="router-link-active" ><h6>Logs</h6></a>
-    </li>
-  </ul>
-</div>
+        <a class="nav-link" href="#" [routerLink]="['/form']" routerLinkActive="router-link-active">
+          <h6>Form</h6>
+        </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#" [routerLink]="['/log']" routerLinkActive="router-link-active">
+          <h6>Logs</h6>
+        </a>
+      </li>
+    </ul>
+  </div>
+
 </nav>
 <!--END NAVBAR-->
 <router-outlet></router-outlet>
