@@ -8,14 +8,23 @@ import { LogModel } from '@app/log/models/log-model';
   styleUrls: ['./log-page.component.css']
 })
 export class LogPageComponent implements OnInit {
-
+  addBool: boolean;
+  modifyBool: boolean;
+  deleteBool: boolean;
   contents: ContentModel;
-  constructor(private logService: LogServiceService) { }
+  pipe: ContentModel;
+  constructor(private logService: LogServiceService) {
+    this.addBool = true;
+    this.modifyBool = true;
+    this.deleteBool = true;
+   }
 
   ngOnInit(): void {
     this.logService.getAllLog().subscribe((content) => {
       this.contents = content;
     });
   }
-
+  toggleAdd(): void{
+    this.addBool = !this.addBool;
+  }
 }
