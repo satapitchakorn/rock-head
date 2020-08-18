@@ -1,5 +1,6 @@
 package com.rockhead.RockHead.init;
 
+import com.rockhead.RockHead.admin.AdminService;
 import com.rockhead.RockHead.employee.EmployeeService;
 import com.rockhead.RockHead.log.LogService;
 import com.rockhead.RockHead.response.ResponseModel;
@@ -19,11 +20,14 @@ public class InitController {
     private EmployeeService employeeService;
     @Autowired
     private LogService logService;
+    @Autowired
+    private AdminService adminService;
 
     @GetMapping("/init")
     public ResponseEntity<?> initData() {
         employeeService.initialEmployeeData();
         logService.initialLogData();
+        adminService.initDataAdmin();
         return new ResponseEntity<>(new ResponseModel(true, "Initial data successful."), HttpStatus.CREATED);
     }
 }
