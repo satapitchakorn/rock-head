@@ -25,12 +25,7 @@ export class LogPageComponent implements OnInit {
       this.contents = content;
     });
   }
-  toggleAdd(): void{
-    this.addBool = !this.addBool;
-    if (this.addBool) {
-      this.formIdFilter = '001';
-    } else {
-      this.formIdFilter = '002';
-    }
+  toggleAdd(formIdString: string): void{
+    this.formIdFilter = formIdString;
   }
 }
