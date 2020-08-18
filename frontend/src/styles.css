@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+.bounce{
+  background-image: linear-gradient(to right, rgba(255,255,255,0) 50%, #ddd 60%);
+  background-position: -0% 0;
+  background-size: 200% auto;
+  color: #222;
+  font-size: 1.75em;
+  line-height: 1.15em;
+  text-decoration: none;
+  transition: background-position 0.5s ease-out;
+}
+.bounce:hover {
+    background-position: -99.99% 0;
+  }
