@@ -20,9 +20,8 @@ export class EventActionAddPageComponent implements OnInit {
   employee: Employee;
   submitted = false;
   validated = false;
-
+  type = ""
   log: LogBody;
-
 
   /*  title = 'search your position';
     searchText = '';
@@ -51,7 +50,6 @@ export class EventActionAddPageComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
   onSubmit(): void {
     if (this.form.valid) {
       const name = this.form.value.firstname + ' ' + this.form.value.lastname;
@@ -118,6 +116,6 @@ export class EventActionAddPageComponent implements OnInit {
 
   }
 
-  
+
 
 }
