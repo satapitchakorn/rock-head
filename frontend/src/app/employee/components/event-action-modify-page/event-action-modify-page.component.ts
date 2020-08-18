@@ -3,7 +3,11 @@ import Swal from 'sweetalert2';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Employee } from '../../models/employee';
 import { EmployeeService } from '../../services/employee.service';
+import { LogServiceService } from '@app/log/services/log-service.service';
+import { LogBody } from '@app/log/models/log-body';
 import * as moment from 'moment';
+import { EventModel } from '@app/log/models/event-model';
+import * as clone from 'clone';
 
 @Component({
   selector: 'app-event-action-modify-page',
@@ -17,6 +21,9 @@ export class EventActionModifyPageComponent implements OnInit {
   submitted = false;
   validated = false;
   formTmp: FormGroup;
+  log: LogBody;
+  message: EventModel[] = [];
+
   modify = [
     {
       element_name: 'firstname',
@@ -28,23 +35,24 @@ export class EventActionModifyPageComponent implements OnInit {
       isModify: false
     },
     {
-      element_name: 'firstname',
+      element_name: 'position',
       isModify: false
     },
     {
-      element_name: 'firstname',
+      element_name: 'start_date',
       isModify: false
     },
     {
-      element_name: 'firstname',
+      element_name: 'email',
       isModify: false
     },
     {
-      element_name: 'firstname',
+      element_name: 'phone',
       isModify: false
     }
-  ]
-  constructor(private fb: FormBuilder, private employeeService: EmployeeService) {
+  ];
+
+  constructor(private fb: FormBuilder, private employeeService: EmployeeService, private logService: LogServiceService) {
   }
 
   // TODO: Get data by id
@@ -60,13 +68,29 @@ export class EventActionModifyPageComponent implements OnInit {
         start_date: new FormControl(moment(data.start_date).format('yyyy-MM-DD'), Validators.required),
         email: new FormControl(data.email, Validators.required),
         phone: new FormControl(data.phone, Validators.required),
-      })
-      this.formTmp = this.form;
+      });
+      // this.formTmp = Object.assign(Object.create(this.form), this.form);
+      this.formTmp = this.deepClone(this.form);
     });
   }
+  deepClone<T>(value): T {
+    return clone<T>(value);
+  }
 
+  compareString(): any {
+    this.formTmp.value.firstname !== this.form.value.firstname ? this.modify[0].isModify = true : this.modify[0].isModify = false;
+    this.formTmp.value.lastname !== this.form.value.lastname ? this.modify[1].isModify = true : this.modify[1].isModify = false;
+    this.formTmp.value.position !== this.form.value.position ? this.modify[2].isModify = true : this.modify[2].isModify = false;
+    this.formTmp.value.start_date !== this.form.value.start_date ? this.modify[3].isModify = true : this.modify[3].isModify = false;
+    this.formTmp.value.email !== this.form.value.email ? this.modify[4].isModify = true : this.modify[4].isModify = false;
+    this.formTmp.value.phone !== this.form.value.phone ? this.modify[5].isModify = true : this.modify[5].isModify = false;
+
+    return this.modify;
+  }
 
   onSubmit(): void {
+    this.modify = this.compareString();
+    this.generateEventMessage();
     if (this.form.valid) {
       const firstname = this.form.value.firstname;
       const lastname = this.form.value.lastname;
@@ -97,6 +121,17 @@ export class EventActionModifyPageComponent implements OnInit {
         cancelButtonText: 'No'
       }).then((result) => {
         if (result.value) {
+          this.submitted = true;
+          this.employeeService.modifyEmployee(251182, this.form.value).subscribe(data => {
+            if (data.status === 201) {
+              this.log = {
+                employee_no: this.form.value.employee_no,
+                admin_no: this.logService.getAdminNo(),
+                date_of_event: moment().format('YYYY-MM-DDTHH:mm:ss.SSS'),
+                log_objects: this.generateEventMessage(),
+              };
+            }
+          });
           Swal.fire(
             'Successful!',
             'Your file has been modified.',
@@ -108,5 +143,19 @@ export class EventActionModifyPageComponent implements OnInit {
     else {
       this.validated = true;
     }
+  }
+  generateEventMessage(): EventModel[] {
+    this.modify.forEach(data => {
+      if (data.isModify) {
+        this.message.push({
+          element_name: data.element_name,
+          event_message: `Modify ${data.element_name} from ${this.formTmp.get(data.element_name).value} to ${this.form.get(data.element_name).value}`,
+          form_id: '002'
+        });
+      }
+    });
+    console.log(this.message);
+
+    return this.message;
   }
 }
