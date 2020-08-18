@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  URL: 'https://backend-rockhead.herokuapp.com/api/v1'
+  URL: 'http://167.99.70.176:8080/api/v1'
 };
 
 /*

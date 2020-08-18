@@ -9,21 +9,24 @@
             <form [(formGroup)]="form" (ngSubmit)="onSubmit()" [ngClass]="{'was-validated': validated}"
                 class="needs-validation" novalidate>
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-12">
                         <div class="form-group">
                             <label for="inputPassport">Passport / Citizen identity number</label>
-                            <select data-placeholder="Choose a Passport" class="form-control" id="selectPassport" tabindex="2" disabled>
-                                <option value="Passport">Passport</option>
-                                <option value="Citizen identity number">Citizen identity number</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-8">
-                        <label for="inputPassport"> &nbsp;</label>
-                        <input type="text" class="form-control" id="inputPassport"
-                            placeholder="AA000000 Or 0111122222334" formControlName="passport"  maxlength="13" disabled >
-                        <div class="invalid-feedback">
-                            Please enter your Passport like AA000000 or Citizen identity number like 0111122222334.
+                            <div class="input-group mt-3 mb-3">
+                                <select [(ngModel)]="type" [ngModelOptions]="{standalone: true}" id="selectPassport"
+                                    tabindex="2" disabled>
+                                    <option value="" disabled>Please select type</option>
+                                    <option value="Citizen identity number">Citizen identity number</option>
+                                    <option value="Passport">Passport</option>
+                                </select>
+                                <input type="text" class="form-control" id="inputPassport"
+                                    placeholder="AA000000 Or 0111122222334" formControlName="passport" required
+                                    disabled>
+                                <div class="invalid-feedback">
+                                    Please enter your Passport like AA000000 or Citizen identity number like
+                                    0111122222334.
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -59,16 +62,16 @@
                     <div class="col-md-6 mb-3">
                         <div class="form-group">
                             <label for="inputPosition">Position <abbr class="text-danger"
-                                title="This is required">*</abbr></label>
+                                    title="This is required">*</abbr></label>
                             <select data-placeholder="Choose a Position" class="form-control" tabindex="2"
-                            formControlName="position" id="selectPosition" required>
+                                formControlName="position" id="selectPosition" required>
                                 <option value=""></option>
-                                <option value="junior-front-end-developer">Junior Front End Developer</option>
-                                <option value="junior-back-end-developer">Junior Back End Developer</option>
-                                <option value="junior-qa">Junior QA</option>
-                                <option value="project-manager">Project Manager</option>
-                                <option value="business-analysis">Business Analysis</option>
-                                <option value="scrum-master">Scrum Master</option>
+                                <option value="Junior Front End Developer">Junior Front End Developer</option>
+                                <option value="Junior Back End Developer">Junior Back End Developer</option>
+                                <option value="Junior QA">Junior QA</option>
+                                <option value="Project Manager">Project Manager</option>
+                                <option value="Business Analysis">Business Analysis</option>
+                                <option value="Scrum Master">Scrum Master</option>
                             </select>
                         </div>
                         <div class="invalid-feedback">
@@ -81,8 +84,7 @@
                             <label for="inputStartDate">Start Date <abbr class="text-danger"
                                     title="This is required">*</abbr></label>
                             <input class="form-control" type="date" data-date-format="dd/mm/yyyy" id="inputStartDate"
-                                formControlName="start_date"
-                                required>
+                                formControlName="start_date" required>
                             <div class="invalid-feedback">
                                 Please enter Start Date.
                             </div>

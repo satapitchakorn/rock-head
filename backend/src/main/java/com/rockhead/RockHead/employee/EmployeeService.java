@@ -23,7 +23,7 @@ public class EmployeeService {
         data.setStartDate(new Date());
         data.setPosition("Junior Front End Developer");
         data.setEmail("hasaneeya.kaenthram@allianz.com");
-        data.setPhone("0876543210");
+        data.setPhone("+66876543210");
         data.setPassport("1234567890123");
         employeeRepository.save(data);
 
@@ -35,7 +35,7 @@ public class EmployeeService {
         data.setStartDate(new Date());
         data.setPosition("Junior Back End Developer");
         data.setEmail("kanawat.phuengphadung@allianz.com");
-        data.setPhone("0845545432");
+        data.setPhone("+66845545432");
         data.setPassport("1103700222555");
         employeeRepository.save(data);
     }
