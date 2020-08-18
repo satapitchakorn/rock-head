@@ -1,13 +1,12 @@
 <div class="container-fluid">
   <h1 style="text-align: center;">Logs</h1>
 </div>
-<div style = "text-align: center;">
-  001
-<label class="switch">
-  <input type="checkbox" (click)="toggleAdd()" checked>
-  <span class="slider round"></span>
-</label> 
-</div>
+
+<select class="form-control" #selectFormId (change)="toggleAdd(selectFormId.value)">
+  <option value = "001">001</option>
+  <option value = "002">002</option>
+  <option value = "003">003</option>
+</select>
 <div class="table-responsive">
   <table class="table table-bordered table-striped" id = "table_log">
     <thead>

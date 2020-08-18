@@ -10,6 +10,7 @@ import { EventActionModifyPageComponent } from './employee/components/event-acti
 import { EventActionRemovePageComponent } from './employee/components/event-action-remove-page/event-action-remove-page.component';
 import { LogPageComponent } from './log/components/log-page/log-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormIdPipe} from './log/pipe/form-id.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     EventActionPageComponent,
     EventActionModifyPageComponent,
     EventActionRemovePageComponent,
-    LogPageComponent
+    LogPageComponent,
+    FormIdPipe
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     NgbModule,
   ],
-  providers: [],
+  providers: [FormIdPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
