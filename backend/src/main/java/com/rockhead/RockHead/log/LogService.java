@@ -26,21 +26,21 @@ public class LogService {
         logRepository.deleteAll();
         List<Log> logList = new ArrayList() {
             {
-                add(createEmployee(251181, 251182));
-                add(createEmployee(251181, 251166));
+                add(createEmployee(251181, 251182, "Hasaneeya", "Kaenthram"));
+                add(createEmployee(251181, 251166, "Kanawat", "Phuengphadung"));
             }
         };
         logRepository.saveAll(logList);
     }
 
-    private Log createEmployee(int adminNo, int empNo) {
+    private Log createEmployee(int adminNo, int empNo, String firstname, String lastname) {
         Log data = new Log();
         data.setAdminNo(adminNo);
         data.setDateOfEvent(new Date());
         data.setEmployeeNo(empNo);
         Event eventData = new Event();
         eventData.setElementName("-");
-        eventData.setEventMessage("Add new employee successful.");
+        eventData.setEventMessage("Add " + firstname + " " + lastname + " successful.");
         eventData.setFormId("001");
         data.setLogObjects(Arrays.asList(eventData));
         return data;

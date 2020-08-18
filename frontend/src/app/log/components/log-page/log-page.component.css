@@ -1,0 +1,33 @@
+.logs {
+    table-layout: fixed;
+    width: 100%;
+    white-space: nowrap;
+  }
+  .logs td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  /* Column widths are based on these cells */
+  .row-No {
+    width: 5%;
+  }
+  .row-event-massage {
+    width: 30%;
+  }
+  .row-form {
+    width: 5%;
+  }
+  .row-by {
+    width: 25%;
+  }
+  .row-date-time {
+    width: 20%;
+  }
+  .row-element-name {
+    width: 15%;
+  }
+  .text-left {
+    text-align: left;
+  }
