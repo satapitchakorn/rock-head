@@ -7,7 +7,7 @@ import { LogServiceService } from '@app/log/services/log-service.service';
 import { VirtualTimeScheduler } from 'rxjs';
 import { LogBody } from '@app/log/models/log-body';
 import * as moment from 'moment';
-
+//Position Filter
 import { Observable, } from 'rxjs';
 import { startWith } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
@@ -28,15 +28,25 @@ export class EventActionAddPageComponent implements OnInit {
 
 
   //Position Filter
-  myControl: FormControl = new FormControl();
+//Way 1
+title = 'custom-search-filter-example';
+searchedKeyword: string;
 
-  options = [
-    'One',
-    'Two',
-    'Three'
-  ];
+filterResultDataSet = [
+  {
+    position: 'Junior Front End Developer',
+  },
+  {
+    position: 'Junior Back End Developer',
+  },
+  {
+    position: 'Junior QA',
+  },
 
-  filteredOptions: Observable<string[]>;
+]
+//Way 2
+positions = ["Junior Front End Developer","Junior Back End Developer","Junior QA"]
+term: string;
 //End Position Filter
 
   constructor(private fb: FormBuilder, private employeeService: EmployeeService, private logService: LogServiceService) {
@@ -51,8 +61,6 @@ export class EventActionAddPageComponent implements OnInit {
       phone: new FormControl('', Validators.required),
     });
   }
-
-
   ngOnInit(): void {
   }
 
