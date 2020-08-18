@@ -21,7 +21,7 @@ public class EmployeeService {
         data.setFirstname("Hasaneeya");
         data.setLastname("Kaenthram");
         data.setStartDate(new Date());
-        data.setPosition("Junior frontend developer");
+        data.setPosition("Junior Front End Developer");
         data.setEmail("hasaneeya.kaenthram@allianz.com");
         data.setPhone("0876543210");
         data.setPassport("1234567890123");
@@ -33,15 +33,17 @@ public class EmployeeService {
         data.setFirstname("Kanawat");
         data.setLastname("Phuengphadung");
         data.setStartDate(new Date());
-        data.setPosition("Junior backend developer");
+        data.setPosition("Junior Back End Developer");
         data.setEmail("kanawat.phuengphadung@allianz.com");
         data.setPhone("0845545432");
         data.setPassport("1103700222555");
         employeeRepository.save(data);
     }
 
-    public Employee findEmployeeById(int id) {
-        return employeeRepository.findOneByEmployeeNo(id).orElse(null);
+    public Employee findEmployeeById(int id) throws Exception {
+        return employeeRepository.findOneByEmployeeNo(id).orElseThrow(() -> {
+            return new Exception("Not found");
+        });
     }
 
     public Employee addEmployee(Employee request) {
