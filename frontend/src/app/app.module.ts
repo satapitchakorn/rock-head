@@ -11,6 +11,8 @@ import { EventActionRemovePageComponent } from './employee/components/event-acti
 import { LogPageComponent } from './log/components/log-page/log-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { FormIdPipe} from './log/pipe/form-id.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +20,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     EventActionPageComponent,
     EventActionModifyPageComponent,
     EventActionRemovePageComponent,
-    LogPageComponent
+    LogPageComponent,
+    FormIdPipe
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     NgbModule,
     Ng2SearchPipeModule,
   ],
-  providers: [],
+  providers: [FormIdPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
