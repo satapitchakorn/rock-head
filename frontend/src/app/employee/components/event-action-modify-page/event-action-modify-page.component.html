@@ -6,24 +6,18 @@
     <div class="row">
         <div class="col">
             <h4 class="mb-3"></h4>
-            <form [formGroup]="form" (ngSubmit)="modifyEmployeeAlert()" [ngClass]="{'was-validated': validated}"
+            <form [(formGroup)]="form" (ngSubmit)="onSubmit()" [ngClass]="{'was-validated': validated}"
                 class="needs-validation" novalidate>
                 <div class="mb-3">
                     <label for="inputPassport">Passport / Citizen identity number</label>
-                    <input type="text" class="form-control" id="inputPassport" placeholder="1103702412465"
+                    <input type="text" class="form-control" id="inputPassport"
                         formControlName="passport" disabled>
-                    <div class="invalid-feedback">
-                        Please enter your Passport.
-                    </div>
                 </div>
 
                 <div class="mb-3">
                     <label for="inputEmployeeId">Employee ID</label>
-                    <input type="number" class="form-control" id="inputEmployeeId" placeholder="251182"
+                    <input type="number" class="form-control" id="inputEmployeeId"
                         formControlName="employee_no" disabled>
-                    <div class="invalid-feedback">
-                        Please enter employee ID.
-                    </div>
                 </div>
 
                 <div class="row">
@@ -85,7 +79,7 @@
                         <div class="form-group">
                             <label for="inputPhone">Phone</label>
                             <input type="tel" placeholder="+66955419228" pattern="\+[0-9]{2}[0-9]{9}"
-                                class="form-control" name="inputPhoneNumber" id="inputPhone">
+                                class="form-control" name="inputPhoneNumber" formControlName="phone" id="inputPhone">
                             <div class="invalid-feedback">
                                 Please enter phone number like +00123456789.
                             </div>

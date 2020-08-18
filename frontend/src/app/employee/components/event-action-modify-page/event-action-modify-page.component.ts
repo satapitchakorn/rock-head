@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
-import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
+import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Employee } from '../../models/employee';
+import { EmployeeService } from '../../services/employee.service';
 
 @Component({
   selector: 'app-event-action-modify-page',
@@ -9,27 +11,61 @@ import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
 })
 export class EventActionModifyPageComponent implements OnInit {
 
-  form: FormGroup
+  form: FormGroup;
+  employee: Employee;
+  submitted = false;
   validated = false;
+  formTmp: FormGroup;
+  modify = [
+    {
+      element_name: 'firstname',
+      isModify: false
+    },
 
-  constructor(private fb: FormBuilder) {
-    this.form = fb.group({
-      passport: new FormControl(),
-      employee_no: new FormControl(),
-      firstname: new FormControl(),
-      lastname: new FormControl(),
-      position: new FormControl(),
-      start_date: new FormControl(),
-      email: new FormControl(),
-      phone: new FormControl(),
-    })
+    {
+      element_name: 'lastname',
+      isModify: false
+    },
+    {
+      element_name: 'firstname',
+      isModify: false
+    },
+    {
+      element_name: 'firstname',
+      isModify: false
+    },
+    {
+      element_name: 'firstname',
+      isModify: false
+    },
+    {
+      element_name: 'firstname',
+      isModify: false
+    }
+  ]
+  constructor(private fb: FormBuilder, private employeeService: EmployeeService) {
   }
 
+  // TODO: Get data by id
   ngOnInit(): void {
+    this.employeeService.getEmployee('251182').subscribe(data => {
+      console.log(data);
+      this.form = this.fb.group({
+        passport: new FormControl(data.passport, Validators.required),
+        employee_no: new FormControl(data.employee_no, Validators.required),
+        firstname: new FormControl(data.firstname, Validators.required),
+        lastname: new FormControl(data.lastname, Validators.required),
+        position: new FormControl(data.position, Validators.required),
+        start_date: new FormControl(data.start_date, Validators.required),
+        email: new FormControl(data.email, Validators.required),
+        phone: new FormControl(data.phone, Validators.required),
+      })
+      this.formTmp = this.form;
+    });
   }
 
-  modifyEmployeeAlert() {
-    console.log(this.form)
+
+  onSubmit(): void {
     if (this.form.valid) {
       const firstname = this.form.value.firstname
       const lastname = this.form.value.lastname
@@ -64,9 +100,9 @@ export class EventActionModifyPageComponent implements OnInit {
             'Successful!',
             'Your file has been modified.',
             'success'
-          )
+          );
         }
-      })
+      });
     }
     else {
       this.validated = true;
