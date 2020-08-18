@@ -9,27 +9,27 @@
             <form [formGroup]="form" (ngSubmit)="onSubmit()" [ngClass]="{'was-validated': validated}"
                 class="needs-validation" novalidate>
                 <div class="row">
-                <div class="col-sm-4">
-                    <div class="form-group">
-                    <label for="inputPassport">Passport / Citizen identity number</label>
-                    <select data-placeholder="Choose a Passport" class="form-control" tabindex="2" required>
-                        <option value=""></option>
-                        <option value="Passport">Passport</option>
-                        <option value="Citizen identity number">Citizen identity number</option>
-                    </select>
-                </div>
-                </div>
-                <div class="col-sm-8">
-                    <label for="inputPassport"> &nbsp;</label>
-                    <input type="text" class="form-control" id="inputPassport" placeholder="AA000000 Or 0111122222334" 
-                        formControlName="passport" pattern="[A-Za-z]{2}[0-9]{6},[0-9]{13}" required>
-                    <div class="invalid-feedback">
-                        Please enter your Passport like AA000000 or Citizen identity number like 0111122222334.
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="inputPassport">Passport / Citizen identity number</label>
+                            <select data-placeholder="Choose a Passport" class="form-control" tabindex="2" required>
+                                <option value=""></option>
+                                <option value="Passport">Passport</option>
+                                <option value="Citizen identity number">Citizen identity number</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <label for="inputPassport"> &nbsp;</label>
+                        <input type="text" class="form-control" id="inputPassport"
+                            placeholder="AA000000 Or 0111122222334" formControlName="passport" required>
+                        <div class="invalid-feedback">
+                            Please enter your Passport like AA000000 or Citizen identity number like 0111122222334.
+                        </div>
                     </div>
                 </div>
-                </div>
 
-                    <div class="row">
+                <div class="row">
                     <!-- Passport:
                         <input class="form-control" formControlName=pasport required [ngClass]="{
                           'is-invalid': submitted && form.controls.passport.errors}"/>
@@ -82,24 +82,28 @@
 
                     <div class="col-md-6 mb-3">
                         <div class="form-group">
-                        <label for="inputPosition">Position</label>
-                        <select data-placeholder="Choose a Position" class="form-control" tabindex="2">
-                            <option value=""></option>
-                            <option value="Junior Front End Developer">Junior Front End Developer</option>
-                            <option value="Junior Back End Developer">Junior Back End Developer</option>
-                            <option value="Junior QA">Junior QA</option>
-                            <option value="Project Manager">Project Manager</option>
-                            <option value="Business Analysis">Business Analysis</option>
-                            <option value="Scrum Master">Scrum Master</option>
-                        </select>
+                            <label for="inputPosition">Position</label>
+                            <select data-placeholder="Choose a Position" class="form-control" tabindex="2" required>
+                                <option value=""></option>
+                                <option value="Junior Front End Developer">Junior Front End Developer</option>
+                                <option value="Junior Back End Developer">Junior Back End Developer</option>
+                                <option value="Junior QA">Junior QA</option>
+                                <option value="Project Manager">Project Manager</option>
+                                <option value="Business Analysis">Business Analysis</option>
+                                <option value="Scrum Master">Scrum Master</option>
+                            </select>
+                        </div>
+                        <div class="invalid-feedback">
+                            Invalid Position is required.
+                        </div>
                     </div>
-                    </div>
+
 
                     <div class="col-md-6 mb-3">
                         <div class="form-group">
                             <label for="inputStartDate">Start Date</label>
                             <input class="form-control" type="date" data-date-format="dd/mm/yyyy" id="inputStartDate"
-                                formControlName="start_date" pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}" required>
+                                formControlName="start_date" pattern=" (0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4} " required>
                             <div class="invalid-feedback">
                                 Please enter Start Date.
                             </div>
@@ -111,8 +115,8 @@
                     <div class="col-md-6 mb-3">
                         <div class="form-group">
                             <label for="inputEmail">Email</label>
-                            <input type="email" class="form-control" id="inputEmail" placeholder="firstname.lastname@allianz.com"
-                                formControlName="email" required>
+                            <input type="email" class="form-control" id="inputEmail"
+                                placeholder="firstname.lastname@allianz.com" formControlName="email" required>
                             <div class="invalid-feedback">
                                 Please enter email.
                             </div>
@@ -141,8 +145,8 @@
                 <button id="btnCancel" class="btn btn-outline-dark btn-lg btn-block"
                     [routerLink]="['/form']">Cancel</button>
                     </div>
-
                 </div>
+
             </form>
         </div>
     </div>
