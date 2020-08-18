@@ -23,6 +23,18 @@ export class EventActionAddPageComponent implements OnInit {
 
   log: LogBody;
 
+
+  /*  title = 'search your position';
+    searchText = '';
+    position = [
+      'Junior Front End Developer',
+      'Junior Back End Developer',
+      'Junior QA',
+      'PM',
+      'BA',
+     
+    ] */
+
   constructor(private fb: FormBuilder, private employeeService: EmployeeService, private logService: LogServiceService) {
     this.form = fb.group({
       passport: new FormControl('', Validators.required),
@@ -105,6 +117,6 @@ export class EventActionAddPageComponent implements OnInit {
 
   }
 
-
+  
 
 }
