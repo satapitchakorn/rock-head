@@ -12,7 +12,7 @@ import * as moment from 'moment';
 export class EventActionRemovePageComponent implements OnInit {
 
   form: FormGroup
-  idType = ""
+  type = ""
   constructor(private fb: FormBuilder, private employeeService: EmployeeService, private logService: LogServiceService) {
     this.form = fb.group({})
   }
@@ -31,9 +31,9 @@ export class EventActionRemovePageComponent implements OnInit {
         phone: new FormControl({ value: data.phone, disabled: true }),
       })
       if (this.form.value.passport.length == 13)
-        this.idType = "Citizen identity number";
+        this.type = "Citizen identity number";
       else
-        this.idType = "Passport";
+        this.type = "Passport";
     })
   }
 

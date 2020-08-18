@@ -11,6 +11,7 @@ export class EventActionModifyPageComponent implements OnInit {
 
   form: FormGroup
   validated = false;
+  type = ""
 
   constructor(private fb: FormBuilder) {
     this.form = fb.group({

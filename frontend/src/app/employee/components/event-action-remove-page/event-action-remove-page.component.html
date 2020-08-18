@@ -9,25 +9,21 @@
             <form [formGroup]="form" (ngSubmit)="removeEmployeeAlert()" class="needs-validation" novalidate
                 *ngIf="form.value.passport">
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-12">
                         <div class="form-group">
                             <label for="inputPassport">Passport / Citizen identity number</label>
-                            <select data-placeholder="Choose a Passport" class="form-control" tabindex="2" disabled
-                                [(ngModel)]="idType" [ngModelOptions]="{standalone: true}">
-                                <option value=""></option>
-                                <option value=" Passport">Passport</option>
-                                <option value="Citizen identity number">Citizen identity number</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-8">
-                        <div class="form-group">
-                            <label for="inputPassport"> &nbsp;</label>
-                            <input type="text" class="form-control" id="inputPassport"
-                                placeholder="AA000000 Or 0111122222334" formControlName="passport"
-                                pattern="[A-Za-z]{2}[0-9]{6} [0-9]{13}" disabled>
-                            <div class="invalid-feedback">
-                                Please enter your Passport like AA000000 or Citizen identity number like 0111122222334.
+                            <div class="input-group mt-3 mb-3">
+                                <select [(ngModel)]="type" [ngModelOptions]="{standalone: true}" disabled>
+                                    <option value="" disabled>Please select type</option>
+                                    <option value="Citizen identity number">Citizen identity number</option>
+                                    <option value="Passport">Passport</option>
+                                </select>
+                                <input type="text" class="form-control" id="inputPassport"
+                                    placeholder="AA000000 Or 0111122222334" formControlName="passport" required>
+                                <div class="invalid-feedback">
+                                    Please enter your Passport like AA000000 or Citizen identity number like
+                                    0111122222334.
+                                </div>
                             </div>
                         </div>
                     </div>
