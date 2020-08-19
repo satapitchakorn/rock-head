@@ -25,32 +25,32 @@ export class EventActionAddPageComponent implements OnInit {
 
 
   //Position Filter
-//Way 1
-title = 'custom-search-filter-example';
-searchedKeyword: string;
+  //Way 1
+  title = 'custom-search-filter-example';
+  searchedKeyword: string;
 
-filterResultDataSet = [
-  {
-    position: 'Junior Front End Developer',
-  },
-  {
-    position: 'Junior Back End Developer',
-  },
-  {
-    position: 'Junior QA',
-  },
+  filterResultDataSet = [
+    {
+      position: 'Junior Front End Developer',
+    },
+    {
+      position: 'Junior Back End Developer',
+    },
+    {
+      position: 'Junior QA',
+    },
 
-]
-//Way 2
-positions = ["" ,"Junior Front End Developer","Junior Back End Developer","Junior QA","Project Manager","Business Analysis","Scrum Master"]
-term: string;
+  ]
+  //Way 2
+  positions = ["", "Junior Front End Developer", "Junior Back End Developer", "Junior QA", "Project Manager", "Business Analysis", "Scrum Master"]
+  term: string;
 
 
-//End Position Filter
+  //End Position Filter
 
   constructor(private fb: FormBuilder, private employeeService: EmployeeService, private logService: LogServiceService, private router: Router) {
     this.form = fb.group({
-      passport: new FormControl('', Validators.required),
+      passport: new FormControl('', [Validators.required, Validators.minLength(8)]),
       employee_no: new FormControl('', Validators.required),
       firstname: new FormControl('', Validators.required),
       lastname: new FormControl('', Validators.required),
