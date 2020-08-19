@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'form/add', component: EventActionAddPageComponent },
   { path: 'form/modify', component: EventActionModifyPageComponent },
   { path: 'form/remove', component: EventActionRemovePageComponent },
-  { path: 'log', component: LogPageComponent },
+  { path: 'logs', component: LogPageComponent },
   { path: '**', redirectTo: '/form' }
 ];
 
