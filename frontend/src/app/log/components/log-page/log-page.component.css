@@ -23,3 +23,23 @@ th, td {
 th {
   background: #eee;
 }
+
+.row-No {
+  width: 5%;
+}
+.row-event-massage {
+  width: 35%;
+}
+.row-form{
+  width: 5%;
+}
+
+.row-by{
+  width: 25%;
+}
+.row-date-time{
+  width: 20%;
+}
+.row-field-name{
+  width: 10%;
+}
