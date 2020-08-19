@@ -19,7 +19,7 @@ export class LogPageComponent implements OnInit {
   contents: ContentModel;
   listLogModel: LogDisplay[] = [];
   dataSource = new MatTableDataSource();
-  @ViewChild(MatPaginator, { static: true }) pagiantor: MatPaginator;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   constructor(private logService: LogServiceService) { }
 
   ngOnInit(): void {
@@ -36,7 +36,7 @@ export class LogPageComponent implements OnInit {
         });
       });
       this.dataSource = new MatTableDataSource(this.listLogModel);
-      this.dataSource.paginator = this.pagiantor;
+      this.dataSource.paginator = this.paginator;
       this.dataSource.filterPredicate =
         (data: LogDisplay, filter: string) => data.log_objects.form_id.indexOf(filter) != -1;
     });
