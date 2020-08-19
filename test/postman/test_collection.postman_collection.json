@@ -1,21 +1,46 @@
 {
 	"info": {
-		"_postman_id": "57d747a0-a35c-40b8-8cfc-ff0a75ba99ef",
+		"_postman_id": "38ead0e2-f68b-4238-87e8-1464b675b58b",
 		"name": "test_collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
+		{
+			"name": "Demo Data Initialization",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://167.99.70.176:8080/api/v1/init",
+					"protocol": "http",
+					"host": [
+						"167",
+						"99",
+						"70",
+						"176"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"init"
+					]
+				}
+			},
+			"response": []
+		},
 		{
 			"name": "Add Log",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "8275716f-a515-4751-8f74-9892e2a236ee",
+						"id": "0e29addb-7d44-4c12-805f-479003ce7b30",
 						"exec": [
 							"pm.test(\"Status code is 201\", function () {\r",
 							"    pm.response.to.have.status(201);\r",
-							"});"
+							"});\r",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -24,6 +49,15 @@
 			"request": {
 				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"admin_no\": 251181,\r\n  \"date_of_event\": \"2020-08-19T08:20:56.453Z\",\r\n  \"employee_no\": 251166,\r\n  \"log_objects\": [\r\n    {\r\n      \"element_name\": \"-\",\r\n      \"event_message\": \"-\",\r\n      \"form_id\": \"001\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "http://167.99.70.176:8080/api/v1/log",
 					"protocol": "http",
@@ -49,7 +83,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "c06ae0fb-7b98-4e73-87ed-9fe9448f25a6",
+						"id": "63324229-fb43-4fb4-83d8-70b8db086fef",
 						"exec": [
 							"pm.test(\"Status code is 200\", function() {\r",
 							"    pm.response.to.have.status(200);\r",
@@ -65,7 +99,7 @@
 							"    });\r",
 							"pm.test(\"Show Employee Position\", function () {\r",
 							"    var jsonData = pm.response.json() \r",
-							"        pm.expect(jsonData.content[0].employee.position).to.eql(\"Junior frontend developer\");  \r",
+							"        pm.expect(jsonData.content[0].employee.position).to.eql(\"Junior Front End Developer\");  \r",
 							"    });\r",
 							"pm.test(\"Show Employee Email\", function () {\r",
 							"    var jsonData = pm.response.json() \r",
@@ -73,7 +107,7 @@
 							"    });\r",
 							"pm.test(\"Show Employee Phone Number\", function () {\r",
 							"    var jsonData = pm.response.json() \r",
-							"        pm.expect(jsonData.content[0].employee.phone).to.eql(\"0876543210\");  \r",
+							"        pm.expect(jsonData.content[0].employee.phone).to.eql(\"+66876543210\");  \r",
 							"    });\r",
 							"pm.test(\"Show Employee Passport\", function () {\r",
 							"    var jsonData = pm.response.json() \r",
@@ -91,7 +125,7 @@
 							"\r",
 							"pm.test(\"Show Admin ID\", function () {\r",
 							"    var jsonData = pm.response.json() \r",
-							"        pm.expect(jsonData.content[0].admin.id).to.eql(\"5f363c2ac138253b3e9b3d3c\");  \r",
+							"        pm.expect(jsonData.content[0].admin.id !== undefined);  \r",
 							"    });\r",
 							"pm.test(\"Show Admin Email\", function () {\r",
 							"    var jsonData = pm.response.json() \r",
@@ -146,10 +180,15 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "e5379b2b-3dc5-43f9-b563-a0ac1615ea25",
+						"id": "f6bff14f-f826-4f6f-a4fb-658bd8cf6672",
 						"exec": [
-							"pm.test(\"Status code is 201\", function () {\r",
-							"    pm.response.to.have.status(201);\r",
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id !== undefined);\r",
 							"});\r",
 							""
 						],
@@ -194,23 +233,80 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "0a7f8aa0-8a63-4e39-9268-59c70f48ccf2",
+						"id": "3ac8ad09-29fc-4f13-b94f-4e2099b51e33",
 						"exec": [
 							"pm.test(\"Status code is 200\", function() {\r",
 							"    pm.response.to.have.status(200);\r",
-							"});"
+							"});\r",
+							"\r",
+							"pm.test(\"Show Employee First name\", function () {\r",
+							"    var jsonData = pm.response.json() \r",
+							"        pm.expect(jsonData.firstname).to.eql(\"Hasaneeya\");  \r",
+							"    });\r",
+							"pm.test(\"Show Employee Last name\", function () {\r",
+							"    var jsonData = pm.response.json() \r",
+							"        pm.expect(jsonData.lastname).to.eql(\"Kaenthram\");  \r",
+							"    });\r",
+							"pm.test(\"Show Employee Position\", function () {\r",
+							"    var jsonData = pm.response.json() \r",
+							"        pm.expect(jsonData.position).to.eql(\"Junior Front End Developer\");  \r",
+							"    });\r",
+							"pm.test(\"Show Employee Email\", function () {\r",
+							"    var jsonData = pm.response.json() \r",
+							"        pm.expect(jsonData.email).to.eql(\"hasaneeya.kaenthram@allianz.com\");  \r",
+							"    });\r",
+							"pm.test(\"Show Employee Phone Number\", function () {\r",
+							"    var jsonData = pm.response.json() \r",
+							"        pm.expect(jsonData.phone).to.eql(\"+66876543210\");  \r",
+							"    });\r",
+							"pm.test(\"Show Employee Passport\", function () {\r",
+							"    var jsonData = pm.response.json() \r",
+							"        pm.expect(jsonData.passport).to.eql(\"1234567890123\");  \r",
+							"    });\r",
+							"pm.test(\"Show Employee Status\", function () {\r",
+							"    var jsonData = pm.response.json() \r",
+							"        pm.expect(jsonData.status).to.eql(true);  \r",
+							"    });\r",
+							"pm.test(\"Show Employee Number\", function () {\r",
+							"    var jsonData = pm.response.json() \r",
+							"        pm.expect(jsonData.employee_no).to.eql(251182);  \r",
+							"    });\r",
+							""
 						],
 						"type": "text/javascript"
 					}
 				}
 			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "สำหรับส่งข้อมูลเข้า Edit Form",
+					"raw": "http://167.99.70.176:8080/api/v1/employee/251182",
+					"protocol": "http",
 					"host": [
-						"สำหรับส่งข้อมูลเข้า Edit Form"
+						"167",
+						"99",
+						"70",
+						"176"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"employee",
+						"251182"
 					]
 				}
 			},
@@ -222,7 +318,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "8d90b20e-ae57-49e4-897a-83323f69eeb2",
+						"id": "d1e74486-2bb3-4700-98ba-89e71f4f08d6",
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
@@ -235,6 +331,15 @@
 			"request": {
 				"method": "PUT",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstname\": \"Neyaa\",\r\n    \"lastname\": \"Kaenthram\",\r\n    \"position\": \"Junior Front End Developer\",\r\n    \"email\": \"hasaneeya.kaenthram@allianz.com\",\r\n    \"phone\": \"+66876543210\",\r\n    \"passport\": \"1234567890123\",\r\n    \"status\": true,\r\n    \"employee_no\": 251182,\r\n    \"start_date\": \"2020-08-17T16:22:59.713\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "http://167.99.70.176:8080/api/v1/employee/251182",
 					"protocol": "http",
@@ -261,7 +366,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "dda83cd3-1019-4cfa-a20e-d1ed3a3d7068",
+						"id": "a73eade6-d3ec-4076-a985-4a3e40cc47fa",
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
