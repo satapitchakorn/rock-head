@@ -14,7 +14,7 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class LogPageComponent implements OnInit {
   formIdFilter = 'All';
-  options = ['All', '001', '002', '003'];
+  options = [{ id: 'All', name: 'All' }, { id: '001', name: 'Add' }, { id: '002', name: 'Modify' }, { id: '003', name: 'Remove' }];
   column = ['id', 'event_message', 'form_id', 'by', 'date_time', 'element_name']
   contents: ContentModel;
   listLogModel: LogDisplay[] = [];
@@ -37,14 +37,17 @@ export class LogPageComponent implements OnInit {
       });
       this.dataSource = new MatTableDataSource(this.listLogModel);
       this.dataSource.paginator = this.pagiantor;
+      this.dataSource.filterPredicate =
+        (data: LogDisplay, filter: string) => data.log_objects.form_id.indexOf(filter) != -1;
     });
   }
-  // filter(filterString: string): void {
-  //   if (filterString === 'All') {
-  //     this.listLogModel = this.logTmp;
-  //   } else {
-  //     this.listLogModel = this.logTmp.filter((x: LogDisplay) => x.log_objects.form_id === filterString);
-  //   }
-  //   console.log(this.listLogModel);
-  // }
+  filter(): void {
+    if (this.formIdFilter === 'All') {
+      this.dataSource.filter = '';
+    } else {
+      this.formIdFilter = this.formIdFilter.trim(); // Remove whitespace
+      this.formIdFilter = this.formIdFilter.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+      this.dataSource.filter = this.formIdFilter;
+    }
+  }
 }

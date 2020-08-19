@@ -17,18 +17,9 @@ table {
 
 th, td {
   padding: 8px 16px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 th {
   background: #eee;
-}
-
-th:not(:last-child), td:not(:last-child) {
-  border-right: 1px solid #000;
-}
-
-tbody tr:hover {
-  cursor: pointer;
-  background-color: skyblue;
 }

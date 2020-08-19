@@ -43,7 +43,7 @@
             <input type="text" class="form-control" id="inputFirstname" placeholder="" formControlName="firstname"
               value="" required />
             <div class="invalid-feedback">
-              Invalid Firstname is required.
+              Please enter Firstname.
             </div>
           </div>
 
@@ -53,10 +53,11 @@
             <input type="text" class="form-control" id="inputLastname" placeholder="" formControlName="lastname"
               value="" required />
             <div class="invalid-feedback">
-              Invalid Lastname is required.
+              Please enter Lastname.
             </div>
           </div>
         </div>
+
         <div class="row">
           <div class="col-md-6 mb-3">
             <div class="form-group">
@@ -65,18 +66,18 @@
               <select data-placeholder="Choose a Position" class="form-control" tabindex="2" formControlName="position"
                 id="selectPosition" required>
                 <option value=""></option>
-                <option value="Junior Front End Developer">Junior Front End Developer</option>
-                <option value="Junior Back End Developer">Junior Back End Developer</option>
-                <option value="Junior QA">Junior QA</option>
-                <option value="Project Manager">Project Manager</option>
-                <option value="Business Analysis">Business Analysis</option>
-                <option value="Scrum Master">Scrum Master</option>
+                <option id="positionFE" value="Junior Front End Developer">Junior Front End Developer</option>
+                <option id="positionBE" value="Junior Back End Developer">Junior Back End Developer</option>
+                <option id="positionQA" value="Junior QA">Junior QA</option>
+                <option id="positionPM" value="Project Manager">Project Manager</option>
+                <option id="positionBA" value="Business Analysis">Business Analysis</option>
+                <option id="positionSM" value="Scrum Master">Scrum Master</option>
               </select>
-            </div>
             <div class="invalid-feedback">
-              Invalid Position is required.
+              Please enter Position.
             </div>
           </div>
+        </div>
 
           <div class="col-md-6 mb-3">
             <div class="form-group">
@@ -99,7 +100,7 @@
               <input type="email" class="form-control" id="inputEmail" placeholder="firstname.lastname@allianz.com"
                 formControlName="email" required />
               <div class="invalid-feedback">
-                Please enter email.
+                Please enter Email.
               </div>
             </div>
           </div>

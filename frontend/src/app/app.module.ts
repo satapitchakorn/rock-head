@@ -10,11 +10,13 @@ import { EventActionModifyPageComponent } from './employee/components/event-acti
 import { EventActionRemovePageComponent } from './employee/components/event-action-remove-page/event-action-remove-page.component';
 import { LogPageComponent } from './log/components/log-page/log-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormIdPipe } from './log/pipe/form-id.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { FormIdPipe} from './log/pipe/form-id.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +37,8 @@ import { MatTableModule } from '@angular/material/table';
     NgxPaginationModule,
     BrowserAnimationsModule,
     MatPaginatorModule,
-    MatTableModule
+    MatTableModule,
+    Ng2SearchPipeModule,
   ],
   providers: [FormIdPipe],
   bootstrap: [AppComponent]
