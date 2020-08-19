@@ -2,7 +2,7 @@
 Resource        log-keywords.robot
 Library         SeleniumLibrary
 Library         DateTime
-Suite Teardown  Close Chrome Browser
+Suite Teardown  Close Browser
 
 *** Test Cases ***
 ADD TEST CASE
@@ -12,8 +12,8 @@ ADD TEST CASE
     Check the details of new user                                         1                   Add Ratthawan Sermsuwannasak successful.            001                             narongrit.rodphroboon@allianz.com      
 MODIFY TEST CASE    
     Choose MODIFY menu for edit user details                            
-    Edit user details                                                                                     Hasaneeya       Kaenthram               Junior Back End Developer       18/03/2020      Hasaneeya.Kaenthram1@allianz.com   +66845545432
-    Check the details of user who was fixed                               1                   Modify firstname from Hasaneeya to Hasaneeyaa       002                             narongrit.rodphroboon@allianz.com
+    Edit user details                                                                                     Hasaneeyamodify        +66845545432
+    Check the details of user who was modified                               1                   Modify firstname from Hasaneeya to Hasaneeyamodify       002                             narongrit.rodphroboon@allianz.com
 DELETE TEST CASE                          
     Choose DELETE menu for change user status to Inactive                    
     Change user status to Inactive                                        
