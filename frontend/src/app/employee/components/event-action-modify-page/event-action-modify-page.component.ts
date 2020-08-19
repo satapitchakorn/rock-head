@@ -95,7 +95,6 @@ export class EventActionModifyPageComponent implements OnInit {
 
   onSubmit(): void {
     this.modify = this.compareString();
-    this.generateEventMessage();
     if (this.form.valid) {
       const firstname = this.form.value.firstname;
       const lastname = this.form.value.lastname;
