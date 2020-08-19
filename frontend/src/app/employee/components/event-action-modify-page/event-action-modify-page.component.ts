@@ -191,7 +191,7 @@ export class EventActionModifyPageComponent implements OnInit {
       if (data.isModify) {
         this.message.push({
           element_name: data.element_name,
-          event_message: `Modify ${data.element_name} from ${this.formTmp.get(data.element_name).value} to ${this.form.get(data.element_name).value}`,
+          event_message: `Modify ${data.element_name} from ${this.formTmp.get(data.element_name).value} to ${this.form.get(data.element_name).value}.`,
           form_id: '002'
         });
       }
