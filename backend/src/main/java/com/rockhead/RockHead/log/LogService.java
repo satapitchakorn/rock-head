@@ -53,7 +53,7 @@ public class LogService {
         return logRepository.save(data);
     }
 
-    public Page<LogModel> findAllWithOperationAndPageable(Pageable pageable) {
+    public Page<LogModel> findAllWithOperation() {
         LookupOperation lookupEmployee = LookupOperation.newLookup()
                 .from("employee")
                 .localField("employeeNo")
@@ -66,10 +66,8 @@ public class LogService {
                 .foreignField("adminNo")
                 .as("admin");
         Aggregation aggregation = Aggregation.newAggregation(lookupEmployee, lookupAdmin,
-                Aggregation.skip(pageable.getPageNumber() * pageable.getPageSize()),
-                Aggregation.limit(pageable.getPageSize()),
                 Aggregation.sort(Sort.Direction.DESC, "dateOfEvent"));
         List<LogModel> results = mongoTemplate.aggregate(aggregation, "log", LogModel.class).getMappedResults();
-        return new PageImpl<>(results, pageable, pageable.getPageSize());
+        return new PageImpl<>(results);
     }
 }

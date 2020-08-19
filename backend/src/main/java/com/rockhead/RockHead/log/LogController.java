@@ -19,10 +19,8 @@ public class LogController {
     private LogService logService;
 
     @GetMapping("")
-    public ResponseEntity<?> findAll(@RequestParam(defaultValue = "1", required = false) int page,
-                                     @RequestParam(defaultValue = "15", required = false) int item_per_page) {
-        Pageable pageable = PageRequest.of(--page, item_per_page);
-        return new ResponseEntity<>(logService.findAllWithOperationAndPageable(pageable), HttpStatus.OK);
+    public ResponseEntity<?> findAll() {
+        return new ResponseEntity<>(logService.findAllWithOperation(), HttpStatus.OK);
     }
 
     @PostMapping("")
