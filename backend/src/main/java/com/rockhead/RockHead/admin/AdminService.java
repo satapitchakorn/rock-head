@@ -10,7 +10,7 @@ public class AdminService {
 
     public void initDataAdmin() {
         adminRepository.deleteAll();
-        createAdmin(251181,"narongit.rodphroboon@allianz.com");
+        createAdmin(251181,"narongrit.rodphroboon@allianz.com");
         createAdmin(251194,"supachai.uthawisan@allianz.com");
     }
 
