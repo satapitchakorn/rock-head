@@ -56,23 +56,13 @@
     </ng-container>
 
     <ng-container matColumnDef="element_name">
-<<<<<<< HEAD
-      <th mat-header-cell *matHeaderCellDef class="row-field-name" style="text-align: right;">Field Name</th>
+      <th mat-header-cell *matHeaderCellDef class="row-field-name" style="text-align: center ;font-size: 1em;">Field Name</th>
       <th mat-cell *matCellDef="let element"><a
           [ngStyle]="{'color': element.log_objects.form_id == '001'? 'green':(element.log_objects.form_id == '002'? '#FFD000': '#B30606')}">
           {{element.log_objects.element_name}} </a></th>
-=======
-      <th mat-header-cell *matHeaderCellDef class="row-field-name" style="text-align: center;font-size: 1em;">Field Name</th>
-      <th mat-cell *matCellDef="let element">
-        <a
-          [ngStyle]="{'color': element.log_objects.form_id == '001'? 'green':(element.log_objects.form_id == '002'? '#FFD000': '#B30606')}">{{element.log_objects.element_name}} 
-        </a>
-      </th>
->>>>>>> d7b2eb5ecd2c956a08fd70ff18b8f954d8f56bbd
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="column"></tr>
     <tr mat-row *matRowDef="let row; columns:column;"></tr>
-
   </table>
 </div>
 </div>
