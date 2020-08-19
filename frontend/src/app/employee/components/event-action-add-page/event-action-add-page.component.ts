@@ -6,7 +6,7 @@ import { EmployeeService } from '../../services/employee.service';
 import { LogServiceService } from '@app/log/services/log-service.service';
 import { LogBody } from '@app/log/models/log-body';
 import * as moment from 'moment';
-//Position Filter
+import { Router } from '@angular/router';
 import { Observable, } from 'rxjs';
 
 @Component({
@@ -48,7 +48,7 @@ term: string;
 
 //End Position Filter
 
-  constructor(private fb: FormBuilder, private employeeService: EmployeeService, private logService: LogServiceService) {
+  constructor(private fb: FormBuilder, private employeeService: EmployeeService, private logService: LogServiceService, private router: Router) {
     this.form = fb.group({
       passport: new FormControl('', Validators.required),
       employee_no: new FormControl('', Validators.required),
@@ -95,8 +95,12 @@ term: string;
                 if (response.status) {
                   Swal.fire({
                     title: 'Successful',
-                    html: `${name} has been saved`,
-                    icon: 'success'
+                    html: `${name} has been saved<br/><br/><b>Redirecting to log page...<b> `,
+                    icon: 'success',
+                    timer: 1500,
+                    showConfirmButton: false
+                  }).then(async () => {
+                    this.router.navigateByUrl('/log');
                   });
                 } else {
                   Swal.fire({

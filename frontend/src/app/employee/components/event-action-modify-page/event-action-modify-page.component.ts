@@ -8,6 +8,7 @@ import { LogBody } from '@app/log/models/log-body';
 import * as moment from 'moment';
 import { EventModel } from '@app/log/models/event-model';
 import * as clone from 'clone';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-event-action-modify-page',
@@ -53,7 +54,7 @@ export class EventActionModifyPageComponent implements OnInit {
     }
   ];
 
-  constructor(private fb: FormBuilder, private employeeService: EmployeeService, private logService: LogServiceService) {
+  constructor(private fb: FormBuilder, private employeeService: EmployeeService, private logService: LogServiceService, private router: Router) {
     this.form = fb.group({});
   }
 
@@ -135,11 +136,15 @@ export class EventActionModifyPageComponent implements OnInit {
               };
               this.logService.addLog(this.log).subscribe(data => {
                 if (data.status === 201) {
-                  Swal.fire(
-                    'Successful!',
-                    'Your file has been modified.',
-                    'success'
-                  );
+                  Swal.fire({
+                    title: 'Successful',
+                    html: `Your file has been modified<br/><br/><b>Redirecting to log page...<b> `,
+                    icon: 'success',
+                    timer: 1500,
+                    showConfirmButton: false
+                  }).then(async () => {
+                    this.router.navigateByUrl('/log');
+                  });
                 } else {
                   Swal.fire(
                     'Error',
