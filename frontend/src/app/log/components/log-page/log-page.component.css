@@ -1,33 +1,25 @@
-.logs {
-    table-layout: fixed;
-    width: 100%;
-    white-space: nowrap;
-  }
-  .logs td {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  /* Column widths are based on these cells */
-  .row-No {
-    width: 5%;
-  }
-  .row-event-massage {
-    width: 30%;
-  }
-  .row-form {
-    width: 5%;
-  }
-  .row-by {
-    width: 25%;
-  }
-  .row-date-time {
-    width: 20%;
-  }
-  .row-element-name {
-    width: 15%;
-  }
-  .text-left {
-    text-align: center;
-  }
+.tableFixHead {
+  overflow-y: auto;
+  height: 100px;
+}
+
+.tableFixHead thead th {
+  position: sticky;
+  top: 0;
+}
+
+/* Just common table stuff. Really. */
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 8px 16px;
+  /* border: 1px solid black; */
+}
+
+th {
+  background: #eee;
+}

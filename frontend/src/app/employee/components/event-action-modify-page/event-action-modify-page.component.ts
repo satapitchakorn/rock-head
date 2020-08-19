@@ -8,6 +8,7 @@ import { LogBody } from '@app/log/models/log-body';
 import * as moment from 'moment';
 import { EventModel } from '@app/log/models/event-model';
 import * as clone from 'clone';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-event-action-modify-page',
@@ -53,7 +54,7 @@ export class EventActionModifyPageComponent implements OnInit {
     }
   ];
 
-  constructor(private fb: FormBuilder, private employeeService: EmployeeService, private logService: LogServiceService) {
+  constructor(private fb: FormBuilder, private employeeService: EmployeeService, private logService: LogServiceService, private router: Router) {
     this.form = fb.group({});
   }
 
@@ -94,75 +95,95 @@ export class EventActionModifyPageComponent implements OnInit {
 
   onSubmit(): void {
     this.modify = this.compareString();
-    if (this.form.valid) {
-      const firstname = this.form.value.firstname;
-      const lastname = this.form.value.lastname;
-      const position = this.form.value.position;
-      const start_date = this.form.value.start_date;
-      const email = this.form.value.email;
-      const phone = this.form.value.phone;
-      Swal.fire({
-        title: 'Are you sure?',
-        html: `
-          Firstname: ${firstname}
-          <br/>
-          Lastname: ${lastname}
-          <br/>
-          Position: ${position}
-          <br/>
-          Start Date: ${start_date}
-          <br/>
-          Email: ${email}
-          <br/>
-          Phone: ${phone}
-        `,
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes',
-        cancelButtonText: 'No'
-      }).then((result) => {
-        if (result.value) {
-          this.submitted = true;
-          this.employeeService.modifyEmployee(this.form.value.employee_no, this.form.value).subscribe(data => {
-            if (data.status === 200) {
-              this.log = {
-                employee_no: this.form.value.employee_no,
-                admin_no: this.logService.getAdminNo(),
-                date_of_event: moment().format('YYYY-MM-DDTHH:mm:ss.SSS'),
-                log_objects: this.generateEventMessage(),
-              };
-              this.logService.addLog(this.log).subscribe(data => {
-                if (data.status === 201) {
-                  Swal.fire(
-                    'Successful!',
-                    'Your file has been modified.',
-                    'success'
-                  );
-                } else {
-                  Swal.fire(
-                    'Error',
-                    'Something wen\'t wrong.',
-                    'error'
-                  );
-                }
-              }
-              );
-            } else {
-              Swal.fire(
-                'Error',
-                'Something wen\'t wrong.',
-                'error'
-              );
-            }
-          });
+    let fireMessage = '';
+    for (let i = 0; i < this.modify.length; i++) {
+      if (this.modify[i].isModify) {
+        const firstname = this.form.value.firstname;
+        const lastname = this.form.value.lastname;
+        const position = this.form.value.position;
+        const start_date = this.form.value.start_date;
+        const email = this.form.value.email;
+        const phone = this.form.value.phone;
+        switch (i) {
+          case 0: {
+            fireMessage = fireMessage.concat(`First name: ${firstname}<br/><br/>`);
+            break;
+          }
+          case 1: {
+            fireMessage = fireMessage.concat(`Last name: ${lastname}<br/><br/>`);
+            break;
+          }
+          case 2: {
+            fireMessage = fireMessage.concat(`Position: ${position}<br/><br/>`);
+            break;
+          }
+          case 3: {
+            fireMessage = fireMessage.concat(`Start date: ${start_date}<br/><br/>`);
+            break;
+          }
+          case 4: {
+            fireMessage = fireMessage.concat(`Email: ${email}<br/><br/>`);
+            break;
+          }
+          case 5: {
+            fireMessage = fireMessage.concat(`Phone: ${phone}<br/><br/>`);
+            break;
+          }
+          default: { break; }
         }
-      });
+        fireMessage = fireMessage.slice(0, -5);
+      }
     }
-    else {
-      this.validated = true;
-    }
+    Swal.fire({
+      title: 'Are you sure?',
+      html: fireMessage,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No'
+    }).then((result) => {
+      if (result.value) {
+        this.submitted = true;
+        this.employeeService.modifyEmployee(this.form.value.employee_no, this.form.value).subscribe(data => {
+          if (data.status === 200) {
+            this.log = {
+              employee_no: this.form.value.employee_no,
+              admin_no: this.logService.getAdminNo(),
+              date_of_event: moment().format('YYYY-MM-DDTHH:mm:ss.SSS'),
+              log_objects: this.generateEventMessage(),
+            };
+            this.logService.addLog(this.log).subscribe(data => {
+              if (data.status === 201) {
+                Swal.fire({
+                  title: 'Successful',
+                  html: `Your file has been modified<br/><br/><b>Redirecting to log page...<b> `,
+                  icon: 'success',
+                  timer: 1500,
+                  showConfirmButton: false
+                }).then(async () => {
+                  this.router.navigateByUrl('/log');
+                });
+              } else {
+                Swal.fire(
+                  'Error',
+                  'Something wen\'t wrong.',
+                  'error'
+                );
+              }
+            }
+            );
+          } else {
+            Swal.fire(
+              'Error',
+              'Something wen\'t wrong.',
+              'error'
+            );
+          }
+        });
+      }
+    });
   }
   generateEventMessage(): EventModel[] {
     this.message = [];
