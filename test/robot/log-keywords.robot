@@ -10,7 +10,7 @@ ${URL_init}     http://167.99.70.176:8080/api/v1/init
 
 *** Keywords ***
 Open Browser and get into link
-    Open Browser                    ${URL_init}          Chrome          
+    Open Browser                    ${URL_init}          Chrome        remote_url=http://206.189.154.4:4444/wd/hub  desired_capabilities=browserName:chrome
     Go To                           ${URL_form}
     Maximize Browser Window
     # Set Selenium Speed              0.5
