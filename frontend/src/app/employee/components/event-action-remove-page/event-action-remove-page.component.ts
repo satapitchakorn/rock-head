@@ -4,6 +4,8 @@ import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
 import { EmployeeService } from '../../services/employee.service';
 import { LogServiceService } from '@app/log/services/log-service.service';
 import * as moment from 'moment';
+import { LogBody } from '@app/log/models/log-body';
+
 @Component({
   selector: 'app-event-action-remove-page',
   templateUrl: './event-action-remove-page.component.html',
@@ -11,8 +13,11 @@ import * as moment from 'moment';
 })
 export class EventActionRemovePageComponent implements OnInit {
 
-  form: FormGroup
+  form: FormGroup;
   type = ""
+  submitted = false;
+  log: LogBody;
+
   constructor(private fb: FormBuilder, private employeeService: EmployeeService, private logService: LogServiceService) {
     this.form = fb.group({})
   }
@@ -38,7 +43,7 @@ export class EventActionRemovePageComponent implements OnInit {
   }
 
 
-  removeEmployeeAlert() {
+  onSubmit() {
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -49,15 +54,45 @@ export class EventActionRemovePageComponent implements OnInit {
       confirmButtonText: 'Yes',
       cancelButtonText: 'No',
     }).then((result) => {
-      this.employeeService.removeEmployee(this.form.value.employee_no).subscribe((response) => {
-        if (result.value) {
-          Swal.fire({
-            title: 'Successful',
-            html: `This employee has been removed`,
-            icon: 'success'
-          })
-        }
-      });
+      if (result.value) {
+        this.submitted = true;
+        this.employeeService.removeEmployee(this.form.value.employee_no).subscribe(data => {
+          if (data.status === 200) {
+            this.log = {
+              employee_no: this.form.value.employee_no,
+              admin_no: this.logService.getAdminNo(),
+              date_of_event: moment().format('YYYY-MM-DDTHH:mm:ss.SSS'),
+              log_objects: [{
+                form_id: '003',
+                event_message: `Remove ${this.form.value.firstname} ${this.form.value.lastname} successful.`,
+                element_name: '-'
+              }],
+            };
+            this.logService.addLog(this.log).subscribe((response) => {
+              console.log(response);
+              if (response.status) {
+                Swal.fire({
+                  title: 'Successful',
+                  html: `This employee has been removed`,
+                  icon: 'success'
+                });
+              } else {
+                Swal.fire({
+                  title: 'Error',
+                  html: `Something went wrong.`,
+                  icon: 'error'
+                });
+              }
+            });
+          } else {
+            Swal.fire({
+              title: 'Error',
+              html: `Something went wrong.`,
+              icon: 'error'
+            });
+          }
+        });
+      }
     })
   }
 }

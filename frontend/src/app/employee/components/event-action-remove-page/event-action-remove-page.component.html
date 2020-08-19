@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col">
             <h4 class="mb-3"></h4>
-            <form [formGroup]="form" (ngSubmit)="removeEmployeeAlert()" class="needs-validation" novalidate
+            <form [formGroup]="form" (ngSubmit)="onSubmit()" class="needs-validation" novalidate
                 *ngIf="form.value.passport">
                 <div class="row">
                     <div class="col-sm-12">
@@ -35,7 +35,7 @@
                     <div class="form-group">
                         <label for="inputEmployeeId">Employee ID</label>
                         <input type="number" class="form-control" id="inputEmployeeId" placeholder="000000"
-                            formControlName="employee_no" disabled>
+                            formControlName="employee_no">
                         <div class="invalid-feedback">
                             Please enter employee ID.
                         </div>
@@ -46,7 +46,7 @@
                     <div class="col-md-6 mb-3">
                         <label for="inputFirstname">Firstname</label>
                         <input type="text" class="form-control" id="inputFirstname" placeholder=""
-                            formControlName="firstname" value="" disabled>
+                            formControlName="firstname" value="">
                         <div class="invalid-feedback">
                             Invalid Firstname is required.
                         </div>
@@ -55,7 +55,7 @@
                     <div class="col-md-6 mb-3">
                         <label for="inputLastname">Lastname</label>
                         <input type="text" class="form-control" id="inputLastname" placeholder=""
-                            formControlName="lastname" value="" disabled>
+                            formControlName="lastname" value="">
                         <div class="invalid-feedback">
                             Invalid Lastname is required.
                         </div>
@@ -77,7 +77,7 @@
                         <div class="form-group">
                             <label for="inputPosition">Position</label>
                             <select formControlName="position" id="selectPosition" data-placeholder="Choose a Position"
-                                class="form-control" tabindex="2" disabled>
+                                class="form-control" tabindex="2">
                                 <option value=""></option>
                                 <option value="Junior Front End Developer">Junior Front End Developer</option>
                                 <option value="Junior Back End Developer">Junior Back End Developer</option>
@@ -93,7 +93,7 @@
                         <div class="form-group">
                             <label for="inputStartDate">Start Date</label>
                             <input class="form-control" type="date" data-date-format="dd/mm/yyyy" id="inputStartDate"
-                                formControlName="start_date" disabled>
+                                formControlName="start_date">
                             <div class="invalid-feedback">
                                 Please enter Start Date.
                             </div>
@@ -106,7 +106,7 @@
                         <div class="form-group">
                             <label for="inputEmail">Email</label>
                             <input type="email" class="form-control" id="inputEmail"
-                                placeholder="firstname.lastname@allianz.com" formControlName="email" disabled>
+                                placeholder="firstname.lastname@allianz.com" formControlName="email">
                             <div class="invalid-feedback">
                                 Please enter email.
                             </div>
@@ -117,8 +117,7 @@
                         <div class="form-group">
                             <label for="inputPhone">Phone</label>
                             <input type="tel" placeholder="+66012345678" pattern="\+[0-9]{2}[0-9]{9}"
-                                class="form-control" name="inputPhoneNumber" id="inputPhone" formControlName="phone"
-                                disabled>
+                                class="form-control" name="inputPhoneNumber" id="inputPhone" formControlName="phone">
                             <div class="invalid-feedback">
                                 Please enter phone number like +00123456789.
                             </div>
