@@ -4,15 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.LookupOperation;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 
 @Service
@@ -67,10 +65,11 @@ public class LogService {
                 .localField("adminNo")
                 .foreignField("adminNo")
                 .as("admin");
-        Aggregation aggregation = Aggregation.newAggregation(lookupEmployee, lookupAdmin, Aggregation.skip(pageable.getPageNumber() * pageable.getPageSize()),
-                Aggregation.limit(pageable.getPageSize()));
+        Aggregation aggregation = Aggregation.newAggregation(lookupEmployee, lookupAdmin,
+                Aggregation.skip(pageable.getPageNumber() * pageable.getPageSize()),
+                Aggregation.limit(pageable.getPageSize()),
+                Aggregation.sort(Sort.Direction.DESC, "dateOfEvent"));
         List<LogModel> results = mongoTemplate.aggregate(aggregation, "log", LogModel.class).getMappedResults();
-        
         return new PageImpl<>(results, pageable, pageable.getPageSize());
     }
 }
