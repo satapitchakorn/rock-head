@@ -14,7 +14,7 @@
 </div>
 <br />
 <div class="table-responsive tableFixHead container-fluid" style="overflow-y:auto; height: 500px;">
-  <table mat-table [dataSource]="dataSource" style="text-align: center;">
+  <table mat-table [dataSource]="dataSource" style="text-align: center;" id="table_log">
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef>ID</th>
       <th mat-cell *matCellDef="let i = index;let element"><a
