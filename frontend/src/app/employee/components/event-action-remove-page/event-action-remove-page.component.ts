@@ -79,7 +79,7 @@ export class EventActionRemovePageComponent implements OnInit {
                   timer: 1500,
                   showConfirmButton: false
                 }).then(async () => {
-                  this.router.navigateByUrl('/log');
+                  this.router.navigateByUrl('/logs');
                 });
               } else {
                 Swal.fire({
