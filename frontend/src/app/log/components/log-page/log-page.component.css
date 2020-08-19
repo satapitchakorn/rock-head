@@ -35,12 +35,12 @@ th {
 }
 
 .row-by{
-  width: 25%;
+  width: 20%;
 }
 .row-date-time{
   width: 20%;
 }
 .row-field-name{
-  width: 10%;
+  width: 15%;
   text-align: center !important;
 }
