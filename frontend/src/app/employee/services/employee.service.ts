@@ -31,7 +31,7 @@ export class EmployeeService {
   modifyEmployee(id, employee: any): Observable<HttpResponse<Employee>> {
     return this.http.put<Employee>(this.URL + `/${id}`, employee, { observe: 'response' });
   }
-  removeEmployee(id): Observable<any> {
-    return this.http.delete<Employee>(this.URL + `/${id}`);
+  removeEmployee(id): Observable<HttpResponse<any>> {
+    return this.http.delete<Employee>(this.URL + `/${id}`, { observe: 'response' });
   }
 }
