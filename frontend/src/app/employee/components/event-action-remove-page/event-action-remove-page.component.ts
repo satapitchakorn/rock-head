@@ -5,6 +5,7 @@ import { EmployeeService } from '../../services/employee.service';
 import { LogServiceService } from '@app/log/services/log-service.service';
 import * as moment from 'moment';
 import { LogBody } from '@app/log/models/log-body';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-event-action-remove-page',
@@ -18,7 +19,7 @@ export class EventActionRemovePageComponent implements OnInit {
   submitted = false;
   log: LogBody;
 
-  constructor(private fb: FormBuilder, private employeeService: EmployeeService, private logService: LogServiceService) {
+  constructor(private fb: FormBuilder, private employeeService: EmployeeService, private logService: LogServiceService, private router: Router) {
     this.form = fb.group({})
   }
 
@@ -73,8 +74,12 @@ export class EventActionRemovePageComponent implements OnInit {
               if (response.status) {
                 Swal.fire({
                   title: 'Successful',
-                  html: `This employee has been removed`,
-                  icon: 'success'
+                  html: `This employee has been removed<br/><br/><b>Redirecting to log page...<b>`,
+                  icon: 'success',
+                  timer: 1500,
+                  showConfirmButton: false
+                }).then(async () => {
+                  this.router.navigateByUrl('/log');
                 });
               } else {
                 Swal.fire({
