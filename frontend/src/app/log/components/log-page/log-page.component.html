@@ -3,69 +3,62 @@
 </div>
 
 <div class="container-fluid">
-<div class="row">
-  <div class="col-md-4 offset-md-4" style="text-align:right; font-size: 1.2em;">Filter Form IDs:</div>
-  <div class="col-md-4 offset-md-4 ml-auto">
-    <select id="selectFilterLogs" class="form-control" [(ngModel)]="formIdFilter" (click)="filter()">
-      <ng-container *ngFor="let item of options">
-        <option id="{{item.name}}+Log" value={{item.id}}>{{item.name}}</option>
-      </ng-container>
-    </select>
+  <div class="row">
+    <div class="col-md-4 offset-md-4" style="text-align:right; font-size: 1.2em;">Filter Form IDs:</div>
+    <div class="col-md-4 offset-md-4 ml-auto">
+      <select id="selectFilterLogs" class="form-control" [(ngModel)]="formIdFilter" (click)="filter()">
+        <ng-container *ngFor="let item of options">
+          <option id="{{item.name}}+Log" value={{item.id}}>{{item.name}}</option>
+        </ng-container>
+      </select>
+    </div>
   </div>
-</div>
 </div>
 <br />
 
-<div class="container-fluid">
-  <div class="table-responsive">
-<div class="table table-bordered table-striped" style="overflow-y:auto;">
-  <table mat-table [dataSource]="dataSource" style="text-align: center; " id="table_log">
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef class="row-No" style="font-size: 1em;">ID</th>
-      <th mat-cell *matCellDef="let i = index;let element"><a
-          [ngStyle]="{'color': element.log_objects.form_id == '001'? 'green':(element.log_objects.form_id == '002'? '#FFD000': '#B30606')}">{{i+1}}</a>
-      </th>
-    </ng-container>
-    <ng-container matColumnDef="event_message" >
-      <th mat-header-cell *matHeaderCellDef class="row-event-massage"style="text-align: center;font-size: 1em;">Event Message</th>
-      <th mat-cell *matCellDef="let element"><a
-          [ngStyle]="{'color': element.log_objects.form_id == '001'? 'green':(element.log_objects.form_id == '002'? '#FFD000': '#B30606')}">{{element.log_objects.event_message}}</a>
-      </th>
-    </ng-container>
-    <ng-container matColumnDef="form_id">
-      <th mat-header-cell *matHeaderCellDef class="row-form" style="text-align: center;font-size: 1em;">Form ID</th>
-      <th mat-cell *matCellDef="let element"><a
-          [ngStyle]="{'color': element.log_objects.form_id == '001'? 'green':(element.log_objects.form_id == '002'? '#FFD000': '#B30606')}">{{element.log_objects.form_id}}
-        </a>
-      </th>
-    </ng-container>
-    <ng-container matColumnDef="by">
-      <th mat-header-cell *matHeaderCellDef class="row-by"style="text-align: center;font-size: 1em; ">By</th>
-      <th mat-cell *matCellDef="let element"><a
-          [ngStyle]="{'color': element.log_objects.form_id == '001'? 'green':(element.log_objects.form_id == '002'? '#FFD000': '#B30606')}">{{element.admin.email}}
-        </a>
-      </th>
-    </ng-container>
+<div class="center-body">
+  <table mat-table [dataSource]="dataSource" id="table_log" style="overflow-y:auto;">
     <ng-container matColumnDef="date_time">
-      <th mat-header-cell *matHeaderCellDef class="row-date-time" style="text-align: center;font-size: 1em;">Date</th>
-      <th mat-cell *matCellDef="let element">
+      <th mat-header-cell *matHeaderCellDef class="row-date-time">
+        Date
+      </th>
+      <td mat-cell *matCellDef="let element">
         <a
           [ngStyle]="{'color': element.log_objects.form_id == '001'? 'green':(element.log_objects.form_id == '002'? '#FFD000': '#B30606')}">{{element.date_of_event | date:'medium'}}
         </a>
-      </th>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="event_message">
+      <th mat-header-cell *matHeaderCellDef class="row-event-massage">
+        Event Message</th>
+      <td mat-cell *matCellDef="let element"><a
+          [ngStyle]="{'color': element.log_objects.form_id == '001'? 'green':(element.log_objects.form_id == '002'? '#FFD000': '#B30606')}">{{element.log_objects.event_message}}</a>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="form_id">
+      <th mat-header-cell *matHeaderCellDef class="row-form">Form ID</th>
+      <td mat-cell *matCellDef="let element"><a
+          [ngStyle]="{'color': element.log_objects.form_id == '001'? 'green':(element.log_objects.form_id == '002'? '#FFD000': '#B30606')}">{{element.log_objects.form_id==='001'?'Add':(element.log_objects.form_id ==='002'?'Modify':'Remove')}}
+        </a>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="by">
+      <th mat-header-cell *matHeaderCellDef class="row-by">By</th>
+      <td mat-cell *matCellDef="let element"><a
+          [ngStyle]="{'color': element.log_objects.form_id == '001'? 'green':(element.log_objects.form_id == '002'? '#FFD000': '#B30606')}">{{element.admin.email}}
+        </a>
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="element_name">
-      <th mat-header-cell *matHeaderCellDef class="row-field-name" style="text-align: center ;font-size: 1em;">Field Name</th>
-      <th mat-cell *matCellDef="let element"><a
+      <th mat-header-cell *matHeaderCellDef class="row-field-name">
+        Field Name</th>
+      <td mat-cell *matCellDef="let element"><a
           [ngStyle]="{'color': element.log_objects.form_id == '001'? 'green':(element.log_objects.form_id == '002'? '#FFD000': '#B30606')}">
-          {{element.log_objects.element_name}} </a></th>
+          {{element.log_objects.element_name}} </a></td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="column"></tr>
     <tr mat-row *matRowDef="let row; columns:column;"></tr>
   </table>
 </div>
-</div>
-</div>
-
 <mat-paginator [pageSizeOptions]="[15,20,30]" showFirstLastButtons></mat-paginator>

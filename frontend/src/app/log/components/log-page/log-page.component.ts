@@ -15,7 +15,7 @@ import { MatPaginator } from '@angular/material/paginator';
 export class LogPageComponent implements OnInit {
   formIdFilter = 'All';
   options = [{ id: 'All', name: 'All' }, { id: '001', name: 'Add' }, { id: '002', name: 'Modify' }, { id: '003', name: 'Remove' }];
-  column = ['id', 'event_message', 'form_id', 'by', 'date_time', 'element_name']
+  column = ['date_time', 'event_message', 'form_id', 'by', 'element_name']
   contents: ContentModel;
   listLogModel: LogDisplay[] = [];
   dataSource = new MatTableDataSource();

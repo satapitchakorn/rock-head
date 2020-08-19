@@ -1,46 +1,38 @@
-.tableFixHead {
-  overflow-y: auto;
-  height: 100px;
-}
-
-.tableFixHead thead th {
-  position: sticky;
-  top: 0;
-}
-
-/* Just common table stuff. Really. */
-
 table {
-  border-collapse: collapse;
+  margin: 15px;
   width: 100%;
 }
 
-th, td {
-  padding: 8px 16px;
-  /* border: 1px solid black; */
+.mat-header-cell {
+  background-color: #004a93;
+  color: white;
+  font-weight: bold;
+  border: 1px darkgray solid;
+  padding: 0 24px !important;
+  text-align: center;
 }
 
-th {
-  background: #eee;
+.mat-footer-cell {
+  border: 1px rgba(0, 0, 0, 0.12) solid;
+  padding: 0 24px !important;
+  text-align: right;
 }
 
-.row-No {
-  width: 5%;
-}
-.row-event-massage {
-  width: 35%;
-}
-.row-form{
-  width: 5%;
+.mat-cell {
+  border: 1px rgba(0, 0, 0, 0.12) solid;
+  padding: 0 24px !important;
+  font-size: 1em;
 }
 
-.row-by{
-  width: 20%;
+tr.mat-footer-row {
+  font-weight: bold;
 }
-.row-date-time{
-  width: 20%;
+
+.mat-table-sticky {
+  border-top: 1px solid #e0e0e0;
 }
-.row-field-name{
-  width: 15%;
-  text-align: center !important;
+
+.center-body {
+  justify-content: center;
+  display: flex;
 }
