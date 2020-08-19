@@ -17,18 +17,39 @@ table {
 
 th, td {
   padding: 8px 16px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 th {
   background: #eee;
 }
-
+/* 
 th:not(:last-child), td:not(:last-child) {
-  border-right: 1px solid #000;
-}
+ border-right: 1px solid #000;
+} */
 
 tbody tr:hover {
   cursor: pointer;
   background-color: skyblue;
+}
+
+
+.row-No {
+  width: 5%;
+}
+.row-event-massage {
+  width: 35%;
+}
+.row-form{
+  width: 5%;
+}
+
+.row-by{
+  width: 25%;
+}
+.row-date-time{
+  width: 20%;
+}
+.row-field-name{
+  width: 10%;
 }

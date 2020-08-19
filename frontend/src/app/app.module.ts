@@ -10,6 +10,7 @@ import { EventActionModifyPageComponent } from './employee/components/event-acti
 import { EventActionRemovePageComponent } from './employee/components/event-action-remove-page/event-action-remove-page.component';
 import { LogPageComponent } from './log/components/log-page/log-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormIdPipe} from './log/pipe/form-id.pipe';
 
 @NgModule({
@@ -29,6 +30,7 @@ import { FormIdPipe} from './log/pipe/form-id.pipe';
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
+    Ng2SearchPipeModule,
   ],
   providers: [FormIdPipe],
   bootstrap: [AppComponent]

@@ -25,16 +25,28 @@ export class EventActionAddPageComponent implements OnInit {
 
 
   //Position Filter
-  myControl: FormControl = new FormControl();
+//Way 1
+title = 'custom-search-filter-example';
+searchedKeyword: string;
 
-  options = [
-    'One',
-    'Two',
-    'Three'
-  ];
+filterResultDataSet = [
+  {
+    position: 'Junior Front End Developer',
+  },
+  {
+    position: 'Junior Back End Developer',
+  },
+  {
+    position: 'Junior QA',
+  },
 
-  filteredOptions: Observable<string[]>;
-  //End Position Filter
+]
+//Way 2
+positions = ["" ,"Junior Front End Developer","Junior Back End Developer","Junior QA","Project Manager","Business Analysis","Scrum Master"]
+term: string;
+
+
+//End Position Filter
 
   constructor(private fb: FormBuilder, private employeeService: EmployeeService, private logService: LogServiceService, private router: Router) {
     this.form = fb.group({
@@ -48,8 +60,6 @@ export class EventActionAddPageComponent implements OnInit {
       phone: new FormControl('', Validators.required),
     });
   }
-
-
   ngOnInit(): void {
   }
 
