@@ -2,8 +2,8 @@
 Library         SeleniumLibrary
 
 *** Variables ***
-${URL_form}     http://localhost:4200/form
-${URL_log}      http://localhost:4200/log
+${URL_form}     http://167.99.66.174/form
+${URL_log}      http://167.99.66.174/log
 ${URL_init}     http://167.99.70.176:8080/api/v1/init
 
 # ${FULL_NAME}    Supachai Uthawisan
