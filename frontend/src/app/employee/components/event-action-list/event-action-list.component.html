@@ -17,8 +17,8 @@
     <div class="row" style="width: 100%;">
         <table mat-table [dataSource]="dataSource" id="table_log" class="mat-elevation-z8">
             <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef class="row-date-time">
-                    Employee No
+                <th mat-header-cell *matHeaderCellDef style="width: 15%;">
+                    Employee No.
                 </th>
                 <td mat-cell *matCellDef="let element" id="{{element.employee_no}}">
                     <a>{{element.employee_no}}
@@ -26,24 +26,24 @@
                 </td>
             </ng-container>
             <ng-container matColumnDef="firstname">
-                <th mat-header-cell *matHeaderCellDef class="row-event-massage">
+                <th mat-header-cell *matHeaderCellDef>
                     First Name</th>
                 <td mat-cell *matCellDef="let element"><a>{{element.firstname}}</a>
                 </td>
             </ng-container>
             <ng-container matColumnDef="lastname">
-                <th mat-header-cell *matHeaderCellDef class="row-form">Last Name</th>
-                <td mat-cell *matCellDef="let element" style="text-align: center;">
+                <th mat-header-cell *matHeaderCellDef>Last Name</th>
+                <td mat-cell *matCellDef="let element">
                     {{element.lastname}}
                 </td>
             </ng-container>
             <ng-container matColumnDef="position">
-                <th mat-header-cell *matHeaderCellDef class="row-by">Position</th>
+                <th mat-header-cell *matHeaderCellDef>Position</th>
                 <td mat-cell *matCellDef="let element">{{element.position}}
                 </td>
             </ng-container>
             <ng-container matColumnDef="email">
-                <th mat-header-cell *matHeaderCellDef class="row-by">Email</th>
+                <th mat-header-cell *matHeaderCellDef>Email</th>
                 <td mat-cell *matCellDef="let element">{{element.email}}
                 </td>
             </ng-container>

@@ -21,7 +21,7 @@ export class EventActionListComponent implements OnInit {
 
   ngOnInit(): void {
     this.empService.getAllEmployee().subscribe((content) => {
-      this.listEmployee = content;
+      this.listEmployee = content.filter(data => data.status);
       this.dataSource = new MatTableDataSource<Employee>(this.listEmployee);
       this.dataSource.paginator = this.paginator;
     });
@@ -41,14 +41,10 @@ export class EventActionListComponent implements OnInit {
       this.dataSource.filter = search;
     }
   }
-  rowClick(id): void {
-    this.router.navigateByUrl(`/form/modify/${id}`);
-  }
   onEdit(id): void {
     this.router.navigateByUrl(`/form/modify/${id}`);
   }
   onDelete(id): void {
     this.router.navigateByUrl(`/form/remove/${id}`);
-
   }
 }
