@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "38ead0e2-f68b-4238-87e8-1464b675b58b",
-		"name": "test_collection",
+		"_postman_id": "d0955264-1b24-4722-8755-f6b8b570e1b2",
+		"name": "test_collection Copy",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -30,12 +30,65 @@
 			"response": []
 		},
 		{
+			"name": "Add Employee",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "008551a4-f57a-4d75-90cf-9f55045ccaa3",
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id !== undefined);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstname\": \"Satapitchakorn\",\r\n    \"lastname\": \"Punjarat\",\r\n    \"position\": \"Junior Back End Developer\",\r\n    \"email\": \"satapitchakorn.punjarat@allianz.com\",\r\n    \"phone\": \"+66918090968\",\r\n    \"passport\": \"1234567890126\",\r\n    \"status\": true,\r\n    \"employee_no\": 251165,\r\n    \"start_date\": \"2020-08-17T16:22:59.713\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://167.99.70.176:8080/api/v1/employee",
+					"protocol": "http",
+					"host": [
+						"167",
+						"99",
+						"70",
+						"176"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"employee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Add Log",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "0e29addb-7d44-4c12-805f-479003ce7b30",
+						"id": "3febccaf-f4df-4070-bfc0-8d8caa9665ff",
 						"exec": [
 							"pm.test(\"Status code is 201\", function () {\r",
 							"    pm.response.to.have.status(201);\r",
@@ -51,7 +104,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"admin_no\": 251181,\r\n  \"date_of_event\": \"2020-08-19T08:20:56.453Z\",\r\n  \"employee_no\": 251166,\r\n  \"log_objects\": [\r\n    {\r\n      \"element_name\": \"-\",\r\n      \"event_message\": \"-\",\r\n      \"form_id\": \"001\"\r\n    }\r\n  ]\r\n}",
+					"raw": "{\r\n  \"admin_no\": 251181,\r\n  \"date_of_event\": \"2020-08-19T08:20:56.453Z\",\r\n  \"employee_no\": 251165,\r\n  \"log_objects\": [\r\n    {\r\n      \"element_name\": \"-\",\r\n      \"event_message\": \"Add Satapitchakorn Punjarat successful.\",\r\n      \"form_id\": \"001\"\r\n    }\r\n  ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -83,7 +136,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "63324229-fb43-4fb4-83d8-70b8db086fef",
+						"id": "9e03037e-02df-4251-8a79-2b52b218d885",
 						"exec": [
 							"pm.test(\"Status code is 200\", function() {\r",
 							"    pm.response.to.have.status(200);\r",
@@ -91,27 +144,27 @@
 							"\r",
 							"pm.test(\"Show Employee First name\", function () {\r",
 							"    var jsonData = pm.response.json() \r",
-							"        pm.expect(jsonData.content[0].employee.firstname).to.eql(\"Hasaneeya\");  \r",
+							"        pm.expect(jsonData.content[0].employee.firstname).to.eql(\"Satapitchakorn\");  \r",
 							"    });\r",
 							"pm.test(\"Show Employee Last name\", function () {\r",
 							"    var jsonData = pm.response.json() \r",
-							"        pm.expect(jsonData.content[0].employee.lastname).to.eql(\"Kaenthram\");  \r",
+							"        pm.expect(jsonData.content[0].employee.lastname).to.eql(\"Punjarat\");  \r",
 							"    });\r",
 							"pm.test(\"Show Employee Position\", function () {\r",
 							"    var jsonData = pm.response.json() \r",
-							"        pm.expect(jsonData.content[0].employee.position).to.eql(\"Junior Front End Developer\");  \r",
+							"        pm.expect(jsonData.content[0].employee.position).to.eql(\"Junior Back End Developer\");  \r",
 							"    });\r",
 							"pm.test(\"Show Employee Email\", function () {\r",
 							"    var jsonData = pm.response.json() \r",
-							"        pm.expect(jsonData.content[0].employee.email).to.eql(\"hasaneeya.kaenthram@allianz.com\");  \r",
+							"        pm.expect(jsonData.content[0].employee.email).to.eql(\"satapitchakorn.punjarat@allianz.com\");  \r",
 							"    });\r",
 							"pm.test(\"Show Employee Phone Number\", function () {\r",
 							"    var jsonData = pm.response.json() \r",
-							"        pm.expect(jsonData.content[0].employee.phone).to.eql(\"+66876543210\");  \r",
+							"        pm.expect(jsonData.content[0].employee.phone).to.eql(\"+66918090968\");  \r",
 							"    });\r",
 							"pm.test(\"Show Employee Passport\", function () {\r",
 							"    var jsonData = pm.response.json() \r",
-							"        pm.expect(jsonData.content[0].employee.passport).to.eql(\"1234567890123\");  \r",
+							"        pm.expect(jsonData.content[0].employee.passport).to.eql(\"1234567890126\");  \r",
 							"    });\r",
 							"pm.test(\"Show Employee Status\", function () {\r",
 							"    var jsonData = pm.response.json() \r",
@@ -119,7 +172,7 @@
 							"    });\r",
 							"pm.test(\"Show Employee Number\", function () {\r",
 							"    var jsonData = pm.response.json() \r",
-							"        pm.expect(jsonData.content[0].employee.employee_no).to.eql(251182);  \r",
+							"        pm.expect(jsonData.content[0].employee.employee_no).to.eql(251165);  \r",
 							"    });\r",
 							"\r",
 							"\r",
@@ -143,7 +196,7 @@
 							"    });\r",
 							"pm.test(\"Show Log Object Event Message\", function () {\r",
 							"    var jsonData = pm.response.json() \r",
-							"        pm.expect(jsonData.content[0].log_objects[0].event_message).to.eql(\"Add Hasaneeya Kaenthram successful.\");  \r",
+							"        pm.expect(jsonData.content[0].log_objects[0].event_message).to.eql(\"Add Satapitchakorn Punjarat successful.\");\r",
 							"    });\r",
 							"\r",
 							""
@@ -152,9 +205,21 @@
 					}
 				}
 			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "http://167.99.70.176:8080/api/v1/log",
 					"protocol": "http",
@@ -175,65 +240,12 @@
 			"response": []
 		},
 		{
-			"name": "Add Employee",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "f6bff14f-f826-4f6f-a4fb-658bd8cf6672",
-						"exec": [
-							"pm.test(\"Successful POST request\", function () {\r",
-							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Your test name\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.id !== undefined);\r",
-							"});\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"firstname\": \"Satapitchakorn\",\r\n    \"lastname\": \"Punjarat\",\r\n    \"position\": \"Junior frontend developer\",\r\n    \"email\": \"satapitchakorn.punjarat@allianz.com\",\r\n    \"phone\": \"0918090968\",\r\n    \"passport\": \"1234567890126\",\r\n    \"status\": true,\r\n    \"employee_no\": 251165,\r\n    \"start_date\": \"2020-08-17T16:22:59.713\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://167.99.70.176:8080/api/v1/employee",
-					"protocol": "http",
-					"host": [
-						"167",
-						"99",
-						"70",
-						"176"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"v1",
-						"employee"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Send data into Edit Form",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "3ac8ad09-29fc-4f13-b94f-4e2099b51e33",
+						"id": "a9ca86d1-2a73-41d0-b03d-2fb47b68ba69",
 						"exec": [
 							"pm.test(\"Status code is 200\", function() {\r",
 							"    pm.response.to.have.status(200);\r",
@@ -318,7 +330,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "d1e74486-2bb3-4700-98ba-89e71f4f08d6",
+						"id": "bb6aa703-02d1-47c4-bfc9-5481d8b34855",
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
@@ -366,7 +378,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "a73eade6-d3ec-4076-a985-4a3e40cc47fa",
+						"id": "a20e0dbb-ded6-4189-9344-59544cccaa4a",
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
