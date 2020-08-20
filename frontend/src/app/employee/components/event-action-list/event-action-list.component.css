@@ -11,7 +11,7 @@ table {
   border: 1px darkgray solid;
   padding: 0 24px !important;
   text-align: center;
-  font-size: 1.5em;
+  font-size: 1.25em;
 }
 
 .mat-footer-cell {
@@ -39,15 +39,11 @@ tr.mat-footer-row {
   display: flex;
 }
 
-.row-form {
-  width: 1%;
+table.fixed {
+  table-layout: fixed;
+  width: 100%;
 }
 
-.row-date-time {
-  width: 16%;
-}
-
-tr.example-element-row:not(.example-expanded-row):hover {
-  background: skyblue;
-  cursor: pointer;
+table.fixed td {
+  overflow: hidden;
 }

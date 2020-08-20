@@ -15,9 +15,15 @@
 <br />
 <div class="center-body">
     <div class="row" style="width: 100%;">
-        <table mat-table [dataSource]="dataSource" id="table_log" class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 table fixed">
+            <col width=13% />
+            <col width=20% />
+            <col width=20% />
+            <col width=20% />
+            <col width=20% />
+            <col width=7% />
             <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef style="width: 15%;">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
                     Employee No.
                 </th>
                 <td mat-cell *matCellDef="let element" id="{{element.employee_no}}">
@@ -48,7 +54,7 @@
                 </td>
             </ng-container>
             <ng-container matColumnDef="action">
-                <th mat-header-cell *matHeaderCellDef style="width: 5%;">Action</th>
+                <th mat-header-cell *matHeaderCellDef>Action</th>
                 <td mat-cell *matCellDef="let element">
                     <div class="row" style="justify-content: center;">
                         <a (click)="onEdit(element.employee_no)" href="javascript:void(0);"

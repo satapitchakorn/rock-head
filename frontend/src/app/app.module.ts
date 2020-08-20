@@ -20,6 +20,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { EventActionListComponent } from './employee/components/event-action-list/event-action-list.component';
+import { MatSortModule } from '@angular/material/sort';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +46,8 @@ import { EventActionListComponent } from './employee/components/event-action-lis
     Ng2SearchPipeModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatSortModule
   ],
   providers: [FormIdPipe],
   bootstrap: [AppComponent]

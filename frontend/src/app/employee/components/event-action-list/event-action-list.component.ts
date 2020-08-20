@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { Employee } from '@app/employee/models/employee';
 import { EmployeeService } from '@app/employee/services/employee.service';
 import { Router } from '@angular/router';
+import { MatSort, Sort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-event-action-list',
@@ -16,6 +17,7 @@ export class EventActionListComponent implements OnInit {
   listEmployee: Employee[] = [];
   dataSource = new MatTableDataSource<Employee>();
 
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   constructor(private empService: EmployeeService, private router: Router) { }
 
@@ -24,7 +26,13 @@ export class EventActionListComponent implements OnInit {
       this.listEmployee = content.filter(data => data.status);
       this.dataSource = new MatTableDataSource<Employee>(this.listEmployee);
       this.dataSource.paginator = this.paginator;
-    });
+
+      this.dataSource.sort = this.sort;
+
+      const sortState: Sort = {active: 'id', direction: 'desc'};
+      this.sort.active = sortState.active;
+      this.sort.direction = sortState.direction;
+      this.sort.sortChange.emit(sortState);    });
   }
   applyFilter(search: any): void {
     if (search === '') {
