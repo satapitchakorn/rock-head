@@ -22,13 +22,13 @@ public class LogService {
 
     public void initialLogData() {
         logRepository.deleteAll();
-        List<Log> logList = new ArrayList() {
-            {
-                add(createEmployee(251181, 251182, "Hasaneeya", "Kaenthram"));
-                add(createEmployee(251181, 251166, "Kanawat", "Phuengphadung"));
-            }
-        };
-        logRepository.saveAll(logList);
+//        List<Log> logList = new ArrayList() {
+//            {
+//                add(createEmployee(251181, 251182, "Hasaneeya", "Kaenthram"));
+//                add(createEmployee(251181, 251166, "Kanawat", "Phuengphadung"));
+//            }
+//        };
+//        logRepository.saveAll(logList);
     }
 
     private Log createEmployee(int adminNo, int empNo, String firstname, String lastname) {
