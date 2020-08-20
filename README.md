@@ -4,6 +4,7 @@
 ```
 nmp install
 npm i sweetalert2
+ng add @angular/material
 ng add @ng-bootstrap/ng-bootstrap
 ```
 ---
