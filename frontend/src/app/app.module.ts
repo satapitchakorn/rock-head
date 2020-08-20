@@ -19,6 +19,7 @@ import { FormIdPipe } from './log/pipe/form-id.pipe';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { EventActionListComponent } from './employee/components/event-action-list/event-action-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +29,7 @@ import { MatIconModule } from '@angular/material/icon';
     EventActionRemovePageComponent,
     LogPageComponent,
     FormIdPipe,
+    EventActionListComponent,
   ],
   imports: [
     BrowserModule,

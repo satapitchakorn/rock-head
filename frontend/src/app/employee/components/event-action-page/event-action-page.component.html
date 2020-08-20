@@ -8,13 +8,13 @@
         <h1 class="cover-heading" style="text-align: center;">EMPLOYEE INFORMATION MANAGEMENT </h1>
         <p class="lead">
           <br />
-          <button id="btnAdd" href="./form/add" [routerLink]="['/form/add']" type="button"
+          <button id="btnAdd" [routerLink]="['/form/add']" type="button"
             class="btn btn-success btn-block btn-lg add-btn">ADD</button>
           <br />
-          <button id="btnModify" href="./form/modify" [routerLink]="['/form/modify']" type="button"
+          <button id="btnModify" [routerLink]="['/employee/list']" type="button"
             class="btn btn-warning btn-block btn-lg modify-btn" style="color:white">MODIFY</button>
           <br />
-          <button id="btnRemove" href="./form/remove" [routerLink]="['/form/remove']" type="button"
+          <button id="btnRemove" [routerLink]="['/employee/list']" type="button"
             class="btn btn-danger btn-block btn-lg remove-btn">REMOVE</button>
           <br />
         </p>

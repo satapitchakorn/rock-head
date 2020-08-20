@@ -46,3 +46,8 @@ tr.mat-footer-row {
 .row-date-time {
   width: 16%;
 }
+
+tr.example-element-row:not(.example-expanded-row):hover {
+  background: skyblue;
+  cursor: pointer;
+}

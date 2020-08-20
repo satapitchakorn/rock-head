@@ -3,14 +3,16 @@ Library         SeleniumLibrary
 
 *** Variables ***
 ${URL_init}     http://167.99.70.176:8080/api/v1/init
-${URL_form}     http://167.99.66.174/form
-${URL_log}      http://167.99.66.174/logs
+# ${URL_form}     http://167.99.66.174/form
+# ${URL_log}      http://167.99.66.174/logs
+${URL_form}      http://localhost:4200/form
+${URL_log}      http://localhost:4200/logs
 ${URL_data}     http://167.99.70.176:8080/api/v1/employee
 
 
 *** Keywords ***
 Open Browser and get into link
-    Open Browser                    ${URL_init}          Chrome         remote_url=http://206.189.154.4:4444/wd/hub          desired_capabilities=browserName:chrome
+    Open Browser                    ${URL_init}          Chrome         
     Maximize Browser Window
     Go To                           ${URL_form}
     # Set Selenium Speed              0.2
@@ -43,6 +45,7 @@ Choose MODIFY menu for edit user details
     Go To                           ${URL_form}          
     Wait Until Page Contains	    Employee information management
     Click Button                    id:btnModify
+    Click Element                   edit251182
 Edit user details
     [Arguments]                     ${FIRSTNAME}        ${PHONE}
     Wait Until Element Is Visible   inputPassport       10
@@ -65,6 +68,7 @@ Choose DELETE menu for change user status to Inactive
     Go To                           ${URL_form}
     Wait Until Page Contains        Employee information management         10
     Click Button                    id:btnRemove
+    Click Element                   delete251166
 Change user status to Inactive
     Wait Until Element Is Visible   inputEmployeeId      10
     Element Should Be Disabled      inputEmployeeId   

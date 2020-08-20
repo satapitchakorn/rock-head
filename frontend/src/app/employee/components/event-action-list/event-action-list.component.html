@@ -1,0 +1,72 @@
+<div class="container-fluid">
+    <h3 style="text-align: center;">EMPLOYEE LIST</h3>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 align-self-center">
+            <mat-form-field style="width: 50%; display: flex; flex-direction: column; padding: 15px;">
+                <mat-label>Search</mat-label>
+                <input matInput autocomplete="off" [(ngModel)]="searchFilter" (keyup)="applyFilter(searchFilter)">
+            </mat-form-field>
+        </div>
+    </div>
+</div>
+<br />
+<div class="center-body">
+    <div class="row" style="width: 100%;">
+        <table mat-table [dataSource]="dataSource" id="table_log" class="mat-elevation-z8">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef class="row-date-time">
+                    Employee No
+                </th>
+                <td mat-cell *matCellDef="let element" id="{{element.employee_no}}">
+                    <a>{{element.employee_no}}
+                    </a>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="firstname">
+                <th mat-header-cell *matHeaderCellDef class="row-event-massage">
+                    First Name</th>
+                <td mat-cell *matCellDef="let element"><a>{{element.firstname}}</a>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="lastname">
+                <th mat-header-cell *matHeaderCellDef class="row-form">Last Name</th>
+                <td mat-cell *matCellDef="let element" style="text-align: center;">
+                    {{element.lastname}}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef class="row-by">Position</th>
+                <td mat-cell *matCellDef="let element">{{element.position}}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef class="row-by">Email</th>
+                <td mat-cell *matCellDef="let element">{{element.email}}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef style="width: 5%;">Action</th>
+                <td mat-cell *matCellDef="let element">
+                    <div class="row" style="justify-content: center;">
+                        <a (click)="onEdit(element.employee_no)" href="javascript:void(0);"
+                            id="edit{{element.employee_no}}">
+                            <mat-icon style="color: gray;">settings</mat-icon>
+                        </a>
+                        <a (click)="onDelete(element.employee_no)" href="javascript:void(0);"
+                            id="delete{{element.employee_no}}">
+                            <mat-icon style="color: red;">delete</mat-icon>
+                        </a></div>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="column"></tr>
+            <tr mat-row *matRowDef="let row; columns:column;"></tr>
+        </table>
+        <div class="col-md-12" style="text-align: center;">
+            <div *ngIf="dataSource.filteredData.length === 0"><br />No data</div>
+        </div>
+    </div>
+</div>
+<mat-paginator [pageSizeOptions]="[15,20,30]" showFirstLastButtons></mat-paginator>

@@ -5,7 +5,7 @@ import { EmployeeService } from '../../services/employee.service';
 import { LogServiceService } from '@app/log/services/log-service.service';
 import * as moment from 'moment';
 import { LogBody } from '@app/log/models/log-body';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-event-action-remove-page',
@@ -18,12 +18,14 @@ export class EventActionRemovePageComponent implements OnInit {
   submitted = false;
   log: LogBody;
 
-  constructor(private fb: FormBuilder, private employeeService: EmployeeService, private logService: LogServiceService, private router: Router) {
+  constructor(private fb: FormBuilder, private employeeService: EmployeeService,
+    private logService: LogServiceService, private router: Router, private acRouter: ActivatedRoute) {
     this.form = fb.group({})
   }
 
   ngOnInit(): void {
-    this.employeeService.getEmployee("251166").subscribe((data) => {
+    const empId = parseInt(this.acRouter.snapshot.paramMap.get('id'));
+    this.employeeService.getEmployee(empId).subscribe((data) => {
       console.log(data);
       this.form = this.fb.group({
         passport: new FormControl({ value: data.passport, disabled: true }),

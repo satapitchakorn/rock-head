@@ -8,7 +8,7 @@ import { LogBody } from '@app/log/models/log-body';
 import * as moment from 'moment';
 import { EventModel } from '@app/log/models/event-model';
 import * as clone from 'clone';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-event-action-modify-page',
@@ -59,12 +59,14 @@ export class EventActionModifyPageComponent implements OnInit {
     }
   ];
 
-  constructor(private fb: FormBuilder, private employeeService: EmployeeService, private logService: LogServiceService, private router: Router) {
+  constructor(private fb: FormBuilder, private employeeService: EmployeeService, private logService: LogServiceService, private router: Router, private acRouter: ActivatedRoute) {
     this.form = fb.group({});
+
   }
 
   ngOnInit(): void {
-    this.employeeService.getEmployee('251182').subscribe(data => {
+    const empId = parseInt(this.acRouter.snapshot.paramMap.get('id'));
+    this.employeeService.getEmployee(empId).subscribe(data => {
       this.form = this.fb.group({
         passport: new FormControl(data.passport, Validators.required),
         employee_no: new FormControl(data.employee_no, Validators.required),

@@ -28,6 +28,9 @@ export class EmployeeService {
     return this.http.get<Employee>(this.URL + `/${id}`);
   }
 
+  getAllEmployee(): Observable<Employee[]> {
+    return this.http.get<Employee[]>(this.URL);
+  }
   modifyEmployee(id, employee: any): Observable<HttpResponse<Employee>> {
     return this.http.put<Employee>(this.URL + `/${id}`, employee, { observe: 'response' });
   }
