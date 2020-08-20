@@ -70,4 +70,22 @@ public class LogService {
         List<LogModel> results = mongoTemplate.aggregate(aggregation, "log", LogModel.class).getMappedResults();
         return new PageImpl<>(results);
     }
+
+    public void addLogData(int n) {
+        List<Log> logList = new ArrayList() {
+            {
+                String employeeFirstname;
+                String employeeLastname;
+                int employeeNumber;
+
+                for(int i = 0; i<n; i++){
+                    employeeFirstname = "Name"+i;
+                    employeeLastname = "Sur"+i;
+                    employeeNumber = 251166 + i;
+                    add(createEmployee(251166, employeeNumber, employeeFirstname, employeeLastname));
+                }
+            }
+        };
+        logRepository.saveAll(logList);
+    }
 }

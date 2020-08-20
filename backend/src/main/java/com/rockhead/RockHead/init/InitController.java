@@ -7,10 +7,7 @@ import com.rockhead.RockHead.response.ResponseModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
@@ -29,5 +26,11 @@ public class InitController {
         logService.initialLogData();
         adminService.initDataAdmin();
         return new ResponseEntity<>(new ResponseModel(true, "Initial data successful."), HttpStatus.CREATED);
+    }
+
+    @GetMapping("/add")
+    public ResponseEntity<?> injectLogInformation(@RequestParam(value = "n", defaultValue = "20") int n) {
+        logService.addLogData(n);
+        return new ResponseEntity<>(new ResponseModel(true, "add data successful."), HttpStatus.CREATED);
     }
 }
