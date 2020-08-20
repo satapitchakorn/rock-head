@@ -27,7 +27,7 @@ import { MatIconModule } from '@angular/material/icon';
     EventActionModifyPageComponent,
     EventActionRemovePageComponent,
     LogPageComponent,
-    FormIdPipe
+    FormIdPipe,
   ],
   imports: [
     BrowserModule,

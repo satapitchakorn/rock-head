@@ -14,6 +14,7 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class LogPageComponent implements OnInit {
   formIdFilter = 'All';
+  searchFilter = '';
   options = [{ id: 'All', name: 'All' }, { id: '001', name: 'Add (001)' }, { id: '002', name: 'Modify (002)' }, { id: '003', name: 'Remove (003)' }];
   column = ['date_time', 'event_message', 'form_id', 'by', 'element_name'];
   contents: ContentModel;
@@ -52,6 +53,23 @@ export class LogPageComponent implements OnInit {
     }
   }
   applyFilter(search: any): void {
-    this.dataSource.filter = search.trim().toLowerCase();
+    if (search === '') {
+      this.dataSource.filter = '';
+      this.dataSource.filterPredicate = () => true;
+    } else {
+      this.dataSource.filterPredicate =
+        (data: LogDisplay, filter: string) => {
+          return (data.admin.admin_no.toString().indexOf(filter) !== -1 || data.admin.email.indexOf(filter) !== -1 ||
+            data.date_of_event.indexOf(filter) !== -1 || data.employee.employee_no.toString().indexOf(filter) !== -1 ||
+            data.employee.firstname.indexOf(filter) !== -1 || data.employee.lastname.indexOf(filter) !== -1 ||
+            data.log_objects.element_name.indexOf(filter) !== -1 || data.log_objects.event_message.indexOf(filter) !== -1 ||
+            data.log_objects.form_id.indexOf(filter) !== -1);
+        };
+      search = search.trim();
+      search = search.toLowerCase();
+      this.dataSource.filter = search;
+      console.log(this.dataSource);
+      
+    }
   }
 }
