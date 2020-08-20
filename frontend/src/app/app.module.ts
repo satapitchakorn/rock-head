@@ -15,8 +15,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { FormIdPipe} from './log/pipe/form-id.pipe';
-
+import { FormIdPipe } from './log/pipe/form-id.pipe';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +41,9 @@ import { FormIdPipe} from './log/pipe/form-id.pipe';
     MatPaginatorModule,
     MatTableModule,
     Ng2SearchPipeModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule
   ],
   providers: [FormIdPipe],
   bootstrap: [AppComponent]

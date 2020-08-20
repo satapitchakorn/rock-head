@@ -14,11 +14,12 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class LogPageComponent implements OnInit {
   formIdFilter = 'All';
-  options = [{ id: 'All', name: 'All' }, { id: '001', name: 'Add' }, { id: '002', name: 'Modify' }, { id: '003', name: 'Remove' }];
-  column = ['date_time', 'event_message', 'form_id', 'by', 'element_name']
+  options = [{ id: 'All', name: 'All' }, { id: '001', name: 'Add (001)' }, { id: '002', name: 'Modify (002)' }, { id: '003', name: 'Remove (003)' }];
+  column = ['date_time', 'event_message', 'form_id', 'by', 'element_name'];
   contents: ContentModel;
   listLogModel: LogDisplay[] = [];
-  dataSource = new MatTableDataSource();
+  dataSource = new MatTableDataSource<LogDisplay>();
+
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   constructor(private logService: LogServiceService) { }
 
@@ -35,19 +36,22 @@ export class LogPageComponent implements OnInit {
           this.listLogModel.push(display);
         });
       });
-      this.dataSource = new MatTableDataSource(this.listLogModel);
+      this.dataSource = new MatTableDataSource<LogDisplay>(this.listLogModel);
       this.dataSource.paginator = this.paginator;
-      this.dataSource.filterPredicate =
-        (data: LogDisplay, filter: string) => data.log_objects.form_id.indexOf(filter) != -1;
     });
   }
   filter(): void {
     if (this.formIdFilter === 'All') {
       this.dataSource.filter = '';
     } else {
-      this.formIdFilter = this.formIdFilter.trim(); // Remove whitespace
-      this.formIdFilter = this.formIdFilter.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+      this.formIdFilter = this.formIdFilter.trim();
+      this.formIdFilter = this.formIdFilter.toLowerCase();
+      this.dataSource.filterPredicate =
+        (data: LogDisplay, filter: string) => data.log_objects.form_id.indexOf(filter) !== -1;
       this.dataSource.filter = this.formIdFilter;
     }
+  }
+  applyFilter(search: any): void {
+    this.dataSource.filter = search.trim().toLowerCase();
   }
 }

@@ -11,24 +11,30 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="form-group">
-                            <label for="inputPassport">Passport / Citizen identity number <abbr class="text-danger"
+                            <label for="inputPassport">Passport / Identity Card No.<abbr class="text-danger"
                                     title="This is required">*</abbr></label>
                             <div class="input-group mt-3 mb-3">
-                                <select [(ngModel)]="type" [ngModelOptions]="{standalone: true}" id="selectPassport"
-                                    required>
-                                    <option value="" disabled>Please select type</option>
-                                    <option value="Citizen identity number">Citizen identity number
-                                    </option>
-                                    <option value="Passport">Passport</option>
-                                </select>
+                                <div style="width: 16%;">
+                                    <select class="form-control" id="selectPassport" formControlName='type' required>
+                                        <option value="" disabled>Please select type</option>
+                                        <option value="Identity Card No.">Identity Card No.
+                                        </option>
+                                        <option value="Passport">Passport</option>
+                                    </select>
+                                </div>
                                 <input type="text" class="form-control" id="inputPassport"
                                     placeholder="e.g. AA000000 or 0111122222334" formControlName="passport"
                                     minlength="8" maxlength="13" required>
                                 <div class="invalid-feedback">
-                                    Please select type Passport or Citizen identity number & Enter your Passport
-                                    like
-                                    AA000000 or Citizen identity number like
-                                    0111122222334.
+                                    <span *ngIf="form.get('type').invalid">
+                                        Please select identity type
+                                    </span>
+                                    <span *ngIf="form.get('type').invalid && form.get('passport').invalid">
+                                        ,&nbsp;
+                                    </span>
+                                    <span *ngIf="form.get('passport').invalid">
+                                        Please enter Passport or Identity Card No.
+                                    </span>
                                 </div>
 
                             </div>
@@ -53,7 +59,7 @@
                         <input type="text" class="form-control" id="inputFirstname" formControlName="firstname" value=""
                             required>
                         <div class="invalid-feedback">
-                            Please enter Firstname.
+                            Please enter First Name.
                         </div>
                     </div>
 
@@ -63,7 +69,7 @@
                         <input type="text" class="form-control" id="inputLastname" formControlName="lastname" value=""
                             required>
                         <div class="invalid-feedback">
-                            Please enter Lastname.
+                            Please enter Last Name.
                         </div>
                     </div>
                 </div>
@@ -74,14 +80,14 @@
                                     title="This is required">*</abbr></label>
                             <select type="text" data-placeholder="Choose a Position" class="form-control"
                                 formControlName="position" id="selectPosition" tabindex="2" required>
-                                <option value=""></option>
+                                <option value="" disabled>Please select position</option>
                                 <option id="positionFE" value="Junior Front End Developer">Junior Front End Developer
                                 </option>
                                 <option id="positionBE" value="Junior Back End Developer">Junior Back End Developer
                                 </option>
                                 <option id="positionQA" value="Junior QA">Junior QA</option>
                                 <option id="positionPM" value="Project Manager">Project Manager</option>
-                                <option id="positionBA" value="Business Analysis">Business Analysis</option>
+                                <option id="positionBA" value="Business Analyst">Business Analyst</option>
                                 <option id="positionSM" value="Scrum Master">Scrum Master</option>
                             </select>
                             <div class="invalid-feedback">
@@ -119,13 +125,13 @@
 
                     <div class="col-md-6 mb-3">
                         <div class="form-group">
-                            <label for="inputPhone">Contact Number <abbr class="text-danger"
+                            <label for="inputPhone">Mobile Phone Number <abbr class="text-danger"
                                     title="This is required">*</abbr></label>
                             <input type="tel" placeholder="e.g. +66012345678" pattern="\+[0-9]{2}[0-9]{9}"
                                 class="form-control" name="inputPhoneNumber" id="inputPhone" formControlName="phone"
                                 required>
                             <div class="invalid-feedback">
-                                Please enter Contact Number like +00123456789.
+                                Please enter Mobile Phone Number.
                             </div>
                         </div>
                     </div>

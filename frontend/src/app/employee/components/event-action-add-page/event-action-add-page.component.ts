@@ -20,29 +20,11 @@ export class EventActionAddPageComponent implements OnInit {
   employee: Employee;
   submitted = false;
   validated = false;
-  type = ""
   log: LogBody;
 
 
-  //Position Filter
-  //Way 1
-  title = 'custom-search-filter-example';
-  searchedKeyword: string;
-
-  filterResultDataSet = [
-    {
-      position: 'Junior Front End Developer',
-    },
-    {
-      position: 'Junior Back End Developer',
-    },
-    {
-      position: 'Junior QA',
-    },
-
-  ]
   //Way 2
-  positions = ["", "Junior Front End Developer", "Junior Back End Developer", "Junior QA", "Project Manager", "Business Analysis", "Scrum Master"]
+  positions = ["", "Junior Front End Developer", "Junior Back End Developer", "Junior QA", "Project Manager", "Business Analyst", "Scrum Master"]
   term: string;
 
 
@@ -58,6 +40,7 @@ export class EventActionAddPageComponent implements OnInit {
       start_date: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
       phone: new FormControl('', Validators.required),
+      type: new FormControl('', Validators.required)
     });
   }
   ngOnInit(): void {
@@ -83,7 +66,7 @@ export class EventActionAddPageComponent implements OnInit {
               this.log = {
                 employee_no: this.form.value.employee_no,
                 admin_no: this.logService.getAdminNo(),
-                date_of_event: moment().add(7, 'hours').format('YYYY-MM-DDTHH:mm:ss.SSS'),
+                date_of_event: moment().format('YYYY-MM-DDTHH:mm:ss.SSS'),
                 log_objects: [{
                   form_id: '001',
                   event_message: `Add ${this.form.value.firstname} ${this.form.value.lastname} successful.`,

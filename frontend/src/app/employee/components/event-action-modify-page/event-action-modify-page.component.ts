@@ -28,29 +28,35 @@ export class EventActionModifyPageComponent implements OnInit {
 
   modify = [
     {
-      element_name: 'firstname',
-      isModify: false
+      element_name: 'First Name',
+      isModify: false,
+      form_name: 'firstname'
     },
 
     {
-      element_name: 'lastname',
-      isModify: false
+      element_name: 'Last Name',
+      isModify: false,
+      form_name: 'lastname'
     },
     {
-      element_name: 'position',
-      isModify: false
+      element_name: 'Position',
+      isModify: false,
+      form_name: 'position'
     },
     {
-      element_name: 'start_date',
-      isModify: false
+      element_name: 'Start Date',
+      isModify: false,
+      form_name: 'start_date'
     },
     {
-      element_name: 'email',
-      isModify: false
+      element_name: 'Email',
+      isModify: false,
+      form_name: 'email'
     },
     {
-      element_name: 'phone',
-      isModify: false
+      element_name: 'Mobile Phone Number',
+      isModify: false,
+      form_name: 'phone'
     }
   ];
 
@@ -72,7 +78,7 @@ export class EventActionModifyPageComponent implements OnInit {
       });
       this.formTmp = this.deepClone(this.form);
       if (data.passport.length === 13) {
-        this.type = 'Citizen identity number';
+        this.type = 'Identity Card No.';
       } else {
         this.type = 'Passport';
       }
@@ -106,11 +112,11 @@ export class EventActionModifyPageComponent implements OnInit {
         const phone = this.form.value.phone;
         switch (i) {
           case 0: {
-            fireMessage = fireMessage.concat(`First name: ${firstname}<br/><br/>`);
+            fireMessage = fireMessage.concat(`First Name: ${firstname}<br/><br/>`);
             break;
           }
           case 1: {
-            fireMessage = fireMessage.concat(`Last name: ${lastname}<br/><br/>`);
+            fireMessage = fireMessage.concat(`Last Name: ${lastname}<br/><br/>`);
             break;
           }
           case 2: {
@@ -118,7 +124,7 @@ export class EventActionModifyPageComponent implements OnInit {
             break;
           }
           case 3: {
-            fireMessage = fireMessage.concat(`Start date: ${start_date}<br/><br/>`);
+            fireMessage = fireMessage.concat(`Start Date: ${start_date}<br/><br/>`);
             break;
           }
           case 4: {
@@ -126,7 +132,7 @@ export class EventActionModifyPageComponent implements OnInit {
             break;
           }
           case 5: {
-            fireMessage = fireMessage.concat(`Phone: ${phone}<br/><br/>`);
+            fireMessage = fireMessage.concat(`Mobile Phone Number: ${phone}<br/><br/>`);
             break;
           }
           default: { break; }
@@ -151,7 +157,7 @@ export class EventActionModifyPageComponent implements OnInit {
             this.log = {
               employee_no: this.form.value.employee_no,
               admin_no: this.logService.getAdminNo(),
-              date_of_event: moment().add(7, 'hours').format('YYYY-MM-DDTHH:mm:ss.SSS'),
+              date_of_event: moment().format('YYYY-MM-DDTHH:mm:ss.SSS'),
               log_objects: this.generateEventMessage(),
             };
             this.logService.addLog(this.log).subscribe(data => {
@@ -187,11 +193,13 @@ export class EventActionModifyPageComponent implements OnInit {
   }
   generateEventMessage(): EventModel[] {
     this.message = [];
+    console.log(this.modify);
+
     this.modify.forEach(data => {
       if (data.isModify) {
         this.message.push({
           element_name: data.element_name,
-          event_message: `Modify ${data.element_name} from ${this.formTmp.get(data.element_name).value} to ${this.form.get(data.element_name).value}.`,
+          event_message: `Modify ${data.element_name} from ${this.formTmp.get(data.form_name).value} to ${this.form.get(data.form_name).value}.`,
           form_id: '002'
         });
       }

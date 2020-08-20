@@ -10,6 +10,7 @@ table {
   border: 1px darkgray solid;
   padding: 0 24px !important;
   text-align: center;
+  font-size: 1.5em;
 }
 
 .mat-footer-cell {
@@ -35,4 +36,12 @@ tr.mat-footer-row {
 .center-body {
   justify-content: center;
   display: flex;
+}
+
+.row-form {
+  width: 1%;
+}
+
+.row-date-time {
+  width: 12%;
 }
