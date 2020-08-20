@@ -18,6 +18,11 @@ public class EmployeeController {
         return new ResponseEntity<>(employeeService.findEmployeeById(id), HttpStatus.OK);
     }
 
+    @GetMapping("")
+    public ResponseEntity<?> getAllEmployee() {
+        return new ResponseEntity<>(employeeService.findAllEmployee(), HttpStatus.OK);
+    }
+
     @PostMapping("")
     public ResponseEntity<?> addEmployee(@RequestBody Employee request) {
         return new ResponseEntity<>(employeeService.addEmployee(request), HttpStatus.CREATED);
