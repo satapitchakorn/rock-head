@@ -13,12 +13,14 @@
             <div class="form-group">
               <label for="inputPassport">Passport / Identity Card No.</label>
               <div class="input-group mt-3 mb-3">
-                <select [(ngModel)]="type" [ngModelOptions]="{ standalone: true }" id="selectPassport" tabindex="2"
-                  disabled>
-                  <option value="" disabled>Please select type</option>
-                  <option value="Identity Card No.">Identity Card No.</option>
-                  <option value="Passport">Passport</option>
-                </select>
+                <div style="width: 16%;">
+                  <select class="form-control" id="selectPassport" formControlName='type' disabled>
+                    <option value="" disabled>Please select type</option>
+                    <option value="Identity Card No.">Identity Card No.
+                    </option>
+                    <option value="Passport">Passport</option>
+                  </select>
+                </div>
                 <input type="text" class="form-control" id="inputPassport" placeholder="e.g. AA000000 or 0111122222334"
                   formControlName="passport" required disabled />
               </div>
@@ -30,11 +32,11 @@
           <label for="inputEmployeeId">Employee ID</label>
           <input type="number" class="form-control" id="inputEmployeeId" placeholder="e.g. 000000"
             formControlName="employee_no" maxlength="6" disabled />
-            <div class="invalid-feedback">
-              Please enter Employee ID.
-            </div>
+          <div class="invalid-feedback">
+            Please enter Employee ID.
+          </div>
         </div>
-      
+
         <div class="row">
           <div class="col-md-6 mb-3">
             <label for="inputFirstname">First Name

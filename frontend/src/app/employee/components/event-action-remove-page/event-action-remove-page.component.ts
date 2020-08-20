@@ -15,7 +15,6 @@ import { Router } from '@angular/router';
 export class EventActionRemovePageComponent implements OnInit {
 
   form: FormGroup;
-  type = ""
   submitted = false;
   log: LogBody;
 
@@ -35,11 +34,13 @@ export class EventActionRemovePageComponent implements OnInit {
         start_date: new FormControl({ value: moment(data.start_date).format('yyyy-MM-DD'), disabled: true }),
         email: new FormControl({ value: data.email, disabled: true }),
         phone: new FormControl({ value: data.phone, disabled: true }),
+        type: new FormControl({ value: '', disabled: true })
       })
-      if (this.form.value.passport.length == 13)
-        this.type = "Citizen identity number";
-      else
-        this.type = "Passport";
+      if (data.passport.length === 13) {
+        this.form.controls.type.setValue('Identity Card No.');
+      } else {
+        this.form.controls.type.setValue('Passport');
+      }
     })
   }
 
@@ -74,7 +75,7 @@ export class EventActionRemovePageComponent implements OnInit {
               if (response.status) {
                 Swal.fire({
                   title: 'Successful',
-                  html: `This employee has been removed<br/><br/><b>Redirecting to log page...<b>`,
+                  html: `This employee has been removed<br/><br/><b>Redirecting to logs page...<b>`,
                   icon: 'success',
                   timer: 1500,
                   showConfirmButton: false

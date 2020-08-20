@@ -4,7 +4,6 @@ import { LogServiceService } from './../../services/log-service.service';
 import { LogModel } from '@app/log/models/log-model';
 import { LogDisplay } from '@app/log/models/log-display';
 import { EventModel } from '@app/log/models/event-model';
-import { DataSource } from '@angular/cdk/table';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 @Component({
@@ -55,21 +54,18 @@ export class LogPageComponent implements OnInit {
   applyFilter(search: any): void {
     if (search === '') {
       this.dataSource.filter = '';
-      this.dataSource.filterPredicate = () => true;
     } else {
       this.dataSource.filterPredicate =
         (data: LogDisplay, filter: string) => {
           return (data.admin.admin_no.toString().indexOf(filter) !== -1 || data.admin.email.indexOf(filter) !== -1 ||
-            data.date_of_event.indexOf(filter) !== -1 || data.employee.employee_no.toString().indexOf(filter) !== -1 ||
-            data.employee.firstname.indexOf(filter) !== -1 || data.employee.lastname.indexOf(filter) !== -1 ||
-            data.log_objects.element_name.indexOf(filter) !== -1 || data.log_objects.event_message.indexOf(filter) !== -1 ||
+            data.date_of_event.includes(filter) || data.employee.employee_no.toString().indexOf(filter) !== -1 ||
+            data.employee.firstname.toLowerCase().includes(filter) || data.employee.lastname.toLowerCase().includes(filter) ||
+            data.log_objects.element_name.toLowerCase().includes(filter) || data.log_objects.event_message.toLowerCase().includes(filter) ||
             data.log_objects.form_id.indexOf(filter) !== -1);
         };
       search = search.trim();
       search = search.toLowerCase();
       this.dataSource.filter = search;
-      console.log(this.dataSource);
-      
     }
   }
 }

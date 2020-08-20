@@ -78,7 +78,7 @@ export class EventActionAddPageComponent implements OnInit {
                 if (response.status) {
                   Swal.fire({
                     title: 'Successful',
-                    html: `${name} has been saved<br/><br/><b>Redirecting to log page...<b> `,
+                    html: `${name} has been saved<br/><br/><b>Redirecting to logs page...<b> `,
                     icon: 'success',
                     timer: 1500,
                     showConfirmButton: false

@@ -21,7 +21,6 @@ export class EventActionModifyPageComponent implements OnInit {
   employee: Employee;
   submitted = false;
   validated = false;
-  type = '';
   formTmp: FormGroup;
   log: LogBody;
   message: EventModel[] = [];
@@ -75,12 +74,13 @@ export class EventActionModifyPageComponent implements OnInit {
         start_date: new FormControl(moment(data.start_date).format('yyyy-MM-DD'), Validators.required),
         email: new FormControl(data.email, Validators.required),
         phone: new FormControl(data.phone, Validators.required),
+        type: new FormControl('', Validators.required)
       });
       this.formTmp = this.deepClone(this.form);
       if (data.passport.length === 13) {
-        this.type = 'Identity Card No.';
+        this.form.controls.type.setValue('Identity Card No.');
       } else {
-        this.type = 'Passport';
+        this.form.controls.type.setValue('Passport');
       }
     });
   }
@@ -164,7 +164,7 @@ export class EventActionModifyPageComponent implements OnInit {
               if (data.status === 201) {
                 Swal.fire({
                   title: 'Successful',
-                  html: `Your file has been modified<br/><br/><b>Redirecting to log page...<b> `,
+                  html: `Your file has been modified<br/><br/><b>Redirecting to logs page...<b> `,
                   icon: 'success',
                   timer: 1500,
                   showConfirmButton: false
@@ -193,8 +193,6 @@ export class EventActionModifyPageComponent implements OnInit {
   }
   generateEventMessage(): EventModel[] {
     this.message = [];
-    console.log(this.modify);
-
     this.modify.forEach(data => {
       if (data.isModify) {
         this.message.push({
