@@ -3,17 +3,14 @@ Library         SeleniumLibrary
 
 *** Variables ***
 ${URL_init}     http://167.99.70.176:8080/api/v1/init
-# ${URL_form}     http://167.99.66.174/form
-# ${URL_log}      http://167.99.66.174/logs
-${URL_form}      http://localhost:4200/form
-${URL_log}      http://localhost:4200/logs
+${URL_form}     http://167.99.66.174/form
+${URL_log}      http://167.99.66.174/logs
 ${URL_data}     http://167.99.70.176:8080/api/v1/employee
 
 
 *** Keywords ***
 Open Browser and get into link
-    # Open Browser                    ${URL_init}          Chrome         remote_url=http://206.189.154.4:4444/wd/hub          desired_capabilities=browserName:chrome
-    Open Browser                    ${URL_init}          Chrome         
+    Open Browser                    ${URL_init}          Chrome         remote_url=http://206.189.154.4:4444/wd/hub          desired_capabilities=browserName:chrome
     Maximize Browser Window
     Go To                           ${URL_form}
     # Set Selenium Speed              0.2
